@@ -1,3 +1,4 @@
+import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,7 +19,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SDKBrowserModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
