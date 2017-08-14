@@ -1,6 +1,7 @@
 import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,12 +16,13 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     LoginPageComponent,
     HomePageComponent,
     DashboardPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SDKBrowserModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
