@@ -1,3 +1,4 @@
+import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,7 +17,8 @@ import { DashboardPageComponent } from './home-page/dashboard-page/dashboard-pag
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SDKBrowserModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
