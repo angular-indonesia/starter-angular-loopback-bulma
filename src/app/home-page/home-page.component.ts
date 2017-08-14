@@ -7,20 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
   showMiniMenu: boolean = false;
 
-  ngOnInit() {
-    this.toggleMenu();
+  constructor() {
   }
 
-  toggleMenu(){
-    var burger = document.querySelector('.navbar-burger');
-    var menu = document.querySelector('.nav-menu');
-    burger.addEventListener('click', function() {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-    });
+  ngOnInit() {
+
+  }
+
   toggleMenu() {
     this.showMiniMenu = !this.showMiniMenu;
   }
