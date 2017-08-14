@@ -1,7 +1,30 @@
-<p>
-  home-page works!
-</p>
-<div>
-    My Router
-    <router-outlet></router-outlet>
+<div class="columns">
+  <aside class="column aside hero is-fullheight is-hidden-mobile">
+    <div>
+      <div class="menu">
+        <div class="title">Navigation</div>
+        <a href="" class="item active"><span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span></a>
+        <a href="" class="item"><span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span></a>
+        <a href="" class="item"><span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span></a>
+        <a href="" class="item"><span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span></a>
+      </div>
+    </div>
+  </aside>
+  <div class="column is-10 mainside">
+    <nav class="navbar has-shadow">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="assets/logo.png" alt="Application Name" width="28" height="28">
+        </a>
+        <div class="navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
