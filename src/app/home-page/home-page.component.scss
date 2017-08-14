@@ -1,0 +1,57 @@
+.has-shadow {
+    box-shadow: 0 2px 2px -2px gray;
+}
+.aside {
+  background-color: #242424;
+  position: overlay;
+  overflow: auto;
+}
+.aside .menu {
+  padding: 40px;
+  color: #6F7B7E;
+}
+.aside .title {
+  color: #6F7B7E;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.aside .menu .item {
+  display: block;
+  padding: 10px 0;
+}
+.aside .menu .item.active {
+  color: #F6F7F7;
+}
+.aside .menu .icon {
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 30px;
+}
+.aside .menu .icon:hover {
+  color: #F6F7F7;
+}
+.aside .menu .item {
+  color: #6F7B7E;
+}
+.aside .menu .item:hover {
+  color: #F6F7F7;
+}
+.aside .menu .name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.content {
+  display: block;
+  background-color: #fff;
+  padding: 0px;
+  width: 100vmax;
+  height: 100vmax;
+  overflow: auto;
+}
+.mainside {
+  background-color:d3d6db;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
