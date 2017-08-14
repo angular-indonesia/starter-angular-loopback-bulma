@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  showMiniMenu: boolean = false;
+
+  constructor() {
+  }
 
   ngOnInit() {
+
+  }
+
+  toggleMenu() {
+    this.showMiniMenu = !this.showMiniMenu;
   }
 
 }
