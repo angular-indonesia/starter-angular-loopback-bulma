@@ -17,6 +17,7 @@
           <img src="assets/logo.png" alt="Application Name" width="28" height="28">
         </a>
         <div class="navbar-burger">
+        <div class="navbar-burger" [ngClass]="{ 'is-active': showMiniMenu }" (click)="toggleMenu()">
           <span></span>
           <span></span>
           <span></span>
