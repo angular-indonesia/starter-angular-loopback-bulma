@@ -21,6 +21,8 @@ export class HomePageComponent implements OnInit {
         burger.classList.toggle('is-active');
         menu.classList.toggle('is-active');
     });
+  toggleMenu() {
+    this.showMiniMenu = !this.showMiniMenu;
   }
 
 }
