@@ -14,6 +14,9 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardPageComponent },
     ]
   },
+  {
+    path: 'fileupload', component: FileUploadPageComponent
+  },
   { path: '', component: LoginPageComponent },
   { path: '**', component: LoginPageComponent }
 ];
