@@ -14,7 +14,7 @@
 *
 * export class MyApp {
 *   constructor() {
-*     LoopBackConfig.setBaseURL('http://localhost:3000');
+*     LoopBackConfig.setBaseURL('http://174.138.24.126:3000');
 *     LoopBackConfig.setApiVersion('api');
 *   }
 * }
