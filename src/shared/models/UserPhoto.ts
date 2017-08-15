@@ -2,17 +2,19 @@
 
 declare var Object: any;
 export interface UserPhotoInterface {
-  "propertyName49"?: string;
   "id"?: string;
   "userid": string;
-  "name": string;
+  "username": string;
+  "photo": string;
+  "userId"?: number;
 }
 
 export class UserPhoto implements UserPhotoInterface {
-  "propertyName49": string;
   "id": string;
   "userid": string;
-  "name": string;
+  "username": string;
+  "photo": string;
+  "userId": number;
   constructor(data?: UserPhotoInterface) {
     Object.assign(this, data);
   }
@@ -45,10 +47,6 @@ export class UserPhoto implements UserPhotoInterface {
       plural: 'UserPhotos',
       path: 'UserPhotos',
       properties: {
-        "propertyName49": {
-          name: 'propertyName49',
-          type: 'string'
-        },
         "id": {
           name: 'id',
           type: 'string'
@@ -57,9 +55,17 @@ export class UserPhoto implements UserPhotoInterface {
           name: 'userid',
           type: 'string'
         },
-        "name": {
-          name: 'name',
+        "username": {
+          name: 'username',
           type: 'string'
+        },
+        "photo": {
+          name: 'photo',
+          type: 'string'
+        },
+        "userId": {
+          name: 'userId',
+          type: 'number'
         },
       },
       relations: {
