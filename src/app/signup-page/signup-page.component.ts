@@ -29,16 +29,13 @@ export class SignupPageComponent implements OnInit {
   }
 
   signUp() {
-
         this.item.realm = this.realm;
         this.item.username = this.username;
         this.item.email = this.email;
         this.item.password = this.password;
-//      this.item.emailVerified = "1";
-
         this.userCredentialApi.create(this.item).subscribe(() =>
             this.router.navigate(['/home'])
         );
-        console.log('signup sukses');
+        console.log('Sign Up Sukses');
   }
 }

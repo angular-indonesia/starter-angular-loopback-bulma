@@ -21,7 +21,6 @@ export class LoginPageComponent implements OnInit {
   public userCredentialApi: UserCredentialApi,
   public authService: AuthService,
 
-
   ) { }
 
   ngOnInit() {
