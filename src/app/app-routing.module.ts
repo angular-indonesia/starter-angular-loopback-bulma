@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   { path: 'signup', component: SignupPageComponent },
   {
-    path: 'home', component: HomePageComponent, children: [
+    path: 'home', component: HomePageComponent, canActivate: [AuthGuard], children: [
       { path: '', component: DashboardPageComponent },
       { path: 'dashboard', redirectTo: '', pathMatch: 'full' },
       { path: 'chart', component: ChartPageComponent },
