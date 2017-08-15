@@ -30,7 +30,6 @@ export class LoginPageComponent implements OnInit {
       username: this.username,
       password: this.password
     };
-    this.userApi.login(data)
     this.userCredentialApi.login(data)
       .subscribe(() => {
         console.log("sukses");
