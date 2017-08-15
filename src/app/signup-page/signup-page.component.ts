@@ -1,6 +1,4 @@
 import { Router } from '@angular/router';
-import { User } from './../../shared/models/User';
-import { UserApi } from './../../shared/services/custom/User';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPageComponent implements OnInit {
 
-    public item: User = new User();
     public username: any;
     public password: any;
     public emailVerified: any;
@@ -19,7 +16,6 @@ export class SignupPageComponent implements OnInit {
 
   constructor(
 
-    public userApi : UserApi,
     private router: Router,
 
   ) { }
@@ -36,7 +32,6 @@ export class SignupPageComponent implements OnInit {
         this.item.password = this.password;
 //      this.item.emailVerified = "1";
 
-        this.userApi.create(this.item).subscribe(() => 
             this.router.navigate(['/home'])
         );
         console.log("signup sukses");
