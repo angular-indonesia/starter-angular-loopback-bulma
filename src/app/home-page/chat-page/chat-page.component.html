@@ -1,0 +1,31 @@
+<div class="columns">
+
+  <aside class="column aside hero is-fullheight is-hidden-mobile">
+    <div class="sidenav">
+      <nav class="side-navbar">
+        <img src="../../../assets/darthvader.jpg" class="profile-image">
+        <div class="field has-addons">
+          <p class="control search-bar">
+            <input class="input" type="text" placeholder="Search" style="height:20px;">
+          </p>
+        </div>
+      </nav>
+      <div id="friendslist" style="margin-top:70px">
+        <div id="friends" *ngFor="let chat of chats | async"  (click)="onSelect(chat.id)">
+          <div class="friend">
+            <img src="{{chat.photo}}" />
+            <p>
+              <strong>{{chat.name}}</strong><br>
+              <span>{{chat.messages}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="column is-10 mainside">
+    <div style="margin:auto;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
