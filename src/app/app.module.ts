@@ -1,6 +1,7 @@
 import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { FileUploadPageComponent } from './file-upload-page/file-upload-page.com
     BrowserModule,
     AppRoutingModule,
     SDKBrowserModule.forRoot(),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

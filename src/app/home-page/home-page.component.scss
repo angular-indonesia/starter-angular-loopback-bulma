@@ -55,3 +55,30 @@
   padding-right: 0;
   padding-bottom: 0;
 }
+.nav-menu{
+  list-style: none;
+  position: overlay;
+  color: #6F7B7E;
+  padding-left: 30px;
+}
+.nav-menu .icon{
+  padding-left: 10px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.nav-menu .icon:hover {
+  color: #F6F7F7;
+}
+
+.nav-menu .name {
+  font-size: 12px;
+  font-weight: bold;
+}
+.nav-menu .name:hover {
+  color: #F6F7F7;
+}
+
+.nav-menu .item {
+  color: #6F7B7E;
+}
