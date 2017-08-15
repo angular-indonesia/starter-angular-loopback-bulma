@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   doLogin() {
-    console.log(this.username,this.password);
     console.log(this.username, this.password);
     const data = {
       username: this.username,
@@ -33,8 +33,7 @@ export class LoginPageComponent implements OnInit {
     };
     this.userCredentialApi.login(data)
       .subscribe(() => {
-        console.log("sukses");
-        this.router.navigate(['/home'])
+        console.log('Sukses');
         this.router.navigate(['/home']);
       }, (error) => {
         console.log(error);
