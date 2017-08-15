@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  showMiniMenu: Boolean = false;
 
-  constructor() {
+  showMiniMenu: boolean = false;
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+  ) {
   }
 
   ngOnInit() {
@@ -18,6 +22,14 @@ export class HomePageComponent implements OnInit {
 
   toggleMenu() {
     this.showMiniMenu = !this.showMiniMenu;
+  }
+
+  logOut() {
+        this.authService.login().subscribe(() => {
+            if (this.authService.isLoggedIn) {
+            this.router.navigate(['/home']);
+        }
+        });
   }
 
 }
