@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
 
   showMiniMenu: boolean = false;
+  showMiniMenu: Boolean = false;
 
   constructor() {
   }
