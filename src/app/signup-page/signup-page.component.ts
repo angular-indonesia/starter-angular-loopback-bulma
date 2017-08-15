@@ -1,3 +1,5 @@
+import { UserCredentialApi } from './../../shared/services/custom/UserCredential';
+import { UserCredential } from './../../shared/models/UserCredential';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPageComponent implements OnInit {
 
+    public item: UserCredential = new UserCredential();
     public username: any;
     public password: any;
     public emailVerified: any;
@@ -16,6 +19,7 @@ export class SignupPageComponent implements OnInit {
 
   constructor(
 
+    public userCredentialApi: UserCredentialApi,
     private router: Router,
 
   ) { }
@@ -32,6 +36,7 @@ export class SignupPageComponent implements OnInit {
         this.item.password = this.password;
 //      this.item.emailVerified = "1";
 
+        this.userCredentialApi.create(this.item).subscribe(() =>
             this.router.navigate(['/home'])
         );
         console.log("signup sukses");
