@@ -1,3 +1,4 @@
+import { UserCredentialApi } from './../../shared/services/custom/UserCredential';
 import { Routes } from '@angular/router';
 import { DashboardPageComponent } from './../home-page/dashboard-page/dashboard-page.component';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +18,7 @@ export class LoginPageComponent implements OnInit {
   public password: any;
   constructor(
   private router: Router,
+  public userCredentialApi: UserCredentialApi,
 
   ) { }
 
@@ -30,6 +32,7 @@ export class LoginPageComponent implements OnInit {
       password: this.password
     };
     this.userApi.login(data)
+    this.userCredentialApi.login(data)
       .subscribe(() => {
         console.log("sukses");
         this.router.navigate(['/home'])
