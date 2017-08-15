@@ -68,7 +68,7 @@
   padding-bottom: 20px;
 }
 .nav-menu .icon:hover {
-  color: #F6F7F7;
+  color: black;
 }
 
 .nav-menu .name {
@@ -76,9 +76,12 @@
   font-weight: bold;
 }
 .nav-menu .name:hover {
-  color: #F6F7F7;
+  color: black;
 }
 
 .nav-menu .item {
   color: #6F7B7E;
+}
+.nav-menu .item.active {
+  color: black;
 }
