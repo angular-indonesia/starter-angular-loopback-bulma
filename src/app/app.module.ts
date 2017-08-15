@@ -10,6 +10,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { DashboardPageComponent } from './home-page/dashboard-page/dashboard-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ChartPageComponent } from './home-page/chart-page/chart-page.component';
+import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import { ChartPageComponent } from './home-page/chart-page/chart-page.component'
     HomePageComponent,
     DashboardPageComponent,
     SignupPageComponent,
-    ChartPageComponent
-
+    ChartPageComponent,
+    FileUploadPageComponent
   ],
   imports: [
     BrowserModule,

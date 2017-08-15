@@ -10,15 +10,15 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { User } from '../../models/User';
+import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `User` model.
+ * Api services for the `StorageSimpleUpload` model.
  */
 @Injectable()
-export class UserApi extends BaseLoopBackApi {
+export class StorageSimpleUploadApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -32,104 +32,9 @@ export class UserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Find a related item by id for accessTokens.
-   *
-   * @param {any} id User id
-   *
-   * @param {any} fk Foreign key for accessTokens
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
    * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
-   * </em>
-   */
-  public findByIdAccessTokens(id: any, fk: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Delete a related item by id for accessTokens.
-   *
-   * @param {any} id User id
-   *
-   * @param {any} fk Foreign key for accessTokens
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public destroyByIdAccessTokens(id: any, fk: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Update a related item by id for accessTokens.
-   *
-   * @param {any} id User id
-   *
-   * @param {any} fk Foreign key for accessTokens
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
-   * </em>
-   */
-  public updateByIdAccessTokens(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PUT";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/:fk";
-    let _routeParams: any = {
-      id: id,
-      fk: fk
-    };
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Queries accessTokens of User.
-   *
-   * @param {any} id User id
-   *
-   * @param {object} filter 
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -137,27 +42,24 @@ export class UserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
+   * This usually means the response is a `StorageSimpleUpload` object.)
    * </em>
    */
-  public getAccessTokens(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
+  public getContainers(customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
-    let _routeParams: any = {
-      id: id
-    };
+    "/StorageSimpleUploads";
+    let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
-   * Creates a new instance in accessTokens of this model.
-   *
-   * @param {any} id User id
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
    * @param {object} data Request data.
    *
@@ -169,18 +71,16 @@ export class UserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
+   * This usually means the response is a `StorageSimpleUpload` object.)
    * </em>
    */
-  public createAccessTokens(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+  public createContainer(options: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
-    let _routeParams: any = {
-      id: id
-    };
+    "/StorageSimpleUploads";
+    let _routeParams: any = {};
     let _postBody: any = {
-      data: data
+      options: options
     };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
@@ -188,35 +88,11 @@ export class UserApi extends BaseLoopBackApi {
   }
 
   /**
-   * Deletes all accessTokens of this model.
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
-   * @param {any} id User id
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * This method returns no data.
-   */
-  public deleteAccessTokens(id: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
-    let _routeParams: any = {
-      id: id
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Counts accessTokens of User.
-   *
-   * @param {any} id User id
-   *
-   * @param {object} where Criteria to match model instances
+   * @param {string} container 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -224,28 +100,27 @@ export class UserApi extends BaseLoopBackApi {
    *
    * Data properties:
    *
-   *  - `count` – `{number}` - 
+   *  - `` – `{}` - 
    */
-  public countAccessTokens(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public destroyContainer(container: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens/count";
+    "/StorageSimpleUploads/:container";
     let _routeParams: any = {
-      id: id
+      container: container
     };
     let _postBody: any = {};
     let _urlParams: any = {};
-    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
-   * Patch an existing model instance or insert a new one into the data source.
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
-   * @param {object} data Request data.
-   *
-   *  - `data` – `{object}` - Model instance data
+   * @param {string} container 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -253,63 +128,28 @@ export class UserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
+   * This usually means the response is a `StorageSimpleUpload` object.)
    * </em>
    */
-  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PATCH";
+  public getContainer(container: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users";
-    let _routeParams: any = {};
-    let _postBody: any = {
-      data: data
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * Patch attributes for a model instance and persist it into the data source.
-   *
-   * @param {any} id User id
-   *
-   * @param {object} data Request data.
-   *
-   *  - `data` – `{object}` - An object of model property name/value pairs
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
-   * </em>
-   */
-  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PATCH";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id";
+    "/StorageSimpleUploads/:container";
     let _routeParams: any = {
-      id: id
+      container: container
     };
-    let _postBody: any = {
-      data: data
-    };
+    let _postBody: any = {};
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
-   * Creates a new instance in accessTokens of this model.
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
-   * @param {any} id User id
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
+   * @param {string} container 
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -317,29 +157,157 @@ export class UserApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `User` object.)
+   * This usually means the response is a `StorageSimpleUpload` object.)
    * </em>
    */
-  public createManyAccessTokens(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
+  public getFiles(container: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Users/:id/accessTokens";
+    "/StorageSimpleUploads/:container/files";
     let _routeParams: any = {
-      id: id
+      container: container
     };
-    let _postBody: any = {
-      data: data
-    };
+    let _postBody: any = {};
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {string} container 
+   *
+   * @param {string} file 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `StorageSimpleUpload` object.)
+   * </em>
+   */
+  public getFile(container: any = {}, file: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/StorageSimpleUploads/:container/files/:file";
+    let _routeParams: any = {
+      container: container,
+      file: file
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {string} container 
+   *
+   * @param {string} file 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `` – `{}` - 
+   */
+  public removeFile(container: any = {}, file: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/StorageSimpleUploads/:container/files/:file";
+    let _routeParams: any = {
+      container: container,
+      file: file
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `req` – `{object}` - 
+   *
+   *  - `res` – `{object}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `result` – `{object}` - 
+   */
+  public upload(req: any = {}, res: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/StorageSimpleUploads/:container/upload";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof req !== 'undefined' && req !== null) _urlParams.req = req;
+    if (typeof res !== 'undefined' && res !== null) _urlParams.res = res;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {string} container 
+   *
+   * @param {string} file 
+   *
+   * @param {object} req 
+   *
+   * @param {object} res 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public download(container: any = {}, file: any = {}, req: any = {}, res: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/StorageSimpleUploads/:container/download/:file";
+    let _routeParams: any = {
+      container: container,
+      file: file
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof req !== 'undefined' && req !== null) _urlParams.req = req;
+    if (typeof res !== 'undefined' && res !== null) _urlParams.res = res;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
-   * i.e. `User`.
+   * i.e. `StorageSimpleUpload`.
    */
   public getModelName() {
-    return "User";
+    return "StorageSimpleUpload";
   }
 }
