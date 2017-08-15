@@ -48,7 +48,6 @@ import { SocketBrowser } from './sockets/socket.browser';
 import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
-import { UserApi } from './services/custom/User';
 import { UserPhotoApi } from './services/custom/UserPhoto';
 import { UserCredentialApi } from './services/custom/UserCredential';
 import { StorageSimpleUploadApi } from './services/custom/StorageSimpleUpload';
@@ -83,7 +82,6 @@ export class SDKBrowserModule {
         JSONSearchParams,
         SDKModels,
         RealTime,
-        UserApi,
         UserPhotoApi,
         UserCredentialApi,
         StorageSimpleUploadApi,

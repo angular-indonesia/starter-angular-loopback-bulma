@@ -6,6 +6,7 @@ export interface UserPhotoInterface {
   "userid": string;
   "username": string;
   "photo": string;
+  "userId"?: number;
 }
 
 export class UserPhoto implements UserPhotoInterface {
@@ -13,6 +14,7 @@ export class UserPhoto implements UserPhotoInterface {
   "userid": string;
   "username": string;
   "photo": string;
+  "userId": number;
   constructor(data?: UserPhotoInterface) {
     Object.assign(this, data);
   }
@@ -60,6 +62,10 @@ export class UserPhoto implements UserPhotoInterface {
         "photo": {
           name: 'photo',
           type: 'string'
+        },
+        "userId": {
+          name: 'userId',
+          type: 'number'
         },
       },
       relations: {

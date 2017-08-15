@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  UserPhoto
+} from '../index';
 
 declare var Object: any;
 export interface UserCredentialInterface {
@@ -9,6 +12,7 @@ export interface UserCredentialInterface {
   "emailVerified"?: boolean;
   "password"?: string;
   accessTokens?: any[];
+  userPhoto?: UserPhoto[];
 }
 
 export class UserCredential implements UserCredentialInterface {
@@ -19,6 +23,7 @@ export class UserCredential implements UserCredentialInterface {
   "emailVerified": boolean;
   "password": string;
   accessTokens: any[];
+  userPhoto: UserPhoto[];
   constructor(data?: UserCredentialInterface) {
     Object.assign(this, data);
   }
@@ -81,6 +86,11 @@ export class UserCredential implements UserCredentialInterface {
           name: 'accessTokens',
           type: 'any[]',
           model: ''
+        },
+        userPhoto: {
+          name: 'userPhoto',
+          type: 'UserPhoto[]',
+          model: 'UserPhoto'
         },
       }
     }
