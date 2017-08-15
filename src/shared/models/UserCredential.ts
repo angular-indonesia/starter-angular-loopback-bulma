@@ -1,42 +1,42 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface UserInterface {
+export interface UserCredentialInterface {
+  "id"?: number;
   "realm"?: string;
   "username"?: string;
   "email": string;
   "emailVerified"?: boolean;
-  "id"?: number;
   "password"?: string;
   accessTokens?: any[];
 }
 
-export class User implements UserInterface {
+export class UserCredential implements UserCredentialInterface {
+  "id": number;
   "realm": string;
   "username": string;
   "email": string;
   "emailVerified": boolean;
-  "id": number;
   "password": string;
   accessTokens: any[];
-  constructor(data?: UserInterface) {
+  constructor(data?: UserCredentialInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `User`.
+   * i.e. `UserCredential`.
    */
   public static getModelName() {
-    return "User";
+    return "UserCredential";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of User for dynamic purposes.
+  * This method creates an instance of UserCredential for dynamic purposes.
   **/
-  public static factory(data: UserInterface): User{
-    return new User(data);
+  public static factory(data: UserCredentialInterface): UserCredential{
+    return new UserCredential(data);
   }
   /**
   * @method getModelDefinition
@@ -47,10 +47,14 @@ export class User implements UserInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'User',
-      plural: 'Users',
-      path: 'Users',
+      name: 'UserCredential',
+      plural: 'UserCredentials',
+      path: 'UserCredentials',
       properties: {
+        "id": {
+          name: 'id',
+          type: 'number'
+        },
         "realm": {
           name: 'realm',
           type: 'string'
@@ -66,10 +70,6 @@ export class User implements UserInterface {
         "emailVerified": {
           name: 'emailVerified',
           type: 'boolean'
-        },
-        "id": {
-          name: 'id',
-          type: 'number'
         },
         "password": {
           name: 'password',

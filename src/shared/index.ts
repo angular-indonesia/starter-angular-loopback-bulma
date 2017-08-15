@@ -50,7 +50,7 @@ import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
 import { UserPhotoApi } from './services/custom/UserPhoto';
-import { StorageSimpleUploadApi } from './services/custom/StorageSimpleUpload';
+import { UserCredentialApi } from './services/custom/UserCredential';
 /**
 * @module SDKBrowserModule
 * @description
@@ -84,7 +84,7 @@ export class SDKBrowserModule {
         RealTime,
         UserApi,
         UserPhotoApi,
-        StorageSimpleUploadApi,
+        UserCredentialApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
