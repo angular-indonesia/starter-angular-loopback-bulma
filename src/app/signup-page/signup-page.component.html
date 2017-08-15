@@ -26,7 +26,23 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="Full Name">
+                  <input class="input" type="text" placeholder="Full Name" [(ngModel)]="username">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-user"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <label class="label">User Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input" type="text" placeholder="Full Name" [(ngModel)]="realm">
                   <span class="icon is-small is-left">
                     <i class="fa fa-user"></i>
                   </span>
@@ -42,7 +58,7 @@
             <div class="field-body">
               <div class="field">
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email">
+              <input class="input" type="email" placeholder="Email" [(ngModel)]="email">
               <span class="icon is-small is-left">
                 <i class="fa fa-envelope"></i>
               </span>
@@ -61,7 +77,7 @@
             <div class="field-body">
               <div class="field">
                 <p class="control  is-expanded has-icons-left">
-                  <input class="input" type="password" placeholder="Password">
+                  <input class="input" type="password" placeholder="Password" [(ngModel)]="password">
                   <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                   </span>
@@ -77,7 +93,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <button class="button is-primary">
+                  <button class="button is-primary"  (click)="signUp()">
                     Sign up
                   </button>
                 </div>
