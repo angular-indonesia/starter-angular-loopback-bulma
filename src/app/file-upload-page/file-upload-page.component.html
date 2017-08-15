@@ -1,0 +1,66 @@
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child">
+    </article>
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+</div>
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-10">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+
+      </div>
+      <div class="tile is-parent is-9">
+        <article class="tile is-child box">
+
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label is-small">Simple File Upload</label>
+            </div>
+            <div class="field-body">
+              <div class="file has-name">
+                <label class="file-label">
+                <input class="file-input" type="file" name="file[]" (change)="uploadSimpleFile($event)">
+                <span class="file-cta">
+                <span class="file-icon">
+                <i class="fa fa-upload"></i>
+                 </span>
+                <span class="file-label">
+                  Choose a file…
+                </span>
+                </span>
+                <span class="file-name">
+                    {{ titleOriginalFile }}
+              </span>
+               </label>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <button class="button is-primary" (click)="upload()">
+                   Upload
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
