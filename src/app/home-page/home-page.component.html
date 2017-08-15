@@ -3,10 +3,18 @@
     <div>
       <div class="menu">
         <div class="title">Navigation</div>
-        <a href="" class="item active"><span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span></a>
-        <a href="" class="item"><span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span></a>
-        <a href="" class="item"><span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span></a>
-        <a href="" class="item"><span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span></a>
+          <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
+            <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
+          </a>
+          <a [routerLink]="['/home/map']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
+          </a>
+          <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
+          </a>
+          <a [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+          </a>
       </div>
     </div>
   </aside>
@@ -21,21 +29,19 @@
           <span></span>
           <span></span>
         </div>
-        <div class="nav-right nav-menu is-hidden-tablet">
-          <div class="nav-right nav-menu is-hidden-tablet" [ngClass]="{ 'is-active': showMiniMenu }">
-            <li>
-              <a href="" class="item active"><span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span></a>
-            </li>
-            <li>
-              <a href="" class="item"><span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span></a>
-            </li>
-            <li>
-              <a href="" class="item"><span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span></a>
-            </li>
-            <li>
-              <a href="" class="item"><span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span></a>
-            </li>
-          </div>
+        <div class="nav-right nav-menu is-hidden-tablet" [ngClass]="{ 'is-active': showMiniMenu }" (click)="toggleMenu()">
+          <li [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
+            <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
+          </li>
+          <li [routerLink]="['/home/map']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
+          </li>
+          <li [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
+          </li>
+          <li [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+          </li>
         </div>
       </div>
     </nav>

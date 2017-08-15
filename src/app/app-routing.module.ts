@@ -1,3 +1,4 @@
+import { ChartPageComponent } from './home-page/chart-page/chart-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,7 +13,10 @@ const routes: Routes = [
   },
   {
     path: 'home', component: HomePageComponent, children: [
-    path: 'signup', component: SignupPageComponent
+      { path: '', component: DashboardPageComponent },
+      { path: 'dashboard', redirectTo: '', pathMatch: 'full' },
+      { path: 'chart', component: ChartPageComponent },
+      { path: 'signup', component: SignupPageComponent },
       { path: 'dashboard', component: DashboardPageComponent },
     ]
   },
