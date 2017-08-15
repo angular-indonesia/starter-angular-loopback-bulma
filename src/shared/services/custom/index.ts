@@ -4,3 +4,4 @@ export * from './UserPhoto';
 export * from './UserCredential';
 export * from './SDKModels';
 export * from './logger.service';
+export * from './StorageSimpleUpload';
