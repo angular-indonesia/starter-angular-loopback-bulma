@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
 
   doLogin() {
     console.log(this.username,this.password);
+    console.log(this.username, this.password);
     const data = {
       username: this.username,
       password: this.password
@@ -34,6 +35,7 @@ export class LoginPageComponent implements OnInit {
       .subscribe(() => {
         console.log("sukses");
         this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
       }, (error) => {
         console.log(error);
       });
