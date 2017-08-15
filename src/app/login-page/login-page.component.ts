@@ -6,7 +6,7 @@ import { NgModel, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -19,25 +19,33 @@ export class LoginPageComponent implements OnInit {
   constructor(
   private router: Router,
   public userCredentialApi: UserCredentialApi,
+  public authService: AuthService,
 
   ) { }
 
   ngOnInit() {
   }
 
-  doLogin() {
-    console.log(this.username, this.password);
-    const data = {
-      username: this.username,
-      password: this.password
-    };
-    this.userCredentialApi.login(data)
-      .subscribe(() => {
-        console.log('Sukses');
-        this.router.navigate(['/home']);
-      }, (error) => {
-        console.log(error);
-      });
-  }
+     doLogin() {
+        console.log(
+        this.username,
+        this.password);
+        const data = {
+          username: this.username,
+          password: this.password
+        };
+        this.userCredentialApi.login(data)
+          .subscribe(() => {
+              console.log('sukses');
+              this.authService.login().subscribe(() => {
+              if (this.authService.isLoggedIn) {
+              this.router.navigate(['/home']);
+            }
+            });
+          }, (error) => {
+              console.log('failed');
+          });
+   }
+
 
 }
