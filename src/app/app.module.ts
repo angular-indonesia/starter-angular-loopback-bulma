@@ -9,6 +9,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DashboardPageComponent } from './home-page/dashboard-page/dashboard-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     HomePageComponent,
     DashboardPageComponent,
     SignupPageComponent,
+    FileUploadPageComponent
   ],
   imports: [
     BrowserModule,
