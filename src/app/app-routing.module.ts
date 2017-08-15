@@ -1,7 +1,8 @@
 import { ChartPageComponent } from './home-page/chart-page/chart-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { AuthGuard } from './auth-guard.service';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DashboardPageComponent } from './home-page/dashboard-page/dashboard-page.component';
@@ -13,7 +14,6 @@ const routes: Routes = [
   {
     path: 'login', component: LoginPageComponent
   },
-  
   { path: 'signup', component: SignupPageComponent },
   {
     path: 'home', component: HomePageComponent, children: [
