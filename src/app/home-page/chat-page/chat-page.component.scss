@@ -1,0 +1,75 @@
+.sidenav {
+    height: 100%;
+    width: 270px;
+    position: fixed;
+    background-color: white;
+    overflow-y: scroll;
+}
+.side-navbar{
+    width:270px;
+    height:70px;
+    background-color: #33ccff;
+    overflow-y: scroll;
+    // -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.search-bar{
+    margin-top:10px;
+    width:250px;
+    left: 2px;
+}
+
+.profile-image{
+    border-radius: 50%;
+    width: 30px;
+    height:30px;
+    margin-left:10px;
+  }
+.list-chat-img{
+    border-radius: 50%;
+    width: 30px;
+    height:30px;
+}
+
+#friendslist{
+    position:absolute;
+    top:0;
+    left:0;
+    width:290px;
+    height:484px;
+.friend{
+    height:100px;
+    border-bottom:1px solid #e7ebee;        
+    position:relative;
+}
+.friend:hover{
+    background:#4a4a4a;
+    color: white;
+    cursor:pointer;
+}
+.friend img{
+    border-radius: 50%;
+    width: 30px;
+    height:30px;
+    margin:15px;
+    float:left;
+}
+.friend p{
+    padding:15px 0 0 0;         
+    float:left;
+    width:220px;
+}
+.friend p strong{
+  font-weight:600;
+  font-size:15px;
+    color:black;  
+
+}
+.friend p span{
+    font-size:13px;
+    font-weight:400;
+    color:#aab8c2;
+}
+}
