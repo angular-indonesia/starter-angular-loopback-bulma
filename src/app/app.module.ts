@@ -36,8 +36,7 @@ import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SDKBrowserModule.forRoot(),
-    FormsModule,
+    SDKBrowserModule.forRoot()
   ],
   providers: [AuthGuard, AuthService, ChatService],
   bootstrap: [AppComponent]
