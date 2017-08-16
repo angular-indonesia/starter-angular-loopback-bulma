@@ -15,6 +15,9 @@
           <a [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
           </a>
+          <a (click)="signOut()" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
+          </a>
       </div>
     </div>
   </aside>
@@ -41,6 +44,9 @@
           </li>
           <li [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+          </li>
+          <li [routerLink]="['/login']" routerLinkActive="active" class="item" (click)="signOut()">
+            <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </li>
         </div>
       </div>
