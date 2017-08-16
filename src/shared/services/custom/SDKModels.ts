@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { UserPhoto } from '../../models/UserPhoto';
 import { UserCredential } from '../../models/UserCredential';
 import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
+import { ProfileData } from '../../models/ProfileData';
 
 export interface Models { [name: string]: any }
 
@@ -13,6 +14,7 @@ export class SDKModels {
     UserPhoto: UserPhoto,
     UserCredential: UserCredential,
     StorageSimpleUpload: StorageSimpleUpload,
+    ProfileData: ProfileData,
     
   };
 
