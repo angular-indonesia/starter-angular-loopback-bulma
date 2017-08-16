@@ -3,8 +3,7 @@ import { AuthGuard } from './auth-guard.service';
 import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ChatService } from'./chat.service';
+import { ChatService } from './chat.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +15,8 @@ import { ChartPageComponent } from './home-page/chart-page/chart-page.component'
 import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 import { ChatPageComponent } from './home-page/chat-page/chat-page.component';
 import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page.component';
+import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
+
 
 
 
@@ -29,7 +30,8 @@ import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page
     ChartPageComponent,
     FileUploadPageComponent,
     ChatPageComponent,
-    ChatRoomPageComponent
+    ChatRoomPageComponent,
+    CrudPageComponent
   ],
   imports: [
     BrowserModule,
