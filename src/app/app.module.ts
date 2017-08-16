@@ -29,7 +29,10 @@ import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page
     ChartPageComponent,
     FileUploadPageComponent,
     ChatPageComponent,
-    ChatRoomPageComponent
+    ChatRoomPageComponent,
+    FileUploadPageComponent
+
+
   ],
   imports: [
     BrowserModule,
