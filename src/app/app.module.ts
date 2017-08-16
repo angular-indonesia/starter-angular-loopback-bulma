@@ -1,10 +1,10 @@
+import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ChatService } from './chat.service';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -36,7 +36,8 @@ import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SDKBrowserModule.forRoot()
+    SDKBrowserModule.forRoot(),
+    FormsModule,
   ],
   providers: [AuthGuard, AuthService, ChatService],
   bootstrap: [AppComponent]
