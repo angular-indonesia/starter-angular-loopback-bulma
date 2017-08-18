@@ -31,6 +31,7 @@ import { AgmCoreModule } from '@agm/core';
     FileUploadPageComponent,
     ChatPageComponent,
     ChatRoomPageComponent,
+    FileUploadPageComponent,
     MapsPageComponent
   ],
   imports: [
