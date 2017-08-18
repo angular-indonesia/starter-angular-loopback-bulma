@@ -19,6 +19,7 @@ import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { AgmCoreModule } from '@agm/core';
 
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AgmCoreModule } from '@agm/core';
     ChatPageComponent,
     ChatRoomPageComponent,
     MapsPageComponent
+    MapsPageComponent,
   ],
   imports: [
     BrowserModule,
