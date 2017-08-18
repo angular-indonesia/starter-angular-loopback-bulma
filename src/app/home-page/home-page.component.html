@@ -6,7 +6,7 @@
           <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
             <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
           </a>
-          <a [routerLink]="['/home/map']" routerLinkActive="active" class="item">
+          <a [routerLink]="['/home/maps']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
           </a>
           <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
@@ -14,6 +14,9 @@
           </a>
           <a [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+          </a>
+          <a (click)="signOut()" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </a>
       </div>
     </div>
@@ -33,7 +36,7 @@
           <li [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
             <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
           </li>
-          <li [routerLink]="['/home/map']" routerLinkActive="active" class="item">
+          <li [routerLink]="['/home/maps']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
           </li>
           <li [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
@@ -41,6 +44,9 @@
           </li>
           <li [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+          </li>
+          <li [routerLink]="['/login']" routerLinkActive="active" class="item" (click)="signOut()">
+            <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </li>
         </div>
       </div>

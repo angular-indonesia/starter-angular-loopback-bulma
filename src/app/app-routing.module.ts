@@ -1,3 +1,4 @@
+import { MapsPageComponent } from './maps-page/maps-page.component';
 import { ChartPageComponent } from './home-page/chart-page/chart-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { AuthGuard } from './auth-guard.service';
@@ -14,14 +15,17 @@ const routes: Routes = [
   {
     path: 'login', component: LoginPageComponent
   },
-  { path: 'signup', component: SignupPageComponent },
+  {
+    path: 'signup', component: SignupPageComponent
+  },
   {
     path: 'home', component: HomePageComponent, canActivate: [AuthGuard], children: [
       { path: '', component: DashboardPageComponent },
       { path: 'dashboard', redirectTo: '', pathMatch: 'full' },
       { path: 'chart', component: ChartPageComponent },
-      { path: 'dashboard', component: DashboardPageComponent }, {
-        path: 'chat', component: ChatPageComponent, children: [
+      { path: 'dashboard', component: DashboardPageComponent },
+      { path: 'maps', component: MapsPageComponent},
+      { path: 'chat', component: ChatPageComponent, children: [
           { path: 'chatroom/:id', component: ChatRoomPageComponent }
         ]
       },

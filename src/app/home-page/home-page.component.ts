@@ -24,10 +24,10 @@ export class HomePageComponent implements OnInit {
     this.showMiniMenu = !this.showMiniMenu;
   }
 
-  logOut() {
+  signOut() {
         this.authService.login().subscribe(() => {
             if (this.authService.isLoggedIn) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/login']);
         }
         });
   }
