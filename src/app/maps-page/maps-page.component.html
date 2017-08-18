@@ -1,0 +1,31 @@
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child">
+    </article>
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+</div>
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-9">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+
+      </div>
+      <div class="tile is-parent is-11">
+        <article class="tile is-child box">
+
+            <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

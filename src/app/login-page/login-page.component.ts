@@ -1,12 +1,18 @@
+
 import { UserCredentialApi } from './../../shared/services/custom/UserCredential';
 import { Routes } from '@angular/router';
 import { DashboardPageComponent } from './../home-page/dashboard-page/dashboard-page.component';
+
 import { Component, OnInit } from '@angular/core';
 import { NgModel, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
+
+
+
 
 @Component({
   selector: 'app-login-page',
@@ -16,10 +22,12 @@ import { AuthService } from './../auth.service';
 export class LoginPageComponent implements OnInit {
   public username: any;
   public password: any;
+
   constructor(
   private router: Router,
   public userCredentialApi: UserCredentialApi,
   public authService: AuthService,
+
 
   ) { }
 
@@ -46,6 +54,9 @@ export class LoginPageComponent implements OnInit {
               console.log('failed');
           });
    }
+
+
+
 
 
 }
