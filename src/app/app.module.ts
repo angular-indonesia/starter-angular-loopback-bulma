@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { SDKBrowserModule } from './../shared/index';
@@ -16,9 +17,9 @@ import { ChartPageComponent } from './home-page/chart-page/chart-page.component'
 import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 import { ChatPageComponent } from './home-page/chat-page/chat-page.component';
 import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page.component';
+import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { AgmCoreModule } from '@agm/core';
-
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AgmCoreModule } from '@agm/core';
     FileUploadPageComponent,
     ChatPageComponent,
     ChatRoomPageComponent,
+    CrudPageComponent,
     FileUploadPageComponent,
     MapsPageComponent
   ],
