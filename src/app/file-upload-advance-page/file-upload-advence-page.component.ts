@@ -5,11 +5,11 @@ import { NgModel, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './file-upload-page.component.html',
-  styleUrls: ['./file-upload-page.component.scss']
+  templateUrl: './file-upload-advance-page.component.html',
+  styleUrls: ['./file-upload-advance-page.component.scss']
 })
 
-export class FileUploadPageComponent implements OnInit {
+export class FileUploadAdvancePageComponent implements OnInit {
   public nameSimpleFile: any;
   public titleOriginalFile: any;
   public loopbackPath: string = LoopBackConfig.getPath()+"/api/StorageSimpleUploads/";
@@ -78,12 +78,11 @@ export class FileUploadPageComponent implements OnInit {
       this.dataPhoto = {
         "nameFile": result['result'].files.file[0].name,
         "nameContainer": result['result'].files.file[0].container
-      }
-      
+      }    
       this.urlSimpleDownload = this.loopbackPath +""+this.dataPhoto.nameContainer+"/download/"+this.dataPhoto.nameFile;
       console.log(this.urlSimpleDownload);
     }, (error) => {
-      console.error(error);
+      console.error(JSON.stringify(error));
 
     });
   }

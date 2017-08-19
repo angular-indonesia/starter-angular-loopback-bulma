@@ -1,3 +1,4 @@
+import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { ChartPageComponent } from './home-page/chart-page/chart-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
           { path: 'chatroom/:id', component: ChatRoomPageComponent }
         ]
       },
+      { path: 'crud', component: CrudPageComponent },
     ]
   },
   {
