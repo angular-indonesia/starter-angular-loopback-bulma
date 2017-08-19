@@ -51,6 +51,7 @@ import { RealTime } from './services/core/real.time';
 import { UserPhotoApi } from './services/custom/UserPhoto';
 import { UserCredentialApi } from './services/custom/UserCredential';
 import { StorageSimpleUploadApi } from './services/custom/StorageSimpleUpload';
+import { MapsApi } from './services/custom/Maps';
 import { ProfileDataApi } from './services/custom/ProfileData';
 /**
 * @module SDKBrowserModule
@@ -86,6 +87,7 @@ export class SDKBrowserModule {
         UserPhotoApi,
         UserCredentialApi,
         StorageSimpleUploadApi,
+        MapsApi,
         ProfileDataApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
