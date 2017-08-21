@@ -79,7 +79,17 @@ export class CrudPageComponent implements OnInit {
       photoProfile: this.nameFile
     }).subscribe((results) => {
       console.log('Sukses');
-      this.create();
+
+      this.fullName = '';
+      this.address = '';
+      this.email = '';
+      this.placeBirth = '';
+      this.dateBirth = '';
+      this.noPhone = '';
+      this.nameFile = '';
+
+      this.alertNotif = this.alertVisible ? '' : 'none';
+
     }, (error) => {
       console.log(error);
     });
