@@ -20,7 +20,7 @@
         <article class="tile is-child box">
 
             <agm-map [latitude]="-6.2841462" [longitude]="106.7264780" (mapClick)="placeMarker($event)" >
-              <agm-marker *ngFor="let m of marker" [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="true" (dragEnd)="placeMarker($event,1)" (markerClick)="toggle($event,1)" [label]="test"  ></agm-marker>
+              <agm-marker *ngFor="let m of marker" [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="true" (dragEnd)="placeMarker($event,1)" (markerClick)="toggle($event,1,m.locationName)" [label]="test"  ></agm-marker>
               <!--<agm-marker [latitude]="latJakarta" [longitude]="lngJakarta" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
               <agm-marker [latitude]="latBandung" [longitude]="lngBandung" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
               <agm-marker [latitude]="latBekasi" [longitude]="lngBekasi" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
@@ -40,10 +40,23 @@
               </agm-marker>-->
 
             </agm-map>
+            <div>
+              &nbsp;
+            </div>
+            <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-primary" (click)="toggleInsert();">
+                Add Marker
+              </a>
+            </p>
+          </div>
 
         </article>
+      
       </div>
+      
     </div>
+    
   </div>
 </div>
 
@@ -57,13 +70,33 @@
     </header>
     <section class="modal-card-body">
       Name: lorem ipsum <br>
-      Location : Tangerang <br>
+      Location : <input class="input" type="text" placeholder="location" [(ngModel)]="locationTemp"> <br>
       longitude: -6.2841462 latitude: 106.7264780
 
     </section>
     <footer class="modal-card-foot">
       <button class="button is-success" (click)="saveChange()">Save changes</button>
       <button class="button" (click)="toggle()">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div [ngClass]="displayInsertModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Location</p>
+      <button class="delete" aria-label="close" (click)="toggleInsert();"></button>
+    </header>
+    <section class="modal-card-body">
+      User      : <input class="input" type="text" placeholder="User" [(ngModel)]="insertUser"> <br>
+      Location  : <input class="input" type="text" placeholder="location" [(ngModel)]="insertLocation"> <br>
+      Longitude : <input class="input" type="text" placeholder="longitude" [(ngModel)]="insertLongitude"> <br>
+      Latitude  : <input class="input" type="text" placeholder="latitude" [(ngModel)]="insertLatitude"> <br>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="insertMaps()">Save Data</button>
+      <button class="button" (click)="toggleInsert()">Cancel</button>
     </footer>
   </div>
 </div>
