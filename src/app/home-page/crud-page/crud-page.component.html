@@ -62,6 +62,7 @@
               </tbody>
             </table>
           </div>
+
         </article>
       </div>
     </div>
@@ -81,12 +82,12 @@
 </div>
 
 
-<div [ngClass]="displayModal">
+<div [ngClass]="displayModalEdit">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Edit Data</p>
-      <button class="delete" aria-label="close" (click)="listSelect()"></button>
+      <button class="delete" aria-label="close" (click)="listSelect(datas)"></button>
     </header>
     <section class="modal-card-body">
       <label class="label is-small">Full Name</label>
@@ -120,8 +121,71 @@
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success" (click)="saveChange()">Save changes</button>
-      <button class="button" (click)="listSelect()">Cancel</button>
+      <button class="button is-success" (click)="saveChange(idEdit)">Save changes</button>
+      <button class="button" (click)="listSelect(datas, idEdit)">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div [ngClass]="displayModalAdd">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Data</p>
+      <button class="delete" aria-label="close" (click)="listAdd()"></button>
+    </header>
+    <section class="modal-card-body">
+      <label class="label is-small">Full Name</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Full Name" [(ngModel)]="fullName">
+      </div>
+
+      <label class="label is-small">Address</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Address" [(ngModel)]="address">
+      </div>
+
+      <label class="label is-small">Email</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Email" [(ngModel)]="email">
+      </div>
+
+      <label class="label is-small">Place Of Birthday</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Place Of Birthday" [(ngModel)]="placeBirth">
+      </div>
+
+      <label class="label is-small">Date Of Birthday</label>
+      <div class="field-label is-normal">
+        <input class="input" type="date" placeholder="Date Of Birthday" [(ngModel)]="dateBirth">
+      </div>
+
+      <label class="label is-small">No.Telephone</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="No.Telephone" [(ngModel)]="noPhone">
+      </div>
+
+      <label class="label is-small">Photo Profile</label>
+      <div class="file has-name is-fullwidth">
+        <label class="file-label">
+          <input class="file-input" type="file" name="file[]" (change)="uploadProses($event)">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+          <span class="file-name">
+              {{ defaultFileTitle }}
+          </span>
+        </label>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="createData()">Save changes</button>
+      <button class="button" (click)="listAdd()">Cancel</button>
     </footer>
   </div>
 </div>
