@@ -5,6 +5,7 @@ import { UserCredential } from '../../models/UserCredential';
 import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
 import { Maps } from '../../models/Maps';
 import { ProfileData } from '../../models/ProfileData';
+import { Todo } from '../../models/Todo';
 
 export interface Models { [name: string]: any }
 
@@ -16,7 +17,9 @@ export class SDKModels {
     UserCredential: UserCredential,
     StorageSimpleUpload: StorageSimpleUpload,
     Maps: Maps,
-    ProfileData: ProfileData    
+    ProfileData: ProfileData,
+    Todo: Todo,
+    
   };
 
   public get(modelName: string): any {
