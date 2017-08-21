@@ -11,12 +11,12 @@
         </div>
       </nav>
       <div id="friendslist" style="margin-top:70px">
-        <div id="friends" *ngFor="let chat of chats | async"  (click)="onSelect(chat.id)">
+        <div id="friends" *ngFor="let rc of roomChat"  (click)="onSelect(rc.id)">
           <div class="friend">
-            <img src="{{chat.photo}}" />
+            <img src="{{rc?.photo}}" />
             <p>
-              <strong>{{chat.name}}</strong><br>
-              <span>{{chat.messages}}</span>
+              <strong>{{rc?.roomname}}</strong><br>
+              <span>Never</span>
             </p>
           </div>
         </div>
