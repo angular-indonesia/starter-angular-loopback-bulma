@@ -12,6 +12,10 @@ import { MapsAPILoader, AgmCoreModule, AgmInfoWindow } from '@agm/core';
 export class MapsPageComponent implements OnInit {
 
     public item: Maps = new Maps();
+    public insertLocation: any;
+    public insertLongitude: any;
+    public insertLatitude: any;
+    public insertUser: any;
 
     title: String = 'My first AGM project';
     lat: number = -6.2841462;
@@ -27,20 +31,26 @@ export class MapsPageComponent implements OnInit {
     latBogor: number = -6.599963;
     lngBogor: Number = 106.805621;
     visible: any;
+    visibleInsertModal: any;
     displayModal: any;
+    displayInsertModal: any;
     marker: any = [];
     newMarker: any = [];
     latNumber: number;
     lngNumber: number;
     newPlaceLat: any;
     newPlaceLng: any;
+    locationName: any;
+    locationTemp: any;
     id: any;
 
   constructor(
     public mapsApi: MapsApi,
   ) {
     this.displayModal = 'modal';
+    this.displayInsertModal = 'modal';
     this.visible = false;
+    this.visibleInsertModal = false;
     this.findMarker();
   }
 
@@ -60,16 +70,22 @@ export class MapsPageComponent implements OnInit {
     this.id = idUser;
   }
 
-  toggle($event, idUser) {
+  toggle($event, idUser, locationName) {
     this.findMarker();
     // this.newPlaceLat = $event.coords.lat;
     // this.newPlaceLng = $event.coords.lng;
     this.id = idUser;
-
+    this.locationTemp = locationName;
     console.log(this.visible);
     this.visible = !this.visible;
     console.log(this.visible);
     this.displayModal = this.visible ? 'modal is-active' : 'modal';
+  }
+
+  toggleInsert() {
+    this.visibleInsertModal = !this.visibleInsertModal;
+    console.log(this.visible);
+    this.displayInsertModal = this.visibleInsertModal ? 'modal is-active' : 'modal';
   }
 
   findMarker() {
@@ -104,6 +120,7 @@ export class MapsPageComponent implements OnInit {
                 {
                   latitude: this.newPlaceLat,
                   longitude: this.newPlaceLng,
+                  locationName: this.locationTemp,
                 },
               ).subscribe(value => {
                 // this.events.publish('post:liked', 'liked');
@@ -111,4 +128,15 @@ export class MapsPageComponent implements OnInit {
               }, error => console.log(error));
   }
 
+  insertMaps() {
+        console.log('jalan ke insert');
+        this.item.userID = this.insertUser;
+        this.item.latitude = this.insertLatitude;
+        this.item.longitude = this.insertLongitude;
+        this.item.locationName = this.insertLocation;
+        this.mapsApi.create(this.item).subscribe(() =>
+            console.log('Save Sukses')
+        );
+        this.toggleInsert();
+  }
 }
