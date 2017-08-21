@@ -15,6 +15,12 @@
           <a routerLinkActive="active" class="item chart-list" (click)="display()">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
           </a>
+          <a [routerLink]="['/home/fileupload']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">simple upload</span>
+          </a>
+          <a [routerLink]="['/home/fileuploadadvence']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">advanced upload</span>
+          </a>
           <ul class="menu-list" [ngStyle]="{'display': displayChart}">
             <li>
               <a [routerLink]="['/home/chart/ng2chart']" routerLinkActive="active" class="child-list">
@@ -38,6 +44,10 @@
           <a (click)="signOut()" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </a>
+
+       
+           
+
       </div>
     </div>
   </aside>
@@ -95,6 +105,9 @@
               <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
             </a>
           </li>
+          <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
+          </a>
           <li [routerLink]="['/login']" routerLinkActive="active" class="item" (click)="signOut()">
             <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </li>
