@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { UserPhoto } from '../../models/UserPhoto';
 import { UserCredential } from '../../models/UserCredential';
 import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
-import { Maps } from '../../models/Maps';
 import { ProfileData } from '../../models/ProfileData';
-import { Todo } from '../../models/Todo';
+import { Maps } from '../../models/Maps';
+import { Roomchat } from '../../models/Roomchat';
+import { Chatdetail } from '../../models/Chatdetail';
 
 export interface Models { [name: string]: any }
 
@@ -16,9 +17,10 @@ export class SDKModels {
     UserPhoto: UserPhoto,
     UserCredential: UserCredential,
     StorageSimpleUpload: StorageSimpleUpload,
-    Maps: Maps,
     ProfileData: ProfileData,
-    Todo: Todo,
+    Maps: Maps,
+    Roomchat: Roomchat,
+    Chatdetail: Chatdetail,
     
   };
 
