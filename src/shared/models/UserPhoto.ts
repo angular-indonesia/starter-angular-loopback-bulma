@@ -3,7 +3,6 @@
 declare var Object: any;
 export interface UserPhotoInterface {
   "id"?: string;
-  "userid": string;
   "username": string;
   "photo": string;
   "userId"?: number;
@@ -11,7 +10,6 @@ export interface UserPhotoInterface {
 
 export class UserPhoto implements UserPhotoInterface {
   "id": string;
-  "userid": string;
   "username": string;
   "photo": string;
   "userId": number;
@@ -49,10 +47,6 @@ export class UserPhoto implements UserPhotoInterface {
       properties: {
         "id": {
           name: 'id',
-          type: 'string'
-        },
-        "userid": {
-          name: 'userid',
           type: 'string'
         },
         "username": {
