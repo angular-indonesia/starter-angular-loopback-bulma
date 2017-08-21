@@ -24,6 +24,7 @@ export class CrudPageComponent implements OnInit {
   public placeBirthEdit: any;
   public dateBirthEdit: any;
   public noPhoneEdit: any;
+
   public nameFile: any;
   public defaultFileTitle: any;
   public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/download/';
@@ -66,6 +67,7 @@ export class CrudPageComponent implements OnInit {
     this.nameFile = options;
     this.defaultFileTitle = name;
     this.eventPhoto = event;
+
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
@@ -109,6 +111,21 @@ export class CrudPageComponent implements OnInit {
     });
   }
 
+  // create() {
+  //   if (this.nameFile === '') {
+  //     console.log('Sorry Files Is Empty');
+  //   } else {
+  //     const filesToUpload = <Array<File>>this.eventPhoto.target.files;
+  //     console.log('test' + this.eventPhoto.path[0].files[0].name);
+  //     const urlSimpleUpload = this.loopbackPathUpload + '/api/StorageSimpleUploads/simpleupload/upload';
+  //     this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((result) => {
+  //       console.log(JSON.stringify(result));
+  //       console.log('Sukses Upload');
+  //     }, (error) => {
+  //       console.error(error);
+  //     });
+  //   }
+  // }
 
 
   makeFileRequest(url: string, params: Array<string>, files: Array<File>, options) {
@@ -128,6 +145,82 @@ export class CrudPageComponent implements OnInit {
       xhr.open('POST', url, true);
       xhr.send(formData);
     });
+  }
+
+  public loadData() {
+    console.log('Data');
+    this.profileDataApi.find({
+      where: {
+        fullName: { 'neq': '' }
+      }
+    }).subscribe((result) => {
+      console.log(result, 'Data');
+      this.Datauser = result;
+      console.log(this.Datauser, 'Datax');
+      this.DatauserLength = this.Datauser.length;
+      console.log(this.DatauserLength);
+
+      if (this.DatauserLength !== 0) {
+        this.hiddenData = 'none';
+        this.hiddenTable = 'block';
+      } else {
+        this.hiddenData = 'block';
+        this.hiddenTable = 'none';
+      }
+    });
+  }
+
+  public listSelect(datas) {
+    this.visibleModal = !this.visibleModal;
+    this.displayModalEdit = this.visibleModal ? 'modal is-active' : 'modal';
+
+    console.log(datas, 'Data Klik');
+    this.idEdit = datas.id;
+    this.fullNameEdit = datas.fullName;
+    this.addressEdit = datas.address;
+    this.emailEdit = datas.email;
+    this.placeBirthEdit = datas.placeOfBirth;
+    this.dateBirthEdit = datas.birthDate;
+    this.noPhoneEdit = datas.noPhone;
+  }
+
+  public listAdd() {
+    this.visibleModal = !this.visibleModal;
+    this.displayModalAdd = this.visibleModal ? 'modal is-active' : 'modal';
+  }
+
+  public closeAlert() {
+    this.alertNotif = 'none';
+  }
+
+  public saveChange(idEdit) {
+    console.log(idEdit, 'ID Edit');
+    const editId = idEdit;
+
+    const dataEdit = {
+      fullName: this.fullNameEdit,
+      address: this.addressEdit,
+      email: this.emailEdit,
+      placeOfBirth: this.placeBirthEdit,
+      birthDate: this.dateBirthEdit,
+      noPhone: this.noPhoneEdit
+    };
+
+    this.profileDataApi.updateAttributes(
+      { id: editId },
+      { data: dataEdit },
+      function (err, info) {
+        console.log(err);
+      });
+    //   this.profileDataApi.updateAll({
+    //     { id: this.idEdit },
+    //     {  }
+
+    // })
+    //   this.profileDataApi.create({
+    //   }).subscribe((result) => {
+    //     console.log('Sukses Edit');
+    //   });
   }
 
 }
