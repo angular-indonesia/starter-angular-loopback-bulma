@@ -68,28 +68,6 @@
   </div>
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th><abbr title="Position">No</abbr></th>
-      <th>Full Name</th>
-      <th><abbr title="Played">Email</abbr></th>
-      <th><abbr title="Won">Username</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let datas of Datauser" (click)="listSelect(datas)">
-      <th>{{datas.id}}</th>
-      <td>{{datas.fullName}}</td>
-      <td>{{datas.email}}</td>
-      <td>{{datas.address}}</td>
-    </tr>
-
-    <div [ngStyle]="{'display': hiddenData}">
-      <div class="center-text"> Sorry No data list </div>
-    </div>
-  </tbody>
-</table>
 
 
 <div [ngClass]="displayModal">
