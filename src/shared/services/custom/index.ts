@@ -1,6 +1,9 @@
 /* tslint:disable */
 export * from './UserPhoto';
 export * from './UserCredential';
+export * from './StorageSimpleUpload';
+export * from './Maps';
+export * from './ProfileData';
+export * from './Todo';
 export * from './SDKModels';
 export * from './logger.service';
-export * from './StorageSimpleUpload';

@@ -1,0 +1,54 @@
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-10">
+    <div class="tile">
+      <div class="tile is-child box">
+        <div class="field">
+          <label class="label">Choose Range</label>
+          <div class="control">
+            <select #range (change)="changeRange(range.value)">
+              <option [ngValue]="hourly">hourly</option>
+              <option [ngValue]="weekly">weekly</option>
+              <option [ngValue]="monthly">monthly</option>
+              <option [ngValue]="yearly">yearly</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tile">
+      <article class="tile is-child box">
+        <canvas *ngIf="lineChartData.length > 0" baseChart
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+      </article>
+      <article class="tile is-child box">
+        <canvas *ngIf="barChartData.length > 0" baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"></canvas>
+      </article>
+    </div>
+    <div class="tile">
+      <article class="tile is-child box">
+        <canvas *ngIf="pieChartData.length > 0" baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [chartType]="pieChartType"></canvas>
+      </article>
+      <article class="tile is-child box">
+        <canvas *ngIf="doughnutChartData.length > 0" baseChart
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [options]="doughnutChartOptions"
+          [chartType]="doughnutChartType"></canvas>
+      </article>
+    </div>
+  </div>
+</div>

@@ -15,17 +15,55 @@
   <div class="tile is-vertical is-9">
     <div class="tile">
       <div class="tile is-parent is-vertical">
-
       </div>
       <div class="tile is-parent is-11">
         <article class="tile is-child box">
 
-            <agm-map [latitude]="lat" [longitude]="lng">
-              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            <agm-map [latitude]="-6.2841462" [longitude]="106.7264780" (mapClick)="placeMarker($event)" >
+              <agm-marker *ngFor="let m of marker" [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="true" (dragEnd)="placeMarker($event,1)" (markerClick)="toggle($event,1)" [label]="test"  ></agm-marker>
+              <!--<agm-marker [latitude]="latJakarta" [longitude]="lngJakarta" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
+              <agm-marker [latitude]="latBandung" [longitude]="lngBandung" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
+              <agm-marker [latitude]="latBekasi" [longitude]="lngBekasi" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
+              <agm-marker [latitude]="latBogor" [longitude]="lngBogor" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>-->
+              <!--<agm-marker *ngFor="let m of markers; let i = index" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow; clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" [iconUrl]="m.iconUrl"-->
+<!--
+                  <agm-info-window>
+                      <strong>test</strong>
+                  </agm-info-window>-->
+              <!--<agm-marker *ngFor="let m of markers; let i = index" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow; clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" [iconUrl]="m.iconUrl"
+                  (dragEnd)="markerDragEnd(m, $event)">
+
+                  <agm-info-window>
+                      <strong>{{m.label}}</strong>
+                  </agm-info-window>
+
+              </agm-marker>-->
+
             </agm-map>
 
         </article>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div [ngClass]="displayModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Location</p>
+      <button class="delete" aria-label="close" (click)="toggle()"></button>
+    </header>
+    <section class="modal-card-body">
+      Name: lorem ipsum <br>
+      Location : Tangerang <br>
+      longitude: -6.2841462 latitude: 106.7264780
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="saveChange()">Save changes</button>
+      <button class="button" (click)="toggle()">Cancel</button>
+    </footer>
   </div>
 </div>

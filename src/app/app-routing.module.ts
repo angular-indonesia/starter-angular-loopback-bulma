@@ -1,5 +1,8 @@
 import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
+import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
+import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-page/google-chart-page.component';
+import { Ng2chartPageComponent } from './home-page/chart-page/ng2chart-page/ng2chart-page.component';
 import { ChartPageComponent } from './home-page/chart-page/chart-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { AuthGuard } from './auth-guard.service';
@@ -25,10 +28,18 @@ const routes: Routes = [
       { path: '', component: DashboardPageComponent },
       { path: 'dashboard', redirectTo: '', pathMatch: 'full' },
       { path: 'chart', component: ChartPageComponent },
-
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'maps', component: MapsPageComponent},
-      { path: 'chat', component: ChatPageComponent, children: [
+      { path: 'chart', component: ChartPageComponent, children: [
+          { path: '', redirectTo: 'ng2chart', pathMatch: 'full' },
+          { path: 'ng2chart', component: Ng2chartPageComponent },
+          { path: 'google-chart', component: GoogleChartPageComponent },
+          { path: 'highcharts', component: HighchartsPageComponent },
+          { path: '**', redirectTo: 'ng2chart' }
+        ]
+      },
+      {
+        path: 'chat', component: ChatPageComponent, children: [
           { path: 'chatroom/:id', component: ChatRoomPageComponent }
         ]
       },
@@ -37,9 +48,7 @@ const routes: Routes = [
       {
         path: 'fileupload', component: FileUploadPageComponent
       },
-
       { path: 'crud', component: CrudPageComponent },
-
     ]
   },
 
