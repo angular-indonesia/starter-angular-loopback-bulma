@@ -15,9 +15,19 @@
           <a [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
           </a>
+             <a [routerLink]="['/home/fileupload']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">simple upload</span>
+          </a>
+          <a [routerLink]="['/home/fileuploadadvence']" routerLinkActive="active" class="item">
+            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">advanced upload</span>
+          </a>
           <a (click)="signOut()" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </a>
+
+       
+           
+
       </div>
     </div>
   </aside>
