@@ -21,7 +21,7 @@
   padding: 10px 0;
 }
 .aside .menu .item.active {
-  color: #F6F7F7;
+  color: #F7F6F6;
 }
 .aside .menu .icon {
   font-size: 20px;
@@ -47,10 +47,10 @@
   padding: 0px;
   width: 100vmax;
   height: 100vmax;
-  overflow: auto;
+  overflow: auto !important;
 }
 .mainside {
-  background-color:d3d6db;
+  background-color:#d3d6db;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
@@ -83,5 +83,20 @@
   color: #6F7B7E;
 }
 .nav-menu .item.active {
+  color: black;
+}
+.menu-list .child-list.active {
+  color: #F6F7F7;
+}
+.menu-list .child-list:hover {
+  color: black;
+}
+.menu-list .child-list-mini {
+  color: #6F7B7E;
+}
+.menu-list .child-list-mini:hover {
+  color: black;
+}
+.menu-list .child-list-mini.active {
   color: black;
 }
