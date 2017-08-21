@@ -17,6 +17,13 @@ export class CrudPageComponent implements OnInit {
   public dateBirth: any;
   public noPhone: any;
 
+  public idEdit: any;
+  public fullNameEdit: any;
+  public addressEdit: any;
+  public emailEdit: any;
+  public placeBirthEdit: any;
+  public dateBirthEdit: any;
+  public noPhoneEdit: any;
   public nameFile: any;
   public defaultFileTitle: any;
   public loopbackPath: string = LoopBackConfig.getPath();
