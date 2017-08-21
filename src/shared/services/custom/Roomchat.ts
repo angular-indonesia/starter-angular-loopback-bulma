@@ -10,15 +10,16 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
+import { Roomchat } from '../../models/Roomchat';
 import { SocketConnection } from '../../sockets/socket.connections';
+import { Chatdetail } from '../../models/Chatdetail';
 
 
 /**
- * Api services for the `StorageSimpleUpload` model.
+ * Api services for the `Roomchat` model.
  */
 @Injectable()
-export class StorageSimpleUploadApi extends BaseLoopBackApi {
+export class RoomchatApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -32,24 +33,29 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+   * Find a related item by id for chatDetail.
    *
-   * @returns {object[]} An empty reference that will be
+   * @param {any} id Roomchat id
+   *
+   * @param {any} fk Foreign key for chatDetail
+   *
+   * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageSimpleUpload` object.)
+   * This usually means the response is a `Roomchat` object.)
    * </em>
    */
-  public getContainers(customHeaders?: Function): Observable<any> {
+  public findByIdChatDetail(id: any, fk: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads";
-    let _routeParams: any = {};
+    "/Roomchats/:id/chatDetail/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
     let _postBody: any = {};
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
@@ -57,9 +63,38 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+   * Delete a related item by id for chatDetail.
+   *
+   * @param {any} id Roomchat id
+   *
+   * @param {any} fk Foreign key for chatDetail
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public destroyByIdChatDetail(id: any, fk: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Roomchats/:id/chatDetail/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Update a related item by id for chatDetail.
+   *
+   * @param {any} id Roomchat id
+   *
+   * @param {any} fk Foreign key for chatDetail
    *
    * @param {object} data Request data.
    *
@@ -71,16 +106,19 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageSimpleUpload` object.)
+   * This usually means the response is a `Roomchat` object.)
    * </em>
    */
-  public createContainer(options: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
+  public updateByIdChatDetail(id: any, fk: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PUT";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads";
-    let _routeParams: any = {};
+    "/Roomchats/:id/chatDetail/:fk";
+    let _routeParams: any = {
+      id: id,
+      fk: fk
+    };
     let _postBody: any = {
-      options: options
+      data: data
     };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
@@ -88,68 +126,11 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+   * Queries chatDetail of Roomchat.
    *
-   * @param {string} container 
+   * @param {any} id Roomchat id
    *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `` – `{}` - 
-   */
-  public destroyContainer(container: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container";
-    let _routeParams: any = {
-      container: container
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageSimpleUpload` object.)
-   * </em>
-   */
-  public getContainer(container: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container";
-    let _routeParams: any = {
-      container: container
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
+   * @param {object} filter 
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -157,30 +138,31 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageSimpleUpload` object.)
+   * This usually means the response is a `Roomchat` object.)
    * </em>
    */
-  public getFiles(container: any = {}, customHeaders?: Function): Observable<any> {
+  public getChatDetail(id: any, filter: LoopBackFilter = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container/files";
+    "/Roomchats/:id/chatDetail";
     let _routeParams: any = {
-      container: container
+      id: id
     };
     let _postBody: any = {};
     let _urlParams: any = {};
+    if (typeof filter !== 'undefined' && filter !== null) _urlParams.filter = filter;
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+   * Creates a new instance in chatDetail of this model.
    *
-   * @param {string} container 
+   * @param {any} id Roomchat id
    *
-   * @param {string} file 
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -188,96 +170,28 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `StorageSimpleUpload` object.)
+   * This usually means the response is a `Roomchat` object.)
    * </em>
    */
-  public getFile(container: any = {}, file: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container/files/:file";
-    let _routeParams: any = {
-      container: container,
-      file: file
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {string} container 
-   *
-   * @param {string} file 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `` – `{}` - 
-   */
-  public removeFile(container: any = {}, file: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "DELETE";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container/files/:file";
-    let _routeParams: any = {
-      container: container,
-      file: file
-    };
-    let _postBody: any = {};
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {object} data Request data.
-   *
-   *  - `req` – `{object}` - 
-   *
-   *  - `res` – `{object}` - 
-   *
-   * @returns {object} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * Data properties:
-   *
-   *  - `result` – `{object}` - 
-   */
-  public upload(req: any = {}, res: any = {}, customHeaders?: Function): Observable<any> {
+  public createChatDetail(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container/upload";
-    let _routeParams: any = {};
-    let _postBody: any = {};
+    "/Roomchats/:id/chatDetail";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
+   * Deletes all chatDetail of this model.
    *
-   * @param {string} container 
-   *
-   * @param {string} file 
-   *
-   * @param {object} req 
-   *
-   * @param {object} res 
+   * @param {any} id Roomchat id
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -285,13 +199,12 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
    *
    * This method returns no data.
    */
-  public download(container: any = {}, file: any = {}, req: any = {}, res: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public deleteChatDetail(id: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/StorageSimpleUploads/:container/download/:file";
+    "/Roomchats/:id/chatDetail";
     let _routeParams: any = {
-      container: container,
-      file: file
+      id: id
     };
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -300,10 +213,134 @@ export class StorageSimpleUploadApi extends BaseLoopBackApi {
   }
 
   /**
+   * Counts chatDetail of Roomchat.
+   *
+   * @param {any} id Roomchat id
+   *
+   * @param {object} where Criteria to match model instances
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `count` – `{number}` - 
+   */
+  public countChatDetail(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "GET";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Roomchats/:id/chatDetail/count";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Patch an existing model instance or insert a new one into the data source.
+   *
+   * @param {object} data Request data.
+   *
+   *  - `data` – `{object}` - Model instance data
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Roomchat` object.)
+   * </em>
+   */
+  public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PATCH";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Roomchats";
+    let _routeParams: any = {};
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Patch attributes for a model instance and persist it into the data source.
+   *
+   * @param {any} id Roomchat id
+   *
+   * @param {object} data Request data.
+   *
+   *  - `data` – `{object}` - An object of model property name/value pairs
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Roomchat` object.)
+   * </em>
+   */
+  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "PATCH";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Roomchats/:id";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * Creates a new instance in chatDetail of this model.
+   *
+   * @param {any} id Roomchat id
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Roomchat` object.)
+   * </em>
+   */
+  public createManyChatDetail(id: any, data: any[] = [], customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Roomchats/:id/chatDetail";
+    let _routeParams: any = {
+      id: id
+    };
+    let _postBody: any = {
+      data: data
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * The name of the model represented by this $resource,
-   * i.e. `StorageSimpleUpload`.
+   * i.e. `Roomchat`.
    */
   public getModelName() {
-    return "StorageSimpleUpload";
+    return "Roomchat";
   }
 }

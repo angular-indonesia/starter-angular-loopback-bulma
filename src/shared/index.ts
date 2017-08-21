@@ -51,8 +51,10 @@ import { RealTime } from './services/core/real.time';
 import { UserPhotoApi } from './services/custom/UserPhoto';
 import { UserCredentialApi } from './services/custom/UserCredential';
 import { StorageSimpleUploadApi } from './services/custom/StorageSimpleUpload';
-import { MapsApi } from './services/custom/Maps';
 import { ProfileDataApi } from './services/custom/ProfileData';
+import { MapsApi } from './services/custom/Maps';
+import { RoomchatApi } from './services/custom/Roomchat';
+import { ChatdetailApi } from './services/custom/Chatdetail';
 /**
 * @module SDKBrowserModule
 * @description
@@ -87,8 +89,10 @@ export class SDKBrowserModule {
         UserPhotoApi,
         UserCredentialApi,
         StorageSimpleUploadApi,
-        MapsApi,
         ProfileDataApi,
+        MapsApi,
+        RoomchatApi,
+        ChatdetailApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
