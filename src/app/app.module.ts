@@ -16,9 +16,10 @@ import { ChartPageComponent } from './home-page/chart-page/chart-page.component'
 import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 import { ChatPageComponent } from './home-page/chat-page/chat-page.component';
 import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page.component';
+
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { AgmCoreModule } from '@agm/core';
-
+import { FileUploadAdvancedPageComponent } from './file-upload-advance-page/file-upload-advance-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { AgmCoreModule } from '@agm/core';
     ChatPageComponent,
     ChatRoomPageComponent,
     FileUploadPageComponent,
-    MapsPageComponent
+    MapsPageComponent,
+    FileUploadAdvancedPageComponent
+
+
   ],
   imports: [
     BrowserModule,
