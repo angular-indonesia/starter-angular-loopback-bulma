@@ -10,6 +10,8 @@ export class HomePageComponent implements OnInit {
 
 
   showMiniMenu: boolean = false;
+  displayChart: String = 'none';
+
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -22,6 +24,10 @@ export class HomePageComponent implements OnInit {
 
   toggleMenu() {
     this.showMiniMenu = !this.showMiniMenu;
+  }
+
+  display() {
+    this.displayChart === 'none' ? this.displayChart = 'block' : this.displayChart = 'none';
   }
 
   signOut() {
