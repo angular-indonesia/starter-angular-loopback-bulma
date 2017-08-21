@@ -26,7 +26,9 @@ export class CrudPageComponent implements OnInit {
   public noPhoneEdit: any;
   public nameFile: any;
   public defaultFileTitle: any;
+  public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/download/';
   public eventPhoto: any;
+  public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
 
   constructor(
     private profileDataApi: ProfileDataApi
