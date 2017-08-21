@@ -1,3 +1,17 @@
+<div [ngStyle]="{'display':displaySuccess}">
+  <div class="notification is-success">
+    <button class="delete" (click)="toggle()"></button>
+    Login Success
+  </div>
+</div>
+
+<div [ngStyle]="{'display':displayFailed}">
+  <div class="notification is-danger">
+    <button class="delete" (click)="toggle()"></button>
+    Wrong username or password
+  </div>
+</div>
+
 <div class="tile is-ancestor">
   <div class="tile is-parent">
     <article class="tile is-child">
