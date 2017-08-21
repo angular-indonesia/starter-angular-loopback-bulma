@@ -53,6 +53,7 @@ export class CrudPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
   }
 
   public uploadProses(event) {
