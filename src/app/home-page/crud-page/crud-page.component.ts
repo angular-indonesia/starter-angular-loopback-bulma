@@ -30,6 +30,15 @@ export class CrudPageComponent implements OnInit {
   public eventPhoto: any;
   public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
 
+  public Datauser: any;
+  public DatauserLength: any;
+  public hiddenData: String = 'none';
+  public hiddenTable: String = 'none';
+  public alertVisible: any;
+  public alertNotif: any;
+  public displayModalEdit: any;
+  public displayModalAdd: any;
+  public visibleModal: any;
   constructor(
     private profileDataApi: ProfileDataApi
   ) {
