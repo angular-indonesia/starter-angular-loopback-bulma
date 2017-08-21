@@ -10,6 +10,7 @@ import { DashboardPageComponent } from './home-page/dashboard-page/dashboard-pag
 import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
 import { ChatPageComponent } from './home-page/chat-page/chat-page.component';
 import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page.component';
+import { FileUploadAdvancedPageComponent } from './file-upload-advance-page/file-upload-advance-page.component';
 
 const routes: Routes = [
   {
@@ -23,17 +24,23 @@ const routes: Routes = [
       { path: '', component: DashboardPageComponent },
       { path: 'dashboard', redirectTo: '', pathMatch: 'full' },
       { path: 'chart', component: ChartPageComponent },
+
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'maps', component: MapsPageComponent},
       { path: 'chat', component: ChatPageComponent, children: [
           { path: 'chatroom/:id', component: ChatRoomPageComponent }
         ]
       },
+         {path: 'fileuploadadvence', component: FileUploadAdvancedPageComponent
+      },
+      {
+        path: 'fileupload', component: FileUploadPageComponent
+      },
+
     ]
   },
-  {
-    path: 'fileupload', component: FileUploadPageComponent
-  },
+
+
   { path: '', component: LoginPageComponent },
   { path: '**', component: LoginPageComponent }
 ];
