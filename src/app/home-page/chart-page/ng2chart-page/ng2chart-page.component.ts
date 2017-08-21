@@ -14,7 +14,7 @@ export class Ng2chartPageComponent implements OnInit {
 
   private todo: Todo = new Todo();
   private todoRef: FireLoopRef<Todo>;
-  private selectedRange = 'yearly';
+  private selectedRange = 'hourly';
   private sub: any;
   private rt: RealTime;
 
