@@ -12,9 +12,26 @@
           <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
           </a>
-          <a [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
+          <a routerLinkActive="active" class="item chart-list" (click)="display()">
             <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
           </a>
+          <ul class="menu-list" [ngStyle]="{'display': displayChart}">
+            <li>
+              <a [routerLink]="['/home/chart/ng2chart']" routerLinkActive="active" class="child-list">
+                <span class="name"> Ng2Chart</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/home/chart/google-chart']" routerLinkActive="active" class="child-list">
+                <span class="name"> Google Chart</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/home/chart/highcharts']" routerLinkActive="active" class="child-list">
+                <span class="name"> Highcharts</span>
+              </a>
+            </li>
+          </ul>
           <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
           </a>
@@ -35,22 +52,49 @@
           <span></span>
           <span></span>
         </div>
-        <div class="nav-right nav-menu is-hidden-tablet" [ngClass]="{ 'is-active': showMiniMenu }" (click)="toggleMenu()">
-          <li [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
-            <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
+        <div class="nav-right nav-menu is-hidden-tablet" [ngClass]="{ 'is-active': showMiniMenu }">
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item" (click)="toggleMenu()">
+              <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
+            </a>
           </li>
-          <li [routerLink]="['/home/maps']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
+          <li>
+            <a [routerLink]="['/home/maps']" routerLinkActive="active" class="item" (click)="toggleMenu()">
+              <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
+            </a>
           </li>
-          <li [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
+          <li>
+            <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item" (click)="toggleMenu()">
+              <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
+            </a>
           </li>
-          <li [routerLink]="['/home/chart']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+          <li>
+            <a routerLinkActive="active" class="item" (click)="display()">
+              <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+            </a>
           </li>
-          <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
-          </a>
+          <ul class="menu-list" [ngStyle]="{'display': displayChart}">
+            <li>
+              <a [routerLink]="['/home/chart/ng2chart']" routerLinkActive="active" class="child-list-mini" (click)="toggleMenu()">
+                <span class="name"> Ng2Chart</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/home/chart/google-chart']" routerLinkActive="active" class="child-list-mini" (click)="toggleMenu()">
+                <span class="name"> Google Chart</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/home/chart/highcharts']" routerLinkActive="active" class="child-list-mini" (click)="toggleMenu()">
+                <span class="name"> Highcharts</span>
+              </a>
+            </li>
+          </ul>
+          <li>
+            <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item" (click)="toggleMenu()">
+              <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
+            </a>
+          </li>
           <li [routerLink]="['/login']" routerLinkActive="active" class="item" (click)="signOut()">
             <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </li>
