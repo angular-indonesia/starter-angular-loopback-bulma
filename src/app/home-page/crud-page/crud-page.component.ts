@@ -26,7 +26,6 @@ export class CrudPageComponent implements OnInit {
   public noPhoneEdit: any;
   public nameFile: any;
   public defaultFileTitle: any;
-  public loopbackPath: string = LoopBackConfig.getPath();
   public eventPhoto: any;
 
   constructor(
