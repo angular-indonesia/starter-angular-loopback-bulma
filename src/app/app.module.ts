@@ -4,7 +4,6 @@ import { AuthGuard } from './auth-guard.service';
 import { SDKBrowserModule } from './../shared/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { ChatService } from './chat.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +18,6 @@ import { ChatPageComponent } from './home-page/chat-page/chat-page.component';
 import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page.component';
 import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
-import { AgmCoreModule } from '@agm/core';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 
 @NgModule({
@@ -35,7 +33,7 @@ import { AgmCoreModule, MapsAPILoader } from '@agm/core';
     ChatRoomPageComponent,
     CrudPageComponent,
     FileUploadPageComponent,
-    MapsPageComponent
+    MapsPageComponent,
     MapsPageComponent,
   ],
   imports: [
