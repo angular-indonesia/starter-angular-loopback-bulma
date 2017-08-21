@@ -16,7 +16,6 @@ export class Ng2chartPageComponent implements OnInit {
   private todoRef: FireLoopRef<Todo>;
   private selectedRange = 'hourly';
   private sub: any;
-  private rt: RealTime;
 
   // NG2CHARTS Line
   public lineChartData: Array<any> = [];
@@ -64,9 +63,8 @@ export class Ng2chartPageComponent implements OnInit {
     responsive: true
   };
 
-  constructor(private realtime: RealTime) {
-    this.rt = realtime;
-    this.sub = this.rt.onReady().subscribe((status: string) => {
+  constructor(private rt: RealTime) {
+    this.rt.onReady().subscribe((status: string) => {
       this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
       const st: StatFilter = {
         range: this.selectedRange
@@ -82,7 +80,7 @@ export class Ng2chartPageComponent implements OnInit {
 
   changeRange(val: string) {
     this.selectedRange = val;
-    this.sub = this.rt.onReady().subscribe((status: string) => {
+    this.rt.onReady().subscribe((status: string) => {
       this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
       const st: StatFilter = {
         range: this.selectedRange
