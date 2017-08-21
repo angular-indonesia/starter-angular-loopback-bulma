@@ -19,6 +19,7 @@ import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page
 import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AgmCoreModule, MapsAPILoader } from '@agm/core';
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBOMQvUP42I2WI_70m32U_L1n10dblGezM'
-    })
+    }),
+    ChartsModule
   ],
   providers: [AuthGuard, AuthService, ChatService],
   bootstrap: [AppComponent]
