@@ -42,6 +42,12 @@ export class CrudPageComponent implements OnInit {
   constructor(
     private profileDataApi: ProfileDataApi
   ) {
+    this.displayModalEdit = 'modal';
+    this.displayModalAdd = 'modal';
+    this.visibleModal = false;
+
+    this.alertNotif = 'none';
+
     this.nameFile = '';
     this.defaultFileTitle = 'Name File';
   }
