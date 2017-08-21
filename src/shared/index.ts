@@ -53,6 +53,7 @@ import { UserCredentialApi } from './services/custom/UserCredential';
 import { StorageSimpleUploadApi } from './services/custom/StorageSimpleUpload';
 import { MapsApi } from './services/custom/Maps';
 import { ProfileDataApi } from './services/custom/ProfileData';
+import { TodoApi } from './services/custom/Todo';
 /**
 * @module SDKBrowserModule
 * @description
@@ -89,6 +90,7 @@ export class SDKBrowserModule {
         StorageSimpleUploadApi,
         MapsApi,
         ProfileDataApi,
+        TodoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
