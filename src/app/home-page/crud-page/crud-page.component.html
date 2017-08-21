@@ -69,6 +69,17 @@
 </div>
 
 
+<div [ngStyle]="{'display': hiddenData}">
+  <div class="center-text"> Sorry No data list </div>
+  <div>
+    <div class="field-label is-normal"></div>
+  </div>
+  <div>
+    <div class="field-label is-normal"></div>
+  </div>
+  <div class="center-text">Add Data <i class="fa fa-plus" aria-hidden="true" (click)="listAdd()"></i></div>
+</div>
+
 
 <div [ngClass]="displayModal">
   <div class="modal-background"></div>
