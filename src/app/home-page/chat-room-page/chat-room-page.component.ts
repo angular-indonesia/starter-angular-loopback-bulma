@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ChatService } from '../../chat.service';
+import { RoomchatApi } from '../../../shared/services/custom/Roomchat';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/switchMap';
 @Component({
@@ -10,29 +11,32 @@ import 'rxjs/add/operator/switchMap';
 })
 export class ChatRoomPageComponent implements OnInit {
 
-  chat: any;
+  chats: any;
   id: number;
   constructor(
     private route: ActivatedRoute,
     private chatService: ChatService,
-    private router: Router
+    private router: Router,
+    private roomChatApi: RoomchatApi
   ) {
-    // this.router.events.subscribe((event) => {
-    //         console.log(event instanceof NavigationEnd);
-    //     });
-    // console.log(123)
+    this.getChatDetail();
   }
 
 
   ngOnInit() {
-    // this.chatService.getChat(this.route.snapshot.params['id']).subscribe(
-    //   chat => this.chat = chat
-    // );
+  }
+
+  getChatDetail() {
     this.route.params.forEach(params => {
-      this.chatService.getChat(this.route.snapshot.params['id']).subscribe(
-        chat => this.chat = chat
-      );
+      this.roomChatApi.find({
+        where: {
+          id: this.route.snapshot.params['id']
+        }
+      }).subscribe((result) => {
+        this.chats = result;
+      })
     });
+
   }
 
 

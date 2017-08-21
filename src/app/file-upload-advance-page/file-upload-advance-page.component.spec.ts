@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FileUploadAdvancePageComponent } from './file-upload-advence-page.component';
+import { FileUploadAdvancedPageComponent } from './file-upload-advance-page.component';
 
 describe('HomePageComponent', () => {
-  let component: FileUploadAdvancePageComponent;
-  let fixture: ComponentFixture<FileUploadAdvancePageComponent>;
+  let component: FileUploadAdvancedPageComponent;
+  let fixture: ComponentFixture<FileUploadAdvancedPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileUploadAdvancePageComponent ]
+      declarations: [ FileUploadAdvancedPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FileUploadAdvancePageComponent);
+    fixture = TestBed.createComponent(FileUploadAdvancedPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
