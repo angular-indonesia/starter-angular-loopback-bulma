@@ -109,21 +109,6 @@ export class CrudPageComponent implements OnInit {
     });
   }
 
-  create() {
-    if (this.nameFile === '') {
-      console.log('Sorry Files Is Empty');
-    } else {
-      const filesToUpload = <Array<File>>this.eventPhoto.target.files;
-      console.log('test' + this.eventPhoto.path[0].files[0].name);
-      const urlSimpleUpload = this.loopbackPath + '/api/StorageSimpleUploads/simpleupload/upload';
-      this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((result) => {
-        console.log(JSON.stringify(result));
-        console.log('Sukses Upload');
-      }, (error) => {
-        console.error(error);
-      });
-    }
-  }
 
 
   makeFileRequest(url: string, params: Array<string>, files: Array<File>, options) {
