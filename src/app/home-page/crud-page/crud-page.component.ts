@@ -190,6 +190,7 @@ export class CrudPageComponent implements OnInit {
   }
 
   public closeAlert() {
+    this.hiddenSuccess = 'none';
   }
 
   public saveChange(idEdit) {
