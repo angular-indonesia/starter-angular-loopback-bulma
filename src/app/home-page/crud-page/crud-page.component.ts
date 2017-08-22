@@ -171,7 +171,6 @@ export class CrudPageComponent implements OnInit {
     this.noPhoneEdit = datas.noPhone;
   }
 
-  public listAdd() {
   public modalAdd() {
     this.visibleModal = !this.visibleModal;
     this.displayModalAdd = this.visibleModal ? 'modal is-active' : 'modal';
