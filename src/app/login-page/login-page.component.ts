@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggle($event, idUser) {
+  toggle() {
 
     console.log(this.visibleS);
     this.visibleS = !this.visibleS;
@@ -68,6 +68,9 @@ export class LoginPageComponent implements OnInit {
           }, (error) => {
               this.visibleF = !this.visibleF;
               this.displayFailed = this.visibleF ? '' : 'none;';
+              setTimeout(() => {
+                    this.toggle();
+              }, 3000);
               console.log('failed');
               console.log(error);
           });
