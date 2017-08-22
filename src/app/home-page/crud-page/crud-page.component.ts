@@ -27,10 +27,9 @@ export class CrudPageComponent implements OnInit {
 
   public nameFile: any;
   public defaultFileTitle: any;
-  public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/download/';
   public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageUploads/Angular/download/';
   public eventPhoto: any;
-  public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
+  // public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
 
   public Datauser: any;
   public DatauserLength: any;
@@ -59,14 +58,15 @@ export class CrudPageComponent implements OnInit {
     this.loadData();
   }
 
+
   public uploadProses(event) {
     const uuid = UUID.UUID();
+
     const name = event.path[0].files[0].name;
     const fileIMG = ['png', 'jpg', 'jpeg', 'bmp', 'gif'];
     const formatImage = name.split('.').pop();
     const res = formatImage.toLowerCase();
     const that = this;
-    const options = 'IMG_' + name;
     const options = 'IMG_' + uuid + '.jpg';
     this.nameFile = options;
     this.defaultFileTitle = name;
@@ -75,10 +75,9 @@ export class CrudPageComponent implements OnInit {
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
-      console.log(this.nameFile, 'Nama Foto nya');
       const filesToUpload = <Array<File>>this.eventPhoto.target.files;
-      console.log('test' + this.eventPhoto.path[0].files[0].name);
-      const urlSimpleUpload = this.loopbackPathUpload;
+
+      const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageUploads/Angular/upload';
       this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((result) => {
         console.log(JSON.stringify(result));
         console.log('Sukses Upload');
@@ -108,7 +107,7 @@ export class CrudPageComponent implements OnInit {
       this.noPhone = '';
       this.nameFile = '';
 
-      this.alertNotif = this.alertVisible ? '' : 'none';
+      this.hiddenSuccess = 'block';
 
     }, (error) => {
       console.log(error);
