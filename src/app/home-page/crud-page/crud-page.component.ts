@@ -108,6 +108,7 @@ export class CrudPageComponent implements OnInit {
       this.nameFile = '';
 
       this.hiddenSuccess = 'block';
+      this.closedTimming();
 
       this.closeAdd();
       this.ngOnInit();
