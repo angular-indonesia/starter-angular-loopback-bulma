@@ -190,7 +190,6 @@ export class CrudPageComponent implements OnInit {
   }
 
   public closeAlert() {
-    this.alertNotif = 'none';
   }
 
   public saveChange(idEdit) {
