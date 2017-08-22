@@ -109,6 +109,9 @@ export class CrudPageComponent implements OnInit {
 
       this.hiddenSuccess = 'block';
 
+      this.closeAdd();
+      this.ngOnInit();
+
     }, (error) => {
       console.log(error);
     });
