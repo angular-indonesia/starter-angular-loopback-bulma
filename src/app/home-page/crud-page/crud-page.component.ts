@@ -60,12 +60,14 @@ export class CrudPageComponent implements OnInit {
   }
 
   public uploadProses(event) {
+    const uuid = UUID.UUID();
     const name = event.path[0].files[0].name;
     const fileIMG = ['png', 'jpg', 'jpeg', 'bmp', 'gif'];
     const formatImage = name.split('.').pop();
     const res = formatImage.toLowerCase();
     const that = this;
     const options = 'IMG_' + name;
+    const options = 'IMG_' + uuid + '.jpg';
     this.nameFile = options;
     this.defaultFileTitle = name;
     this.eventPhoto = event;
