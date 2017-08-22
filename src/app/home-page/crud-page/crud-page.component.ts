@@ -172,8 +172,19 @@ export class CrudPageComponent implements OnInit {
   }
 
   public listAdd() {
+  public modalAdd() {
     this.visibleModal = !this.visibleModal;
     this.displayModalAdd = this.visibleModal ? 'modal is-active' : 'modal';
+  }
+
+  public closeAdd() {
+    this.visibleModal = !this.visibleModal;
+    this.displayModalAdd = this.visibleModal ? 'modal is-active' : 'modal';
+  }
+
+  public closeEdit() {
+    this.visibleModal = !this.visibleModal;
+    this.displayModalEdit = this.visibleModal ? 'modal is-active' : 'modal';
   }
 
   public closeAlert() {
