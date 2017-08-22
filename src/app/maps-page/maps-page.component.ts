@@ -42,6 +42,9 @@ export class MapsPageComponent implements OnInit {
     newPlaceLng: any;
     locationName: any;
     locationTemp: any;
+    longitudeTemp: any;
+    latitudeTemp: any;
+    userIDTemp: any;
     id: any;
 
   constructor(
@@ -70,12 +73,15 @@ export class MapsPageComponent implements OnInit {
     this.id = idUser;
   }
 
-  toggle($event, idUser, locationName) {
+  toggle($event, idUser, locationName, longitude, latitude, userID) {
     this.findMarker();
     // this.newPlaceLat = $event.coords.lat;
     // this.newPlaceLng = $event.coords.lng;
     this.id = idUser;
     this.locationTemp = locationName;
+    this.longitudeTemp = longitude;
+    this.latitudeTemp = latitude;
+    this.userIDTemp = userID;
     console.log(this.visible);
     this.visible = !this.visible;
     console.log(this.visible);
