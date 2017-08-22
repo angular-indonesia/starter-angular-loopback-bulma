@@ -36,6 +36,7 @@ export class CrudPageComponent implements OnInit {
   public DatauserLength: any;
   public hiddenData: String = 'none';
   public hiddenTable: String = 'none';
+  public hiddenSuccess: String = 'none';
   public alertVisible: any;
   public alertNotif: any;
   public displayModalEdit: any;
