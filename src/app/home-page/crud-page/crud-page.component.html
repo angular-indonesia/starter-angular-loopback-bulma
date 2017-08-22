@@ -26,6 +26,7 @@
         <div class="tile is-parent is-11">
           <article class="tile is-child box">
 
+            <a class="button is-info is-outlined" (click)="modalAdd()">Add Data</a>
 
             <table class="table">
               <thead>
@@ -72,6 +73,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Edit Data</p>
+      <button class="delete" aria-label="close" (click)="closeEdit()"></button>
     </header>
     <section class="modal-card-body">
       <label class="label is-small">Full Name</label>
@@ -105,6 +107,8 @@
       </div>
     </section>
     <footer class="modal-card-foot">
+      <button class="button is-success" (click)="saveChange()">Save changes</button>
+      <button class="button" (click)="closeEdit()">Cancel</button>
     </footer>
   </div>
 </div>
@@ -114,6 +118,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Add Data</p>
+      <button class="delete" aria-label="close" (click)="closeAdd()"></button>
     </header>
     <section class="modal-card-body">
       <label class="label is-small">Full Name</label>
@@ -166,6 +171,7 @@
     </section>
     <footer class="modal-card-foot">
       <button class="button is-success" (click)="createData()">Save changes</button>
+      <button class="button" (click)="closeAdd()">Cancel</button>
     </footer>
   </div>
 </div>
