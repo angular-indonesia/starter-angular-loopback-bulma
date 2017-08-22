@@ -224,4 +224,10 @@ export class CrudPageComponent implements OnInit {
     //   });
   }
 
+  public closedTimming() {
+    setTimeout(() => {
+      this.hiddenSuccess = 'none';
+    }, 3000);
+  }
+
 }
