@@ -1,6 +1,7 @@
 import { ProfileDataApi } from './../../../shared/services/custom/ProfileData';
 import { LoopBackConfig } from './../../../shared/lb.config';
 import { Component, OnInit } from '@angular/core';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-crud-page',
