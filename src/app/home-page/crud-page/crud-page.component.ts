@@ -28,6 +28,7 @@ export class CrudPageComponent implements OnInit {
   public nameFile: any;
   public defaultFileTitle: any;
   public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/download/';
+  public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageUploads/Angular/download/';
   public eventPhoto: any;
   public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
 
