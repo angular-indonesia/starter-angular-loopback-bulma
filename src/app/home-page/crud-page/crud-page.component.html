@@ -11,15 +11,23 @@
   </div>
 </div>
 
-<div class="tile is-ancestor">
-  <div class="tile is-vertical is-9">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
-      </div>
-      <div class="tile is-parent is-11">
-        <article class="tile is-child box">
+<div [ngStyle]="{'display': hiddenSuccess}">
+  <div class="notification is-primary">
+    <button class="delete"></button>Success Input Data.
+  </div>
+</div>
 
-          <div [ngStyle]="{'display': hiddenTable}">
+<div [ngStyle]="{'display': hiddenTable}">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+        </div>
+        <div class="tile is-parent is-11">
+          <article class="tile is-child box">
+
+            <a class="button is-info is-outlined" (click)="listAdd()">Add Data</a>
+
             <table class="table">
               <thead>
                 <tr>
@@ -43,42 +51,20 @@
                   <td>{{datas.address}}</td>
                   <td>{{datas.placeOfBirth}}</td>
                 </tr>
-
-                <div>
-                  <div class="field-label is-normal"></div>
-                </div>
-                <div>
-                  <div class="field-label is-normal"></div>
-                </div>
-                <div>
-                  <div class="field-label is-normal"></div>
-                </div>
-                <div>
-                  <div class="field-label is-normal"></div>
-                </div>
-                <div>
-                  <div><i class="fa fa-plus" aria-hidden="true" (click)="listAdd()"></i></div>
-                </div>
               </tbody>
             </table>
-          </div>
-
-        </article>
+          </article>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <div [ngStyle]="{'display': hiddenData}">
-  <div class="center-text"> Sorry No data list </div>
-  <div>
-    <div class="field-label is-normal"></div>
+  <div class="notification is-primary">
+    <button class="delete"></button> Sorry no data, Empty list. <a class="button is-info is-outlined" style="margin-left: 60% !important;"
+      (click)="listAdd()">Add Data</a>
   </div>
-  <div>
-    <div class="field-label is-normal"></div>
-  </div>
-  <div class="center-text">Add Data <i class="fa fa-plus" aria-hidden="true" (click)="listAdd()"></i></div>
 </div>
 
 
