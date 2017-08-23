@@ -46,6 +46,8 @@ export class MapsPageComponent implements OnInit {
     latitudeTemp: any;
     userIDTemp: any;
     id: any;
+    displaySuccess: any;
+    visibleS: any;
 
   constructor(
     public mapsApi: MapsApi,
@@ -55,6 +57,8 @@ export class MapsPageComponent implements OnInit {
     this.visible = false;
     this.visibleInsertModal = false;
     this.findMarker();
+    this.displaySuccess = 'none';
+    this.visibleS = false;
   }
 
   ngOnInit() {
@@ -66,7 +70,7 @@ export class MapsPageComponent implements OnInit {
   }
 
   placeMarker($event, idUser) {
-  console.log($event.coords.lat);
+    console.log($event.coords.lat);
     console.log($event.coords.lng);
     this.newPlaceLat = $event.coords.lat;
     this.newPlaceLng = $event.coords.lng;
@@ -86,6 +90,12 @@ export class MapsPageComponent implements OnInit {
     this.visible = !this.visible;
     console.log(this.visible);
     this.displayModal = this.visible ? 'modal is-active' : 'modal';
+  }
+
+  toggleSuccess() {
+
+    this.visibleS = !this.visibleS;
+    this.displaySuccess = 'none';
   }
 
   toggleInsert() {
@@ -144,5 +154,11 @@ export class MapsPageComponent implements OnInit {
             console.log('Save Sukses')
         );
         this.toggleInsert();
+        this.visibleS = !this.visibleS;
+        this.displaySuccess = this.visibleS ? '' : 'none;';
+        setTimeout(() => {
+              this.toggleSuccess();
+        }, 3000);
+
   }
 }
