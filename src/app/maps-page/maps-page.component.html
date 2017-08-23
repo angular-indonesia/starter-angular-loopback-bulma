@@ -1,3 +1,10 @@
+<div [ngStyle]="{'display':displaySuccess}" class="notif" >
+  <div class="notification is-success">
+    <button class="delete" (click)="toggleSuccess()"></button>
+    Login Success
+  </div>
+</div>
+
 <div class="tile is-ancestor">
   <div class="tile is-parent">
     <article class="tile is-child">
@@ -19,28 +26,11 @@
       <div class="tile is-parent is-11">
         <article class="tile is-child box">
 
-            <agm-map [latitude]="-6.2841462" [longitude]="106.7264780" (mapClick)="placeMarker($event)" >
+            <agm-map [latitude]="-6.2841462" [longitude]="106.7264780" (mapClick)="placeMarker($event,1)" >
               <agm-marker *ngFor="let m of marker" [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="true" (dragEnd)="placeMarker($event,1)" (markerClick)="toggle($event,1,m.locationName, m.longitude, m.latitude, m.userID)" [label]="test"  ></agm-marker>
-              <!--<agm-marker [latitude]="latJakarta" [longitude]="lngJakarta" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
-              <agm-marker [latitude]="latBandung" [longitude]="lngBandung" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
-              <agm-marker [latitude]="latBekasi" [longitude]="lngBekasi" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>
-              <agm-marker [latitude]="latBogor" [longitude]="lngBogor" [markerDraggable]="true" (markerClick)="toggle()" [label]="test" ></agm-marker>-->
-              <!--<agm-marker *ngFor="let m of markers; let i = index" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow; clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" [iconUrl]="m.iconUrl"-->
-<!--
-                  <agm-info-window>
-                      <strong>test</strong>
-                  </agm-info-window>-->
-              <!--<agm-marker *ngFor="let m of markers; let i = index" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow; clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" [iconUrl]="m.iconUrl"
-                  (dragEnd)="markerDragEnd(m, $event)">
-
-                  <agm-info-window>
-                      <strong>{{m.label}}</strong>
-                  </agm-info-window>
-
-              </agm-marker>-->
-
             </agm-map>
             <div>
+
               &nbsp;
             </div>
             <div class="field is-grouped">
