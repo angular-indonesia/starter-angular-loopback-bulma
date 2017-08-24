@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { StorageSimpleUploadApi } from './../../shared/services/custom/StorageSimpleUpload';
-import { LoopBackConfig } from './../../shared/lb.config';
+import { StorageSimpleUploadApi } from './../../../shared/services/custom/StorageSimpleUpload';
+import { LoopBackConfig } from './../../../shared/lb.config';
 import { NgModel, FormsModule } from '@angular/forms';
 
 @Component({
@@ -60,9 +60,10 @@ export class FileUploadPageComponent implements OnInit {
         .subscribe(() => {
           this.createRequestFile(this.name_container);
         }, (error) => {
-          if (error.status == 500) {
+          if (error.statusCode == 500) {
             this.createRequestFile(this.name_container);
           } else {
+           //  this.createRequestFile(this.name_container);
             console.log(error);
           }
 

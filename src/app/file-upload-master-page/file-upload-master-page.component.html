@@ -1,0 +1,45 @@
+<table class="table is-striped" style="width: 80% !important;">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Directory</th>
+            <th>Updated Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let a of itemContainer; let i = index">
+        <tr>
+            <th>{{ i+1 }}</th>
+            <td><a>{{a.name}}</a>
+            </td>
+            <td>{{a.mtime}}</td>
+            <td><a (click)="deleteContainer(a.name)">Delete</a> <span></span> <a (click)="getFileContainer(a.name,i)">Open</a></td>
+        </tr>
+        <tr >
+            <td colspan="4" >
+                <table class="table is-bordered" style="width: 60% !important;">
+                    <thead >
+                        <tr  *ngIf="itemFileContainer[i]?.length > 0">
+                            <th>Number</th>
+                            <th>Directory</th>
+                            <th>Updated Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody >
+                        <tr *ngFor="let b of itemFileContainer[i]; let c = index">
+
+                            <th>{{ c+1 }}</th>
+                            <td><a>{{b.name}}</a>
+                            </td>
+                            <td>{{b.mtime}}</td>
+                            <td><a>Update</a> <span></span> <a>Open</a> <a (click)="deleteFileContainer(b.container,b.name,i)">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+      
+    </tbody>
+</table>

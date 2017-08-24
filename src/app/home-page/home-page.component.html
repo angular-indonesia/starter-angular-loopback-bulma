@@ -3,50 +3,59 @@
     <div>
       <div class="menu">
         <div class="title">Navigation</div>
-          <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
-            <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
-          </a>
-          <a [routerLink]="['/home/maps']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
-          </a>
-          <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
-          </a>
-          <a routerLinkActive="active" class="item chart-list" (click)="display()">
-            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
-          </a>
-          <a [routerLink]="['/home/fileupload']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">simple upload</span>
-          </a>
-          <a [routerLink]="['/home/fileuploadadvence']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">advanced upload</span>
-          </a>
-          <ul class="menu-list" [ngStyle]="{'display': displayChart}">
-            <li>
-              <a [routerLink]="['/home/chart/ng2chart']" routerLinkActive="active" class="child-list">
-                <span class="name"> Ng2Chart</span>
-              </a>
-            </li>
-            <li>
-              <a [routerLink]="['/home/chart/google-chart']" routerLinkActive="active" class="child-list">
-                <span class="name"> Google Chart</span>
-              </a>
-            </li>
-            <li>
-              <a [routerLink]="['/home/chart/highcharts']" routerLinkActive="active" class="child-list">
-                <span class="name"> Highcharts</span>
-              </a>
-            </li>
-          </ul>
-          <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
-          </a>
-          <a (click)="signOut()" routerLinkActive="active" class="item">
-            <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
-          </a>
+        <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="item">
+          <span class="icon"><i class="fa fa-home"></i></span><span class="name">Dashboard</span>
+        </a>
+        <a [routerLink]="['/home/maps']" routerLinkActive="active" class="item">
+          <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
+        </a>
+        <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
+          <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
+        </a>
+        <a routerLinkActive="active" class="item chart-list" (click)="display()">
+          <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Chart</span>
+        </a>
+        <ul class="menu-list" [ngStyle]="{'display': displayChart}">
+          <li>
+            <a [routerLink]="['/home/chart/ng2chart']" routerLinkActive="active" class="child-list">
+              <span class="name"> Ng2Chart</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/chart/google-chart']" routerLinkActive="active" class="child-list">
+              <span class="name"> Google Chart</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/chart/highcharts']" routerLinkActive="active" class="child-list">
+              <span class="name"> Highcharts</span>
+            </a>
+          </li>
+        </ul>
+        <a [routerLink]="['/home/fileuploadmaster']" routerLinkActive="active" class="item"  (click)="displayFileUpload()">
+          <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Upload File</span>
+        </a>
+        <ul class="menu-list" [ngStyle]="{'display': displayUpload}">
+          <li>
+            <a [routerLink]="['/home/fileupload']" routerLinkActive="active" class="child-list">
+              <span class="name">Simple Upload</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/fileuploadadvence']" routerLinkActive="active" class="child-list">
+              <span class="name">Advanced Upload</span>
+            </a>
+          </li>
+        </ul>
+        <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
+          <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
+        </a>
+        <a (click)="signOut()" routerLinkActive="active" class="item">
+          <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
+        </a>
 
-       
-           
+
+
 
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { StorageSimpleUploadApi } from './../../shared/services/custom/StorageSimpleUpload';
-import { LoopBackConfig } from './../../shared/lb.config';
+import { StorageSimpleUploadApi } from './../../../shared/services/custom/StorageSimpleUpload';
+import { LoopBackConfig } from './../../../shared/lb.config';
 import { NgModel, FormsModule } from '@angular/forms';
 
 @Component({

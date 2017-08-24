@@ -11,11 +11,11 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DashboardPageComponent } from './home-page/dashboard-page/dashboard-page.component';
-import { FileUploadPageComponent } from './file-upload-page/file-upload-page.component';
+import { FileUploadPageComponent } from './file-upload-master-page/file-upload-page/file-upload-page.component';
 import { ChatPageComponent } from './home-page/chat-page/chat-page.component';
 import { ChatRoomPageComponent } from './home-page/chat-room-page/chat-room-page.component';
-import { FileUploadAdvancedPageComponent } from './file-upload-advance-page/file-upload-advance-page.component';
-
+import { FileUploadAdvancedPageComponent } from './file-upload-master-page/file-upload-advance-page/file-upload-advance-page.component';
+import { FileUploadMasterPageComponent } from './file-upload-master-page/file-upload-master-page.component';
 const routes: Routes = [
   {
     path: 'login', component: LoginPageComponent
@@ -44,6 +44,8 @@ const routes: Routes = [
         ]
       },
          {path: 'fileuploadadvence', component: FileUploadAdvancedPageComponent
+      },
+           {path: 'fileuploadmaster', component: FileUploadMasterPageComponent
       },
       {
         path: 'fileupload', component: FileUploadPageComponent
