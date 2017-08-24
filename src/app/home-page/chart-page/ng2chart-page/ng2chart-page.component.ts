@@ -79,15 +79,18 @@ export class Ng2chartPageComponent implements OnInit {
   }
 
   changeRange(val: string) {
+    this.lineChartData = Array<Todo>();
+    this.barChartData = Array<Todo>();
+    this.doughnutChartData = Array<Todo>();
+    this.pieChartData = Array<Todo>();
+
     this.selectedRange = val;
-    this.rt.onReady().subscribe((status: string) => {
-      this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
-      const st: StatFilter = {
-        range: this.selectedRange
-      };
-      this.todoRef.stats( st ).subscribe((stats: any) => {
-        this.loadChart(stats);
-      });
+    this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
+    const st: StatFilter = {
+      range: this.selectedRange
+    };
+    this.todoRef.stats( st ).subscribe((stats: any) => {
+      this.loadChart(stats);
     });
   }
 
