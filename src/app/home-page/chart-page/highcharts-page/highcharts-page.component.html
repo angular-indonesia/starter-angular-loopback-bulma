@@ -1,7 +1,63 @@
-<div class="columns">
-  <div class="column">
-    Highcharts
-    <!-- <chart option="options" style="background-color:red; display: block;"></chart> -->
-    <!-- <div><div #chart></div></div> -->
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-10">
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <div class="field">
+            <label class="label">Choose Range</label>
+            <div class="control">
+              <select #range (change)="changeRange(range.value)">
+                <option [ngValue]="hourly">hourly</option>
+                <option [ngValue]="weekly">weekly</option>
+                <option [ngValue]="monthly">monthly</option>
+                <option [ngValue]="yearly">yearly</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <label class="label">Line Chart</label>
+          <chart [options]="optionsLine"></chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <label class="label">Bar Chart</label>
+          <chart [options]="optionsBar"></chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <label class="label">Pie Chart</label>
+          <chart [options]="optionsPie"></chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <label class="label">Doughnut Chart</label>
+          <chart [options]="optionsDoughnut"></chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
   </div>
 </div>
