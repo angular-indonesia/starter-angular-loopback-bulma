@@ -29,7 +29,6 @@ export class CrudPageComponent implements OnInit {
 
   public nameFile: any;
   public defaultFileTitle: any;
-  public loopbackPathDownload: string = LoopBackConfig.getPath() + '/api/StorageUploads/Angular/download/';
   public eventPhoto: any;
   // public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
 
@@ -44,7 +43,6 @@ export class CrudPageComponent implements OnInit {
   public displayModalAdd: any;
   public visibleModal: any;
   constructor(
-    private profileDataApi: ProfileDataApi
   ) {
     this.displayModalEdit = 'modal';
     this.displayModalAdd = 'modal';
@@ -77,15 +75,6 @@ export class CrudPageComponent implements OnInit {
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
-      const filesToUpload = <Array<File>>this.eventPhoto.target.files;
-
-      const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageUploads/Angular/upload';
-      this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((result) => {
-        console.log(JSON.stringify(result));
-        console.log('Sukses Upload');
-      }, (error) => {
-        console.error(error);
-      });
       this.folderName = 'Profil';
     }
   }
@@ -104,19 +93,6 @@ export class CrudPageComponent implements OnInit {
     }).subscribe((results) => {
       console.log('Sukses');
 
-      this.fullName = '';
-      this.address = '';
-      this.email = '';
-      this.placeBirth = '';
-      this.dateBirth = '';
-      this.noPhone = '';
-      this.nameFile = '';
-
-      this.hiddenSuccess = 'block';
-      this.closedTimming();
-
-      this.closeAdd();
-      this.ngOnInit();
 
     }, (error) => {
       console.log(error);
@@ -218,15 +194,6 @@ export class CrudPageComponent implements OnInit {
       function (err, info) {
         console.log(err);
       });
-    //   this.profileDataApi.updateAll({
-    //     { id: this.idEdit },
-    //     {  }
-
-    // })
-    //   this.profileDataApi.create({
-    //   }).subscribe((result) => {
-    //     console.log('Sukses Edit');
-    //   });
   }
 
   public closedTimming() {
