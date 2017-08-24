@@ -28,6 +28,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { Ng2chartPageComponent } from './home-page/chart-page/ng2chart-page/ng2chart-page.component';
 import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-page/google-chart-page.component';
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 export function highchartsFactory() {
   return highcharts;
@@ -62,6 +63,7 @@ export function highchartsFactory() {
       apiKey: 'AIzaSyBOMQvUP42I2WI_70m32U_L1n10dblGezM'
     }),
     ChartsModule,
+    Ng2GoogleChartsModule,
     ChartModule
   ],
   providers: [AuthGuard, AuthService, ChatService, {
