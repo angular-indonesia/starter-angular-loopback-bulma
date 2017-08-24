@@ -1,3 +1,4 @@
+import { StorageSimpleUploadApi } from './../../../shared/services/custom/StorageSimpleUpload';
 import { ProfileDataApi } from './../../../shared/services/custom/ProfileData';
 import { LoopBackConfig } from './../../../shared/lb.config';
 import { Component, OnInit } from '@angular/core';
