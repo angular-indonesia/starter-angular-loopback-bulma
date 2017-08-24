@@ -56,7 +56,6 @@ export function highchartsFactory() {
     Ng2chartPageComponent,
     GoogleChartPageComponent,
     HighchartsPageComponent,
-    FileUploadMasterPageComponent,
     NotFoundPageComponent,
   ],
   imports: [
