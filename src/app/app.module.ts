@@ -36,6 +36,7 @@ export function highchartsFactory() {
   return highcharts;
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
