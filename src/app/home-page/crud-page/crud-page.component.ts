@@ -29,6 +29,7 @@ export class CrudPageComponent implements OnInit {
 
   public nameFile: any;
   public defaultFileTitle: any;
+  public loopbackPathDownload: string;
   public eventPhoto: any;
   // public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
 
@@ -43,6 +44,8 @@ export class CrudPageComponent implements OnInit {
   public displayModalAdd: any;
   public visibleModal: any;
   constructor(
+    public profileDataApi: ProfileDataApi,
+    public storageCustom: StorageSimpleUploadApi
   ) {
     this.displayModalEdit = 'modal';
     this.displayModalAdd = 'modal';
@@ -71,11 +74,46 @@ export class CrudPageComponent implements OnInit {
     this.nameFile = options;
     this.defaultFileTitle = name;
     this.eventPhoto = event;
+  }
 
+  public uploadFoto() {
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
+
       this.folderName = 'Profil';
+      const newContainer = {
+        'name': this.folderName
+      };
+
+      this.storageCustom.createContainer(newContainer)
+        .subscribe((result) => {
+          console.log('Sukses Create Container');
+          const filesToUpload = <Array<File>>this.eventPhoto.target.files;
+          const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + this.folderName + '/upload';
+          this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((results) => {
+            console.log(JSON.stringify(results));
+            console.log('Sukses Upload');
+
+
+            this.fullName = '';
+            this.address = '';
+            this.email = '';
+            this.placeBirth = '';
+            this.dateBirth = '';
+            this.noPhone = '';
+            this.nameFile = '';
+
+            this.hiddenSuccess = 'block';
+            this.closedTimming();
+
+            this.closeAdd();
+            this.ngOnInit();
+
+          }, (error) => {
+            console.error(error);
+          });
+        });
     }
   }
 
@@ -89,10 +127,12 @@ export class CrudPageComponent implements OnInit {
       placeOfBirth: this.placeBirth,
       birthDate: this.dateBirth,
       noPhone: this.noPhone,
+      folder: this.folderName,
       photoProfile: this.nameFile
     }).subscribe((results) => {
       console.log('Sukses');
 
+      this.uploadFoto();
 
     }, (error) => {
       console.log(error);
@@ -129,6 +169,7 @@ export class CrudPageComponent implements OnInit {
       console.log(result, 'Data');
       this.Datauser = result;
       console.log(this.Datauser, 'Datax');
+      this.loopbackPathDownload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + 'Profil' + '/download/';
       this.DatauserLength = this.Datauser.length;
       console.log(this.DatauserLength);
 
