@@ -57,7 +57,7 @@ const routes: Routes = [
 
 
   { path: '', component: LoginPageComponent },
-  { path: '**', component: LoginPageComponent }
+  { path: '**', component: NotFoundPageComponent }
 ];
 
 @NgModule({
