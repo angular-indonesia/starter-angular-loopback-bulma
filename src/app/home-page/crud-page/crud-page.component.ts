@@ -17,6 +17,7 @@ export class CrudPageComponent implements OnInit {
   public placeBirth: any;
   public dateBirth: any;
   public noPhone: any;
+  public folderName: any;
 
   public idEdit: any;
   public fullNameEdit: any;
@@ -85,10 +86,13 @@ export class CrudPageComponent implements OnInit {
       }, (error) => {
         console.error(error);
       });
+      this.folderName = 'Profil';
     }
   }
 
   public createData() {
+    this.folderName = 'Profil';
+
     this.profileDataApi.create({
       fullName: this.fullName,
       address: this.address,
