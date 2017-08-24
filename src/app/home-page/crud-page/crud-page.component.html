@@ -12,6 +12,7 @@
 </div>
 
 <div [ngStyle]="{'display': hiddenSuccess}">
+  <div class="notification is-success" style="width: 86% !important;">
     <button class="delete" (click)="closeAlert()"></button>Success Input Data.
   </div>
 </div>
@@ -60,6 +61,8 @@
 </div>
 
 <div [ngStyle]="{'display': hiddenData}">
+  <div class="notification is-primary" style="width: 86% !important;">
+     Sorry no data. <a class="button is-info is-outlined" style="margin-left: 60% !important;"
       (click)="modalAdd()">Add Data</a>
   </div>
 </div>
@@ -135,6 +138,7 @@
 
       <label class="label is-small">No.Telephone</label>
       <div class="field-label is-normal">
+        <input class="input" type="number" placeholder="No.Telephone" [(ngModel)]="noPhone">
       </div>
 
       <label class="label is-small">Photo Profile</label>
