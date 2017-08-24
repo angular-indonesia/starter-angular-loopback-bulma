@@ -1,1 +1,59 @@
-<p>Google Chart</p>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-10">
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <div class="field">
+            <label class="label">Choose Range</label>
+            <div class="control">
+              <select #range (change)="changeRange(range.value)">
+                <option [ngValue]="hourly">hourly</option>
+                <option [ngValue]="weekly">weekly</option>
+                <option [ngValue]="monthly">monthly</option>
+                <option [ngValue]="yearly">yearly</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <google-chart [data]="lineChartData"></google-chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <google-chart [data]="barChartData" class="chart"></google-chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <google-chart [data]="pieChartData"></google-chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical"></div>
+      <div class="tile is-parent is-10">
+        <div class="tile is-child box">
+          <google-chart [data]="doughnutChartData"></google-chart>
+        </div>
+      </div>
+      <div class="tile is-parent is-vertical"></div>
+    </div>
+  </div>
+</div>
