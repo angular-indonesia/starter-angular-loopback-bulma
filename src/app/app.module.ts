@@ -24,6 +24,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { Ng2chartPageComponent } from './home-page/chart-page/ng2chart-page/ng2chart-page.component';
 import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-page/google-chart-page.component';
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBOMQvUP42I2WI_70m32U_L1n10dblGezM'
     }),
-    ChartsModule
+    ChartsModule,
+    Ng2GoogleChartsModule
   ],
   providers: [AuthGuard, AuthService, ChatService],
   bootstrap: [AppComponent]
