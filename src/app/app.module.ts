@@ -1,4 +1,7 @@
 import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import * as highcharts from 'highcharts';
+
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
@@ -26,7 +29,9 @@ import { Ng2chartPageComponent } from './home-page/chart-page/ng2chart-page/ng2c
 import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-page/google-chart-page.component';
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
 
-declare var require: any;
+export function highchartsFactory() {
+  return highcharts;
+}
 
 @NgModule({
   declarations: [
@@ -57,9 +62,12 @@ declare var require: any;
       apiKey: 'AIzaSyBOMQvUP42I2WI_70m32U_L1n10dblGezM'
     }),
     ChartsModule,
-    ChartModule.forRoot(require('highcharts'))
+    ChartModule
   ],
-  providers: [AuthGuard, AuthService, ChatService],
+  providers: [AuthGuard, AuthService, ChatService, {
+    provide: HighchartsStatic,
+    useFactory: highchartsFactory
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
