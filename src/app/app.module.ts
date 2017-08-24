@@ -30,6 +30,7 @@ import { Ng2chartPageComponent } from './home-page/chart-page/ng2chart-page/ng2c
 import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-page/google-chart-page.component';
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
 
 export function highchartsFactory() {
   return highcharts;
