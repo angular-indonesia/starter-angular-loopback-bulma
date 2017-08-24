@@ -1,9 +1,126 @@
-<div class="columns is-mobile">
-  <div class="column is-half-mobile">
-    <div class="column is-half-mobile is-one-third-tablet is-one-quarter-desktop">
-      <div class="field-label is-normal">
-        <label class="label is-small">Biodata Profile</label>
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child">
+    </article>
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+</div>
+
+<div [ngStyle]="{'display': hiddenSuccess}">
+  <div class="notification is-primary">
+    <button class="delete" (click)="closeAlert()"></button>Success Input Data.
+  </div>
+</div>
+
+<div [ngStyle]="{'display': hiddenTable}">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+        </div>
+        <div class="tile is-parent is-11">
+          <article class="tile is-child box">
+
+            <a class="button is-info is-outlined" (click)="modalAdd()">Add Data</a>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Place Of Birth</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let datas of Datauser" (click)="listSelect(datas)">
+                  <th>
+                    <figure class="image is-128x128">
+                      <img src="{{loopbackPathDownload + datas.photoProfile}}">
+                    </figure>
+
+                  </th>
+                  <td>{{datas.fullName}}</td>
+                  <td>{{datas.email}}</td>
+                  <td>{{datas.address}}</td>
+                  <td>{{datas.placeOfBirth}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div [ngStyle]="{'display': hiddenData}">
+  <div class="notification is-primary">
+     Sorry no data, Empty list. <a class="button is-info is-outlined" style="margin-left: 60% !important;"
+      (click)="listAdd()">Add Data</a>
+  </div>
+</div>
+
+
+<div [ngClass]="displayModalEdit">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit Data</p>
+      <button class="delete" aria-label="close" (click)="closeEdit()"></button>
+    </header>
+    <section class="modal-card-body">
+      <label class="label is-small">Full Name</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Full Name" [(ngModel)]="fullNameEdit">
+      </div>
+
+      <label class="label is-small">Address</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Address" [(ngModel)]="addressEdit">
+      </div>
+
+      <label class="label is-small">Email</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Email" [(ngModel)]="emailEdit">
+      </div>
+
+      <!-- <label class="label is-small">Place Of Birthday</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Place Of Birthday" [(ngModel)]="placeBirthEdit">
+      </div>
+
+      <label class="label is-small">Date Of Birthday</label>
+      <div class="field-label is-normal">
+        <input class="input" type="date" placeholder="Date Of Birthday" [(ngModel)]="dateBirthEdit">
+      </div> -->
+
+      <label class="label is-small">No.Telephone</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="No.Telephone" [(ngModel)]="noPhoneEdit">
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="saveChange()">Save changes</button>
+      <button class="button" (click)="closeEdit()">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<div [ngClass]="displayModalAdd">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Data</p>
+      <button class="delete" aria-label="close" (click)="closeAdd()"></button>
+    </header>
+    <section class="modal-card-body">
       <label class="label is-small">Full Name</label>
       <div class="field-label is-normal">
         <input class="input" type="text" placeholder="Full Name" [(ngModel)]="fullName">
@@ -37,33 +154,24 @@
       <label class="label is-small">Photo Profile</label>
       <div class="file has-name is-fullwidth">
         <label class="file-label">
-            <input class="file-input" type="file" name="file[]" (change)="uploadProses($event)">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fa fa-upload"></i>
-              </span>
-              <span class="file-label">
-                Choose a file…
-              </span>
+          <input class="file-input" type="file" name="file[]" (change)="uploadProses($event)">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
             </span>
-            <span class="file-name">
-                {{ defaultFileTitle }}
+            <span class="file-label">
+              Choose a file…
             </span>
-          </label>
+          </span>
+          <span class="file-name">
+              {{ defaultFileTitle }}
+          </span>
+        </label>
       </div>
-
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <button class="button is-primary" (click)="createData()">
-               Upload
-              </button>
-          </div>
-
-        </div>
-      </div>
-
-
-    </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="createData()">Save changes</button>
+      <button class="button" (click)="closeAdd()">Cancel</button>
+    </footer>
   </div>
 </div>

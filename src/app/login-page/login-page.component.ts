@@ -1,18 +1,12 @@
-
 import { UserCredentialApi } from './../../shared/services/custom/UserCredential';
 import { Routes } from '@angular/router';
 import { DashboardPageComponent } from './../home-page/dashboard-page/dashboard-page.component';
-
 import { Component, OnInit } from '@angular/core';
 import { NgModel, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
-
-
-
 
 @Component({
   selector: 'app-login-page',
@@ -43,7 +37,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggle($event, idUser) {
+  toggle() {
 
     console.log(this.visibleS);
     this.visibleS = !this.visibleS;
@@ -58,7 +52,7 @@ export class LoginPageComponent implements OnInit {
         this.username,
         this.password);
         const data = {
-          username: this.username,
+          email: this.username,
           password: this.password
         };
         this.userCredentialApi.login(data)
@@ -74,7 +68,17 @@ export class LoginPageComponent implements OnInit {
           }, (error) => {
               this.visibleF = !this.visibleF;
               this.displayFailed = this.visibleF ? '' : 'none;';
+              setTimeout(() => {
+                    this.toggle();
+              }, 3000);
               console.log('failed');
+              console.log(error);
           });
+   }
+
+   doSignUp() {
+
+      this.router.navigate(['/signup']);
+
    }
 };

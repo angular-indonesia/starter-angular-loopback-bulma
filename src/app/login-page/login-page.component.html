@@ -1,11 +1,11 @@
-<div [ngStyle]="{'display':displaySuccess}">
+<div [ngStyle]="{'display':displaySuccess}" class="notif" >
   <div class="notification is-success">
     <button class="delete" (click)="toggle()"></button>
     Login Success
   </div>
 </div>
 
-<div [ngStyle]="{'display':displayFailed}">
+<div [ngStyle]="{'display':displayFailed}" class="notif">
   <div class="notification is-danger">
     <button class="delete" (click)="toggle()"></button>
     Wrong username or password
@@ -25,69 +25,71 @@
   </div>
 </div>
 
-<div class="tile is-ancestor">
-  <div class="tile is-vertical is-10">
-    <div class="tile">
-      <div class="tile is-parent is-vertical">
 
-      </div>
-      <div class="tile is-parent is-9">
-        <article class="tile is-child box">
- 
+<div style=" margin: auto; padding: 15%;">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-10">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
 
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label is-small">Email</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-            <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email" [(ngModel)]="username">
-              <span class="icon is-small is-left">
-                <i class="fa fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fa-check"></i>
-              </span>
-            </p>
-          </div>
-            </div>
-          </div>
+        </div>
+        <div class="tile is-parent is-9">
+          <article class="tile is-child box">
+  
 
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <label class="label">Password</label>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label is-small">Email</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="email" placeholder="Email" [(ngModel)]="username">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fa fa-check"></i>
+                </span>
+              </p>
             </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control  is-expanded has-icons-left">
-                  <input class="input" type="password" placeholder="Password" [(ngModel)]="password">
-                  <span class="icon is-small is-left">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </p>
               </div>
             </div>
-          </div>
 
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <!-- Left empty for spacing -->
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <button class="button is-primary" (click)="doLogin()">
-                    Sign in
-                  </button>
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Password</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control  is-expanded has-icons-left">
+                    <input class="input" type="password" placeholder="Password" [(ngModel)]="password">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                  </p>
                 </div>
-                  <div>
-                    <button class="button is-link">Forgot password?</button>
-                  </div>
               </div>
             </div>
-          </div>
-        </article>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" (click)="doLogin()">
+                      Sign in
+                    </button>
+                    <button class="button is-primary" (click)="doSignUp()">
+                      Sign up
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

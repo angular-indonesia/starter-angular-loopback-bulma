@@ -3,16 +3,18 @@
 declare var Object: any;
 export interface MapsInterface {
   "id"?: string;
-  "userID"?: string;
   "latitude"?: string;
   "longitude"?: string;
+  "userID"?: string;
+  "locationName"?: string;
 }
 
 export class Maps implements MapsInterface {
   "id": string;
-  "userID": string;
   "latitude": string;
   "longitude": string;
+  "userID": string;
+  "locationName": string;
   constructor(data?: MapsInterface) {
     Object.assign(this, data);
   }
@@ -49,16 +51,20 @@ export class Maps implements MapsInterface {
           name: 'id',
           type: 'string'
         },
-        "userID": {
-          name: 'userID',
-          type: 'string'
-        },
         "latitude": {
           name: 'latitude',
           type: 'string'
         },
         "longitude": {
           name: 'longitude',
+          type: 'string'
+        },
+        "userID": {
+          name: 'userID',
+          type: 'string'
+        },
+        "locationName": {
+          name: 'locationName',
           type: 'string'
         },
       },

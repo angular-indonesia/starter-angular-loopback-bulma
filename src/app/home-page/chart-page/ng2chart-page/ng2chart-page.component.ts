@@ -14,9 +14,8 @@ export class Ng2chartPageComponent implements OnInit {
 
   private todo: Todo = new Todo();
   private todoRef: FireLoopRef<Todo>;
-  private selectedRange = 'yearly';
+  private selectedRange = 'hourly';
   private sub: any;
-  private rt: RealTime;
 
   // NG2CHARTS Line
   public lineChartData: Array<any> = [];
@@ -64,9 +63,8 @@ export class Ng2chartPageComponent implements OnInit {
     responsive: true
   };
 
-  constructor(private realtime: RealTime) {
-    this.rt = realtime;
-    this.sub = this.rt.onReady().subscribe((status: string) => {
+  constructor(private rt: RealTime) {
+    this.rt.onReady().subscribe((status: string) => {
       this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
       const st: StatFilter = {
         range: this.selectedRange
@@ -81,15 +79,18 @@ export class Ng2chartPageComponent implements OnInit {
   }
 
   changeRange(val: string) {
+    this.lineChartData = Array<Todo>();
+    this.barChartData = Array<Todo>();
+    this.doughnutChartData = Array<Todo>();
+    this.pieChartData = Array<Todo>();
+
     this.selectedRange = val;
-    this.sub = this.rt.onReady().subscribe((status: string) => {
-      this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
-      const st: StatFilter = {
-        range: this.selectedRange
-      };
-      this.todoRef.stats( st ).subscribe((stats: any) => {
-        this.loadChart(stats);
-      });
+    this.todoRef = this.rt.FireLoop.ref<Todo>(Todo);
+    const st: StatFilter = {
+      range: this.selectedRange
+    };
+    this.todoRef.stats( st ).subscribe((stats: any) => {
+      this.loadChart(stats);
     });
   }
 
