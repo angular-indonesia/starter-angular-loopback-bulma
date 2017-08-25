@@ -57,6 +57,7 @@ import { TodoApi } from './services/custom/Todo';
 import { RoomchatApi } from './services/custom/Roomchat';
 import { ChatdetailApi } from './services/custom/Chatdetail';
 import { StorageUploadApi } from './services/custom/StorageUpload';
+import { BlogPostApi } from './services/custom/BlogPost';
 /**
 * @module SDKBrowserModule
 * @description
@@ -97,6 +98,7 @@ export class SDKBrowserModule {
         RoomchatApi,
         ChatdetailApi,
         StorageUploadApi,
+        BlogPostApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
