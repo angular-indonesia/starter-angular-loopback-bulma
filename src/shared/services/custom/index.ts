@@ -8,5 +8,6 @@ export * from './Todo';
 export * from './Roomchat';
 export * from './Chatdetail';
 export * from './StorageUpload';
+export * from './BlogPost';
 export * from './SDKModels';
 export * from './logger.service';
