@@ -9,6 +9,7 @@ import { Todo } from '../../models/Todo';
 import { Roomchat } from '../../models/Roomchat';
 import { Chatdetail } from '../../models/Chatdetail';
 import { StorageUpload } from '../../models/StorageUpload';
+import { BlogPost } from '../../models/BlogPost';
 
 export interface Models { [name: string]: any }
 
@@ -25,6 +26,7 @@ export class SDKModels {
     Roomchat: Roomchat,
     Chatdetail: Chatdetail,
     StorageUpload: StorageUpload,
+    BlogPost: BlogPost,
     
   };
 
