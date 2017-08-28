@@ -41,6 +41,7 @@ export class MapsPageComponent implements OnInit {
     locationTemp: any;
     longitudeTemp: any;
     latitudeTemp: any;
+    idTemp: any;
     userIDTemp: any;
     id: any;
     displaySuccess: any;
@@ -94,7 +95,7 @@ export class MapsPageComponent implements OnInit {
 
   toggle($event, idUser, locationName, longitude, latitude, userID) {
     this.findMarker();
-    this.id = idUser;
+    this.idTemp = idUser;
     this.locationTemp = locationName;
     this.longitudeTemp = longitude;
     this.latitudeTemp = latitude;
@@ -142,18 +143,23 @@ export class MapsPageComponent implements OnInit {
   }
 
   saveChange() {
-        console.log('jalan ke save');
         this.mapsApi.updateAll(
-                { userID: this.id },
+                { id: this.idTemp },
                 {
                   latitude: this.newPlaceLat,
                   longitude: this.newPlaceLng,
                   locationName: this.locationTemp,
+                  userID: this.userIDTemp,
                 },
               ).subscribe(value => {
-                // this.events.publish('post:liked', 'liked');
-                console.log('save');
               }, error => console.log(error));
+              this.visible = !this.visible;
+              this.displayModal = this.visible ? 'modal is-active' : 'modal';
+              this.visibleS = !this.visibleS;
+              this.displaySuccess = this.visibleS ? '' : 'none;';
+              setTimeout(() => {
+                    this.toggleSuccess();
+              }, 3000);
   }
 
   insertMapsClick($event) {
@@ -190,6 +196,7 @@ export class MapsPageComponent implements OnInit {
     console.log('test');
     // this.todoRef.remove(todo).subscribe();
   }
+  
 
   insertMaps() {
         console.log('jalan ke insert');
