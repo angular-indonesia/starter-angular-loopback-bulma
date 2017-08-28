@@ -52,11 +52,11 @@ import { UserPhotoApi } from './services/custom/UserPhoto';
 import { UserCredentialApi } from './services/custom/UserCredential';
 import { StorageSimpleUploadApi } from './services/custom/StorageSimpleUpload';
 import { ProfileDataApi } from './services/custom/ProfileData';
-import { MapsApi } from './services/custom/Maps';
 import { TodoApi } from './services/custom/Todo';
 import { RoomchatApi } from './services/custom/Roomchat';
 import { ChatdetailApi } from './services/custom/Chatdetail';
 import { StorageUploadApi } from './services/custom/StorageUpload';
+import { MapApi } from './services/custom/Map';
 /**
 * @module SDKBrowserModule
 * @description
@@ -92,11 +92,11 @@ export class SDKBrowserModule {
         UserCredentialApi,
         StorageSimpleUploadApi,
         ProfileDataApi,
-        MapsApi,
         TodoApi,
         RoomchatApi,
         ChatdetailApi,
         StorageUploadApi,
+        MapApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
