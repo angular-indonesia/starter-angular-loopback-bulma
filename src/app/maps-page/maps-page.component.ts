@@ -25,7 +25,6 @@ export class MapsPageComponent implements OnInit {
     // public todos: Map[] = new Array<Map>();
     public todos: any;
 
-    title: String = 'My first AGM project';
     lat: Number = -6.2841462;
     lng: Number = 106.7264780;
     visible: any;
@@ -56,17 +55,7 @@ export class MapsPageComponent implements OnInit {
 
     this.rt.onReady().subscribe((status: string) => {
       this.todoRef = this.rt.FireLoop.ref<Map>(Map);
-      // console.log(this.todoRef, 'isi ref');
-      // const st: StatFilter = {
-      //   range: this.selectedRange
-      // };
-      // this.todoRef.stats( ).subscribe((stats: any) => {
-      //   // this.loadChart(stats);
-      //   console.log(stats);
-      // });
-
       this.todoRef.on('change').subscribe((todos: any) => {
-        // this.todos = todos;
         console.log(todos, 'isi todos');
         this.todos = todos;
         for (let i = 0; i < todos.length; i++) {
@@ -75,7 +64,6 @@ export class MapsPageComponent implements OnInit {
             this.todos[i].longitude = this.lngNumber;
             this.todos[i].latitude = this.latNumber;
           }
-
       });
     });
 
@@ -106,8 +94,6 @@ export class MapsPageComponent implements OnInit {
 
   toggle($event, idUser, locationName, longitude, latitude, userID) {
     this.findMarker();
-    // this.newPlaceLat = $event.coords.lat;
-    // this.newPlaceLng = $event.coords.lng;
     this.id = idUser;
     this.locationTemp = locationName;
     this.longitudeTemp = longitude;
@@ -173,19 +159,17 @@ export class MapsPageComponent implements OnInit {
   insertMapsClick($event) {
         console.log($event.coords.lat);
         console.log($event.coords.lng);
-        // this.item.userID = this.insertUser;
-        // this.item.latitude = $event.coords.lat;
-        // this.item.longitude = $event.coords.lng;
-        // this.item.locationName = this.insertLocation;
-        // this.mapsApi.create(this.item).subscribe(() =>
-        //     console.log('Save Sukses')
-        // );
+        this.item.userID = this.insertUser;
+        this.item.latitude = $event.coords.lat;
+        this.item.longitude = $event.coords.lng;
+        this.item.locationName = this.insertLocation;
+        this.mapsApi.create(this.item).subscribe(() =>
+            console.log('Save Sukses')
+        );
         this.visibleS = !this.visibleS;
         this.displaySuccess = this.visibleS ? '' : 'none;';
         setTimeout(() => {
               this.toggleSuccess();
-              location.reload();
-//              this.router.navigate(['/home/blog']);
         }, 3000);
 
   }
@@ -195,6 +179,11 @@ export class MapsPageComponent implements OnInit {
     this.item.latitude = $event.coords.lat;
     this.item.longitude = $event.coords.lng;
     this.todoRef.create(this.item).subscribe(() => this.item = new Map(), err => console.log(err));
+    this.visibleS = !this.visibleS;
+    this.displaySuccess = this.visibleS ? '' : 'none;';
+        setTimeout(() => {
+              this.toggleSuccess();
+        }, 3000);
   }
 
   remove($event, todo: Map): void {
@@ -204,10 +193,10 @@ export class MapsPageComponent implements OnInit {
 
   insertMaps() {
         console.log('jalan ke insert');
-        // this.item.userID = this.insertUser;
-        // this.item.latitude = this.insertLatitude;
-        // this.item.longitude = this.insertLongitude;
-        // this.item.locationName = this.insertLocation;
+        this.item.userID = this.insertUser;
+        this.item.latitude = this.insertLatitude;
+        this.item.longitude = this.insertLongitude;
+        this.item.locationName = this.insertLocation;
         this.mapsApi.create(this.item).subscribe(() =>
             console.log('Save Sukses')
         );
