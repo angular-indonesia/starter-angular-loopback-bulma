@@ -26,7 +26,7 @@
       <div class="tile is-parent is-11">
         <article class="tile is-child box">
             <agm-map [latitude]="-6.2841462" [longitude]="106.7264780" (mapClick)="create($event)" >
-              <agm-marker *ngFor="let m of todos" [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="true" (markerClick)="toggle($event,1,m.locationName, m.longitude, m.latitude, m.userID)"></agm-marker>
+              <agm-marker *ngFor="let m of todos" [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="true" (markerClick)="toggle($event, m.id, m.locationName, m.longitude, m.latitude, m.userID)"></agm-marker>
             </agm-map>
             <div>
               &nbsp;
@@ -57,7 +57,7 @@
       Location : <input class="input" type="text" placeholder="location" [(ngModel)]="locationTemp"> <br>
       longitude: <input class="input" type="text" placeholder="location" [(ngModel)]="longitudeTemp"> <br> 
       latitude:  <input class="input" type="text" placeholder="location" [(ngModel)]="latitudeTemp"> <br> 
-
+                 <input class="input" type="hidden" placeholder="location" [(ngModel)]="idTemp"> <br> 
     </section>
     <footer class="modal-card-foot">
       <button class="button is-success" (click)="saveChange()">Save changes</button>
