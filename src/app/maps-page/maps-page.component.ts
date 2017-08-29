@@ -1,8 +1,13 @@
-import { Maps } from './../../shared/models/Maps';
-import { MapsApi } from './../../shared/services/custom/Maps';
+import { Todo } from './../../shared/models/Todo';
+import { StatFilter } from './../../shared/models/BaseModels';
+import { RealTime } from './../../shared/services/core/real.time';
+import { FireLoopRef } from './../../shared/models/FireLoopRef';
+import { Map } from './../../shared/models/Map';
+import { MapApi } from './../../shared/services/custom/Map';
 import { Component, OnInit } from '@angular/core';
 import { } from 'googlemaps';
 import { MapsAPILoader, AgmCoreModule, AgmInfoWindow } from '@agm/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-maps-page',
@@ -11,25 +16,17 @@ import { MapsAPILoader, AgmCoreModule, AgmInfoWindow } from '@agm/core';
 })
 export class MapsPageComponent implements OnInit {
 
-    public item: Maps = new Maps();
+    public item: Map = new Map();
     public insertLocation: any;
     public insertLongitude: any;
     public insertLatitude: any;
     public insertUser: any;
+    public todoRef: FireLoopRef<Map>;
+    // public todos: Map[] = new Array<Map>();
+    public todos: any;
 
-    title: String = 'My first AGM project';
-    lat: number = -6.2841462;
+    lat: Number = -6.2841462;
     lng: Number = 106.7264780;
-    latJakarta: number = -6.206519;
-    lngJakarta: Number = 106.850789;
-    latTangerang: number = -6.2841462;
-    lngTangerang: Number = 106.7264780;
-    latBekasi: number = -6.238039;
-    lngBekasi: Number = 106.975628;
-    latBandung: number = -6.918441;
-    lngBandung: Number = 107.612941;
-    latBogor: number = -6.599963;
-    lngBogor: Number = 106.805621;
     visible: any;
     visibleInsertModal: any;
     displayModal: any;
@@ -44,14 +41,33 @@ export class MapsPageComponent implements OnInit {
     locationTemp: any;
     longitudeTemp: any;
     latitudeTemp: any;
+    idTemp: any;
     userIDTemp: any;
     id: any;
     displaySuccess: any;
     visibleS: any;
 
+
   constructor(
-    public mapsApi: MapsApi,
+    public mapsApi: MapApi,
+    public router: Router,
+    private rt: RealTime
   ) {
+
+    this.rt.onReady().subscribe((status: string) => {
+      this.todoRef = this.rt.FireLoop.ref<Map>(Map);
+      this.todoRef.on('change').subscribe((todos: any) => {
+        console.log(todos, 'isi todos');
+        this.todos = todos;
+        for (let i = 0; i < todos.length; i++) {
+            this.latNumber = Number(todos[i].latitude);
+            this.lngNumber = Number(todos[i].longitude);
+            this.todos[i].longitude = this.lngNumber;
+            this.todos[i].latitude = this.latNumber;
+          }
+      });
+    });
+
     this.displayModal = 'modal';
     this.displayInsertModal = 'modal';
     this.visible = false;
@@ -79,9 +95,7 @@ export class MapsPageComponent implements OnInit {
 
   toggle($event, idUser, locationName, longitude, latitude, userID) {
     this.findMarker();
-    // this.newPlaceLat = $event.coords.lat;
-    // this.newPlaceLng = $event.coords.lng;
-    this.id = idUser;
+    this.idTemp = idUser;
     this.locationTemp = locationName;
     this.longitudeTemp = longitude;
     this.latitudeTemp = latitude;
@@ -107,7 +121,6 @@ export class MapsPageComponent implements OnInit {
   findMarker() {
           console.log('test');
           this.mapsApi.find({
-            order: 'feedId DESC'
           }).subscribe(r => {
 
             this.marker = r;
@@ -130,19 +143,60 @@ export class MapsPageComponent implements OnInit {
   }
 
   saveChange() {
-        console.log('jalan ke save');
         this.mapsApi.updateAll(
-                { userID: this.id },
+                { id: this.idTemp },
                 {
                   latitude: this.newPlaceLat,
                   longitude: this.newPlaceLng,
                   locationName: this.locationTemp,
+                  userID: this.userIDTemp,
                 },
               ).subscribe(value => {
-                // this.events.publish('post:liked', 'liked');
-                console.log('save');
               }, error => console.log(error));
+              this.visible = !this.visible;
+              this.displayModal = this.visible ? 'modal is-active' : 'modal';
+              this.visibleS = !this.visibleS;
+              this.displaySuccess = this.visibleS ? '' : 'none;';
+              setTimeout(() => {
+                    this.toggleSuccess();
+              }, 3000);
   }
+
+  insertMapsClick($event) {
+        console.log($event.coords.lat);
+        console.log($event.coords.lng);
+        this.item.userID = this.insertUser;
+        this.item.latitude = $event.coords.lat;
+        this.item.longitude = $event.coords.lng;
+        this.item.locationName = this.insertLocation;
+        this.mapsApi.create(this.item).subscribe(() =>
+            console.log('Save Sukses')
+        );
+        this.visibleS = !this.visibleS;
+        this.displaySuccess = this.visibleS ? '' : 'none;';
+        setTimeout(() => {
+              this.toggleSuccess();
+        }, 3000);
+
+  }
+
+  create($event): void {
+    console.log('insert maps', $event.coords.lat);
+    this.item.latitude = $event.coords.lat;
+    this.item.longitude = $event.coords.lng;
+    this.todoRef.create(this.item).subscribe(() => this.item = new Map(), err => console.log(err));
+    this.visibleS = !this.visibleS;
+    this.displaySuccess = this.visibleS ? '' : 'none;';
+        setTimeout(() => {
+              this.toggleSuccess();
+        }, 3000);
+  }
+
+  remove($event, todo: Map): void {
+    console.log('test');
+    // this.todoRef.remove(todo).subscribe();
+  }
+  
 
   insertMaps() {
         console.log('jalan ke insert');
