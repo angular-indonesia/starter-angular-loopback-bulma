@@ -42,6 +42,7 @@
                 <tr *ngFor="let datas of Datauser" (click)="listSelect(datas)">
                   <th>
                     <figure class="image is-128x128">
+                      <img src="{{loopbackPathDownload + datas.folder + '/download/' + datas.photoprofile}}">
                     </figure>
 
                   </th>
