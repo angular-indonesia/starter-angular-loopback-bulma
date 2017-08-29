@@ -206,6 +206,15 @@ export class CrudPageComponent implements OnInit {
       }
     }).subscribe((result) => {
       console.log(result, 'Data');
+      this.path = result;
+      console.log(this.path, 'PATH');
+      this.pathLength = this.path.length;
+
+      for (let i = 0; i > this.pathLength; i++) {
+        this.pathDynamic = this.path.folder;
+        console.log(this.pathDynamic, 'PATH DYNAMIC');
+      }
+
       this.Datauser = result;
       console.log(this.Datauser, 'Datax');
       this.DatauserLength = this.Datauser.length;
@@ -227,8 +236,14 @@ export class CrudPageComponent implements OnInit {
 
     console.log(datas, 'Data Klik');
     this.idEdit = datas.id;
+    this.fullNameEdit = datas.fullname;
     this.addressEdit = datas.address;
     this.emailEdit = datas.email;
+    this.placeBirthEdit = datas.placeofbirth;
+    this.dateBirthEdit = datas.birthdate;
+    this.folder = datas.folder;
+    this.noPhoneEdit = datas.nophone;
+    this.photoProfile = datas.photoprofile;
   }
 
   public modalAdd() {
@@ -250,9 +265,65 @@ export class CrudPageComponent implements OnInit {
     this.hiddenSuccess = 'none';
   }
 
+  public saveChange(datas) {
+    console.log(this.idEdit, 'Data');
+    const editId = datas;
+    console.log(this.folder, 'Folder');
+    console.log(this.nameFile, 'NAMA FOTO EDIT');
 
+    if (this.nameFile !== '') {
+      const dataEdit = {
+        fullname: this.fullNameEdit,
+        address: this.addressEdit,
+        email: this.emailEdit,
+        placeofbirth: this.placeBirthEdit,
+        birthdate: this.dateBirthEdit,
+        nophone: this.noPhoneEdit,
+        folder: this.folder,
+        photoprofile: this.nameFile
+      };
 
+      this.profileDataApi.findById(this.idEdit).subscribe((result) => {
+        const results = result;
+        this.profileDataApi.updateAttributes(this.idEdit, dataEdit).subscribe((record) => {
+          console.log(record);
+          this.editPhoto(this.folder);
+        });
       });
+    } else {
+      const dataEdits = {
+        fullname: this.fullNameEdit,
+        address: this.addressEdit,
+        email: this.emailEdit,
+        placeofbirth: this.placeBirthEdit,
+        birthdate: this.dateBirthEdit,
+        nophone: this.noPhoneEdit,
+        folder: this.folder,
+        photoprofile: this.photoProfile
+      };
+
+      this.profileDataApi.findById(this.idEdit).subscribe((result) => {
+        const results = result;
+        this.profileDataApi.updateAttributes(this.idEdit, dataEdits).subscribe((record) => {
+          console.log(record, 'Cuy');
+
+          this.fullNameEdit = '';
+          this.addressEdit = '';
+          this.emailEdit = '';
+          this.placeBirthEdit = '';
+          this.dateBirthEdit = '';
+          this.noPhoneEdit = '';
+          this.nameFile = '';
+
+          this.hiddenSuccess = 'block';
+          this.closedTimming();
+
+          this.closeEdit();
+          this.ngOnInit();
+
+        });
+      });
+    }
   }
 
   public closedTimming() {
