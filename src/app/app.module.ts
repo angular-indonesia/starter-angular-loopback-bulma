@@ -57,6 +57,7 @@ export function highchartsFactory() {
     GoogleChartPageComponent,
     HighchartsPageComponent,
     NotFoundPageComponent,
+    FileUploadMasterPageComponent
   ],
   imports: [
     BrowserModule,
