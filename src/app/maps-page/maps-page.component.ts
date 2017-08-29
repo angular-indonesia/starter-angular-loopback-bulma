@@ -1,9 +1,10 @@
+import { MapApi } from './../../shared/services/custom/Map';
+import { Map } from './../../shared/models/Map';
 import { Todo } from './../../shared/models/Todo';
 import { StatFilter } from './../../shared/models/BaseModels';
 import { RealTime } from './../../shared/services/core/real.time';
 import { FireLoopRef } from './../../shared/models/FireLoopRef';
-import { Map } from './../../shared/models/Map';
-import { MapApi } from './../../shared/services/custom/Map';
+
 import { Component, OnInit } from '@angular/core';
 import { } from 'googlemaps';
 import { MapsAPILoader, AgmCoreModule, AgmInfoWindow } from '@agm/core';
@@ -49,7 +50,7 @@ export class MapsPageComponent implements OnInit {
 
 
   constructor(
-    public mapsApi: MapApi,
+    public mapApi: MapApi,
     public router: Router,
     private rt: RealTime
   ) {
@@ -120,7 +121,7 @@ export class MapsPageComponent implements OnInit {
 
   findMarker() {
           console.log('test');
-          this.mapsApi.find({
+          this.mapApi.find({
           }).subscribe(r => {
 
             this.marker = r;
@@ -143,7 +144,7 @@ export class MapsPageComponent implements OnInit {
   }
 
   saveChange() {
-        this.mapsApi.updateAll(
+        this.mapApi.updateAll(
                 { id: this.idTemp },
                 {
                   latitude: this.newPlaceLat,
@@ -165,11 +166,11 @@ export class MapsPageComponent implements OnInit {
   insertMapsClick($event) {
         console.log($event.coords.lat);
         console.log($event.coords.lng);
-        this.item.userID = this.insertUser;
+        this.item.userid = this.insertUser;
         this.item.latitude = $event.coords.lat;
         this.item.longitude = $event.coords.lng;
-        this.item.locationName = this.insertLocation;
-        this.mapsApi.create(this.item).subscribe(() =>
+        this.item.locationname = this.insertLocation;
+        this.mapApi.create(this.item).subscribe(() =>
             console.log('Save Sukses')
         );
         this.visibleS = !this.visibleS;
@@ -196,15 +197,14 @@ export class MapsPageComponent implements OnInit {
     console.log('test');
     // this.todoRef.remove(todo).subscribe();
   }
-  
 
   insertMaps() {
         console.log('jalan ke insert');
-        this.item.userID = this.insertUser;
+        this.item.userid = this.insertUser;
         this.item.latitude = this.insertLatitude;
         this.item.longitude = this.insertLongitude;
-        this.item.locationName = this.insertLocation;
-        this.mapsApi.create(this.item).subscribe(() =>
+        this.item.locationname = this.insertLocation;
+        this.mapApi.create(this.item).subscribe(() =>
             console.log('Save Sukses')
         );
         this.toggleInsert();
