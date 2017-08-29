@@ -260,4 +260,45 @@ export class CrudPageComponent implements OnInit {
     }, 3000);
   }
 
+  public editPhoto(event) {
+    console.log(event);
+    if (this.nameFile === '') {
+      console.log('Sorry Files Is Empty');
+    } else {
+
+      const filesToUpload = <Array<File>>this.eventPhoto.target.files;
+      const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + this.folder + '/upload';
+      this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((results) => {
+        console.log(JSON.stringify(results));
+        console.log('Sukses Upload');
+
+
+        this.fullNameEdit = '';
+        this.addressEdit = '';
+        this.emailEdit = '';
+        this.placeBirthEdit = '';
+        this.dateBirthEdit = '';
+        this.noPhoneEdit = '';
+        this.nameFile = '';
+
+        this.hiddenSuccess = 'block';
+        this.closedTimming();
+
+        this.closeEdit();
+        this.ngOnInit();
+
+      }, (error) => {
+        console.error(error);
+      });
+    }
+  }
+
+  public makeid() {
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    for (let i = 0; i < 12; i++) {
+      const text = possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+    }
+  }
+
 }
