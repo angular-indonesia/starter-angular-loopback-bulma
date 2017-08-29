@@ -1,5 +1,4 @@
 import { StorageSimpleUploadApi } from './../../../shared/services/custom/StorageSimpleUpload';
-import { ProfileDataApi } from './../../../shared/services/custom/ProfileData';
 import { LoopBackConfig } from './../../../shared/lb.config';
 import { Component, OnInit } from '@angular/core';
 import { UUID } from 'angular2-uuid';
@@ -18,7 +17,6 @@ export class CrudPageComponent implements OnInit {
   public dateBirth: any;
   public noPhone: any;
   public folderName: any;
-
   public idEdit: any;
   public fullNameEdit: any;
   public addressEdit: any;
@@ -26,13 +24,10 @@ export class CrudPageComponent implements OnInit {
   public placeBirthEdit: any;
   public dateBirthEdit: any;
   public noPhoneEdit: any;
-
   public nameFile: any;
   public defaultFileTitle: any;
   public loopbackPathDownload: string;
   public eventPhoto: any;
-  // public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
-
   public Datauser: any;
   public DatauserLength: any;
   public hiddenData: String = 'none';
@@ -44,7 +39,6 @@ export class CrudPageComponent implements OnInit {
   public displayModalAdd: any;
   public visibleModal: any;
   constructor(
-    public profileDataApi: ProfileDataApi,
     public storageCustom: StorageSimpleUploadApi
   ) {
     this.displayModalEdit = 'modal';
@@ -76,12 +70,10 @@ export class CrudPageComponent implements OnInit {
     this.eventPhoto = event;
   }
 
-  public uploadFoto() {
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
 
-      this.folderName = 'Profil';
       const newContainer = {
         'name': this.folderName
       };
@@ -118,8 +110,6 @@ export class CrudPageComponent implements OnInit {
   }
 
   public createData() {
-    this.folderName = 'Profil';
-
     this.profileDataApi.create({
       fullName: this.fullName,
       address: this.address,
@@ -132,7 +122,6 @@ export class CrudPageComponent implements OnInit {
     }).subscribe((results) => {
       console.log('Sukses');
 
-      this.uploadFoto();
 
     }, (error) => {
       console.log(error);
@@ -169,7 +158,6 @@ export class CrudPageComponent implements OnInit {
       console.log(result, 'Data');
       this.Datauser = result;
       console.log(this.Datauser, 'Datax');
-      this.loopbackPathDownload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + 'Profil' + '/download/';
       this.DatauserLength = this.Datauser.length;
       console.log(this.DatauserLength);
 
@@ -189,12 +177,8 @@ export class CrudPageComponent implements OnInit {
 
     console.log(datas, 'Data Klik');
     this.idEdit = datas.id;
-    this.fullNameEdit = datas.fullName;
     this.addressEdit = datas.address;
     this.emailEdit = datas.email;
-    this.placeBirthEdit = datas.placeOfBirth;
-    this.dateBirthEdit = datas.birthDate;
-    this.noPhoneEdit = datas.noPhone;
   }
 
   public modalAdd() {
@@ -216,24 +200,8 @@ export class CrudPageComponent implements OnInit {
     this.hiddenSuccess = 'none';
   }
 
-  public saveChange(idEdit) {
-    console.log(idEdit, 'ID Edit');
-    const editId = idEdit;
 
-    const dataEdit = {
-      fullName: this.fullNameEdit,
-      address: this.addressEdit,
-      email: this.emailEdit,
-      placeOfBirth: this.placeBirthEdit,
-      birthDate: this.dateBirthEdit,
-      noPhone: this.noPhoneEdit
-    };
 
-    this.profileDataApi.updateAttributes(
-      { id: editId },
-      { data: dataEdit },
-      function (err, info) {
-        console.log(err);
       });
   }
 
