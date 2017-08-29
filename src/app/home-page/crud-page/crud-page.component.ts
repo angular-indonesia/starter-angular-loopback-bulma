@@ -199,6 +199,7 @@ export class CrudPageComponent implements OnInit {
   }
 
   public loadData() {
+
     console.log('Data');
     this.profileDataApi.find({
       where: {
@@ -217,6 +218,7 @@ export class CrudPageComponent implements OnInit {
 
       this.Datauser = result;
       console.log(this.Datauser, 'Datax');
+      this.loopbackPathDownload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/';
       this.DatauserLength = this.Datauser.length;
       console.log(this.DatauserLength);
 
