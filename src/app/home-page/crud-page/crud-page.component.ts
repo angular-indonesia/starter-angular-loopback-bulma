@@ -78,10 +78,49 @@ export class CrudPageComponent implements OnInit {
     this.eventPhoto = event;
   }
 
+  public prosesPhoto() {
+    this.folderName = this.fullName;
+    const newContainer = {
+      'name': this.folderName
+    };
+
+    this.storageCustom.createContainer(newContainer)
+      .subscribe((result) => {
+        console.log('Sukses Create Container');
+        const filesToUpload = <Array<File>>this.eventPhoto.target.files;
+        const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + this.folderName + '/upload';
+        this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((results) => {
+          console.log(JSON.stringify(results));
+          console.log('Sukses Upload');
+
+
+          this.fullName = '';
+          this.address = '';
+          this.email = '';
+          this.placeBirth = '';
+          this.dateBirth = '';
+          this.noPhone = '';
+          this.nameFile = '';
+
+          this.hiddenSuccess = 'block';
+          this.closedTimming();
+
+          this.closeAdd();
+          this.ngOnInit();
+
+        }, (error) => {
+          console.error(error);
+        });
+      });
+  }
+
+  public uploadFoto(event) {
+    console.log(event, 'EVENT');
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
 
+      this.folderName = event;
       const newContainer = {
         'name': this.folderName
       };
@@ -118,6 +157,8 @@ export class CrudPageComponent implements OnInit {
   }
 
   public createData() {
+    this.folderName = this.fullName + this.makeid().toString();
+    console.log(this.folderName, 'FOLDER');
     this.profileDataApi.create({
       fullName: this.fullName,
       address: this.address,
