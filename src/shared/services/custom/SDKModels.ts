@@ -4,11 +4,11 @@ import { UserPhoto } from '../../models/UserPhoto';
 import { UserCredential } from '../../models/UserCredential';
 import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
 import { ProfileData } from '../../models/ProfileData';
-import { Maps } from '../../models/Maps';
 import { Todo } from '../../models/Todo';
 import { Roomchat } from '../../models/Roomchat';
 import { Chatdetail } from '../../models/Chatdetail';
 import { StorageUpload } from '../../models/StorageUpload';
+import { Map } from '../../models/Map';
 
 export interface Models { [name: string]: any }
 
@@ -20,11 +20,11 @@ export class SDKModels {
     UserCredential: UserCredential,
     StorageSimpleUpload: StorageSimpleUpload,
     ProfileData: ProfileData,
-    Maps: Maps,
     Todo: Todo,
     Roomchat: Roomchat,
     Chatdetail: Chatdetail,
     StorageUpload: StorageUpload,
+    Map: Map,
     
   };
 

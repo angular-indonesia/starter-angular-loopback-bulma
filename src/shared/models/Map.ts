@@ -1,38 +1,38 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface MapsInterface {
-  "id"?: string;
-  "latitude"?: string;
-  "longitude"?: string;
+export interface MapInterface {
   "userID"?: string;
   "locationName"?: string;
+  "longitude"?: string;
+  "latitude"?: string;
+  "id"?: number;
 }
 
-export class Maps implements MapsInterface {
-  "id": string;
-  "latitude": string;
-  "longitude": string;
+export class Map implements MapInterface {
   "userID": string;
   "locationName": string;
-  constructor(data?: MapsInterface) {
+  "longitude": string;
+  "latitude": string;
+  "id": number;
+  constructor(data?: MapInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Maps`.
+   * i.e. `Map`.
    */
   public static getModelName() {
-    return "Maps";
+    return "Map";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of Maps for dynamic purposes.
+  * This method creates an instance of Map for dynamic purposes.
   **/
-  public static factory(data: MapsInterface): Maps{
-    return new Maps(data);
+  public static factory(data: MapInterface): Map{
+    return new Map(data);
   }
   /**
   * @method getModelDefinition
@@ -43,22 +43,10 @@ export class Maps implements MapsInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'Maps',
+      name: 'Map',
       plural: 'Maps',
       path: 'Maps',
       properties: {
-        "id": {
-          name: 'id',
-          type: 'string'
-        },
-        "latitude": {
-          name: 'latitude',
-          type: 'string'
-        },
-        "longitude": {
-          name: 'longitude',
-          type: 'string'
-        },
         "userID": {
           name: 'userID',
           type: 'string'
@@ -66,6 +54,18 @@ export class Maps implements MapsInterface {
         "locationName": {
           name: 'locationName',
           type: 'string'
+        },
+        "longitude": {
+          name: 'longitude',
+          type: 'string'
+        },
+        "latitude": {
+          name: 'latitude',
+          type: 'string'
+        },
+        "id": {
+          name: 'id',
+          type: 'number'
         },
       },
       relations: {
