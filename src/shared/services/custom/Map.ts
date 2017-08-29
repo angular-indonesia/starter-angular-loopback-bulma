@@ -10,15 +10,15 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { Maps } from '../../models/Maps';
+import { Map } from '../../models/Map';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `Maps` model.
+ * Api services for the `Map` model.
  */
 @Injectable()
-export class MapsApi extends BaseLoopBackApi {
+export class MapApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -44,13 +44,13 @@ export class MapsApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Maps` object.)
+   * This usually means the response is a `Map` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/maps";
+    "/Maps";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -63,7 +63,7 @@ export class MapsApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id maps id
+   * @param {any} id Map id
    *
    * @param {object} data Request data.
    *
@@ -75,13 +75,13 @@ export class MapsApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Maps` object.)
+   * This usually means the response is a `Map` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/maps/:id";
+    "/Maps/:id";
     let _routeParams: any = {
       id: id
     };
@@ -95,9 +95,9 @@ export class MapsApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Maps`.
+   * i.e. `Map`.
    */
   public getModelName() {
-    return "Maps";
+    return "Map";
   }
 }
