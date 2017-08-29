@@ -171,6 +171,7 @@ export class CrudPageComponent implements OnInit {
     }).subscribe((results) => {
       console.log('Sukses');
 
+      this.uploadFoto(this.folderName);
 
     }, (error) => {
       console.log(error);
