@@ -18,6 +18,7 @@ export class CrudPageComponent implements OnInit {
   public dateBirth: any;
   public noPhone: any;
   public folderName: any;
+  public folder: any;
   public idEdit: any;
   public fullNameEdit: any;
   public addressEdit: any;
@@ -25,10 +26,15 @@ export class CrudPageComponent implements OnInit {
   public placeBirthEdit: any;
   public dateBirthEdit: any;
   public noPhoneEdit: any;
+  public photoEdit: any;
+  public photoProfile: any;
   public nameFile: any;
   public defaultFileTitle: any;
   public loopbackPathDownload: string;
   public eventPhoto: any;
+  public path: any;
+  public pathLength: any;
+  public pathDynamic: any;
   public Datauser: any;
   public DatauserLength: any;
   public hiddenData: String = 'none';
@@ -40,6 +46,7 @@ export class CrudPageComponent implements OnInit {
   public displayModalAdd: any;
   public visibleModal: any;
   constructor(
+    public profileDataApi: ProfiledataApi,
     public storageCustom: StorageSimpleUploadApi
   ) {
     this.displayModalEdit = 'modal';
