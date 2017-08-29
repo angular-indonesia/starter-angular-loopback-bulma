@@ -32,21 +32,10 @@
             </a>
           </li>
         </ul>
-        <a [routerLink]="['/home/fileuploadmaster']" routerLinkActive="active" class="item"  (click)="displayFileUpload()">
+        <a [routerLink]="['/home/fileuploadmaster']" routerLinkActive="active" class="item" >
           <span class="icon"><i class="fa fa-line-chart"></i></span><span class="name">Upload File</span>
         </a>
-        <ul class="menu-list" [ngStyle]="{'display': displayUpload}">
-          <li>
-            <a [routerLink]="['/home/fileupload']" routerLinkActive="active" class="child-list">
-              <span class="name">Simple Upload</span>
-            </a>
-          </li>
-          <li>
-            <a [routerLink]="['/home/fileuploadadvence']" routerLinkActive="active" class="child-list">
-              <span class="name">Advanced Upload</span>
-            </a>
-          </li>
-        </ul>
+        
         <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
           <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
         </a>
