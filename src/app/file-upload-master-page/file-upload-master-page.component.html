@@ -1,45 +1,166 @@
-<table class="table is-striped" style="width: 80% !important;">
-    <thead>
-        <tr>
-            <th>Number</th>
-            <th>Directory</th>
-            <th>Updated Date</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+<div>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <article class="tile is-child">
+            </article>
+        </div>
+        <div class="tile is-parent">
+        </div>
+        <div class="tile is-parent">
+        </div>
+        <div class="tile is-parent">
+        </div>
+    </div>
+    <div [ngStyle]="{'display':displayFolder}">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-9">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                    </div>
+                    <div class="tile is-parent is-11">
 
-    <tbody *ngFor="let a of itemContainer; let i = index">
-        <tr>
-            <th>{{ i+1 }}</th>
-            <td><a>{{a.name}}</a>
-            </td>
-            <td>{{a.mtime}}</td>
-            <td><a (click)="deleteContainer(a.name)">Delete</a> <span></span> <a (click)="getFileContainer(a.name,i)">Open</a></td>
-        </tr>
-        <tr >
-            <td colspan="4" >
-                <table class="table is-bordered" style="width: 60% !important;">
-                    <thead >
-                        <tr  *ngIf="itemFileContainer[i]?.length > 0">
-                            <th>Number</th>
-                            <th>Directory</th>
-                            <th>Updated Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                        <article class="tile is-child box">
+                            <a class="button is-primary" [routerLink]="['/home/fileupload']" >Add Single Upload</a>
+                             <a class="button is-primary"  [routerLink]="['/home/fileuploadadvence']" >Add Multiple Upload</a>
+                            <table class="table is-striped" style="width: 100% !important;">
+                                <thead>
+                                    <tr>
 
-                    <tbody >
-                        <tr *ngFor="let b of itemFileContainer[i]; let c = index">
+                                        <th>Directory</th>
+                                        <th>Updated Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
 
-                            <th>{{ c+1 }}</th>
-                            <td><a>{{b.name}}</a>
-                            </td>
-                            <td>{{b.mtime}}</td>
-                            <td><a>Update</a> <span></span> <a>Open</a> <a (click)="deleteFileContainer(b.container,b.name,i)">Delete</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-      
-    </tbody>
-</table>
+                                <tbody *ngFor="let a of itemContainer; let i = index">
+                                    <tr>
+                                        <td><a (click)="getFileContainer(a.name,i)"><span class="icon">
+                                        <i class="fa fa-folder"></i>
+                                        </span> {{a.name}}</a>
+                                        </td>
+                                        <td>{{a.mtime}}</td>
+                                        <td>
+                                            <a (click)="deleteContainer(a.name)">
+                                                <span class="icon">
+                                        <i class="fa fa-trash"></i>
+                                        </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+            <article class="tile is-child">
+            </article>
+        </div>
+        <div class="tile is-parent">
+        </div>
+        <div class="tile is-parent">
+        </div>
+        <div class="tile is-parent">
+        </div>
+    </div>
+    <div [ngStyle]="{'display':displayFile}">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-9">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                    </div>
+                    <div class="tile is-parent is-11">
+
+                        <article class="tile is-child box">
+                            <a (click)="displayListStorage()">
+                                <span class="icon">
+                            <i class="fa fa-arrow-left"></i>
+                        </span> Back
+                            </a>
+                            <table class="table is-striped" style="width: 100% !important;">
+                                <thead>
+                                    <tr>
+                                        <th>Directory</th>
+                                        <th>Updated Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let b of itemFileContainer; let c = index">
+
+                                        <td>
+                                            <a href="{{loopbackPath}}/{{b.container}}/download/{{b.name}}" target="_blank">
+                                                <span class="icon">
+                                        <i class="fa fa-file"></i>
+                                        </span>{{b.name}}</a>
+                                        </td>
+                                        <td>{{b.mtime}}</td>
+                                        <td>
+                                            <a (click)=" modalupdateFile(b.name,b.container)">
+                                                <span class="icon">
+                                                <i class="fa fa-edit"></i>
+                                                 </span>
+                                            </a>
+                                            <a (click)="deleteFileContainer(b.container,b.name,i)">
+                                                <span class="icon">
+                                              <i class="fa fa-trash"></i>
+                                              </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div [ngClass]="displayModalUpdate">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Update Data</p>
+            <button class="delete" aria-label="close" (click)="closemodalupdateFile()"></button>
+        </header>
+        <section class="modal-card-body">
+            <br/>
+            <p align="center">
+                <span class="icon ">
+                    <i class="fa fa-file icon-file"></i>
+                   </span>
+            </p>
+            <h1 align="center"> {{titleOriginalFile}}</h1>
+            <div class="file has-name is-fullwidth">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="file" (change)="addFile($event)">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            Choose a file…
+                        </span>
+                    </span>
+                    <span class="file-name">
+                         {{  nameSimpleFile }}
+                    </span>
+                    </label>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="createRequestFile()">Save changes</button>
+            <button class="button" (click)="closemodalupdateFile()">Cancel</button>
+        </footer>
+    </div>
+</div>
