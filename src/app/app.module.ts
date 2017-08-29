@@ -1,3 +1,4 @@
+import { FileUploadMasterPageComponent } from './file-upload-master-page/file-upload-master-page.component';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import * as highcharts from 'highcharts';
