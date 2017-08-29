@@ -12,7 +12,7 @@
 </div>
 
 <div [ngStyle]="{'display': hiddenSuccess}">
-  <div class="notification is-primary">
+  <div class="notification is-success" style="width: 86% !important;">
     <button class="delete" (click)="closeAlert()"></button>Success Input Data.
   </div>
 </div>
@@ -61,9 +61,9 @@
 </div>
 
 <div [ngStyle]="{'display': hiddenData}">
-  <div class="notification is-primary">
-     Sorry no data, Empty list. <a class="button is-info is-outlined" style="margin-left: 60% !important;"
-      (click)="listAdd()">Add Data</a>
+  <div class="notification is-primary" style="width: 86% !important;">
+     Sorry no data. <a class="button is-info is-outlined" style="margin-left: 60% !important;"
+      (click)="modalAdd()">Add Data</a>
   </div>
 </div>
 
@@ -90,16 +90,6 @@
       <div class="field-label is-normal">
         <input class="input" type="text" placeholder="Email" [(ngModel)]="emailEdit">
       </div>
-
-      <!-- <label class="label is-small">Place Of Birthday</label>
-      <div class="field-label is-normal">
-        <input class="input" type="text" placeholder="Place Of Birthday" [(ngModel)]="placeBirthEdit">
-      </div>
-
-      <label class="label is-small">Date Of Birthday</label>
-      <div class="field-label is-normal">
-        <input class="input" type="date" placeholder="Date Of Birthday" [(ngModel)]="dateBirthEdit">
-      </div> -->
 
       <label class="label is-small">No.Telephone</label>
       <div class="field-label is-normal">
@@ -148,7 +138,7 @@
 
       <label class="label is-small">No.Telephone</label>
       <div class="field-label is-normal">
-        <input class="input" type="text" placeholder="No.Telephone" [(ngModel)]="noPhone">
+        <input class="input" type="number" placeholder="No.Telephone" [(ngModel)]="noPhone">
       </div>
 
       <label class="label is-small">Photo Profile</label>
