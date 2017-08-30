@@ -79,15 +79,34 @@
         margin-left: 120px;
     }
 
-    .footer {
+    footer {
         position: absolute;
-        margin-left:60px;
+        // margin-left:60px;
         width: 62%;
-        height:60px;
+        right: 0;
+        // height:60px;
         // right: 0;
         bottom: 0;
-        padding: 1rem;
-        background-color: #33ccff;
-        text-align: center;
+        padding: 5px;
+        background-color: cornflowerblue;
+        // text-align: center;
     }
 
+      
+      nav { 
+        // flex: 1 0 300px;
+        background-color: cornflowerblue;
+        overflow: auto;
+      }
+
+      input {
+          width: 500px;
+      }
+      
+    //   section {
+    //     flex: 1 1 auto;
+    //     // padding: 10px;
+    //     overflow: auto;
+    //   }
+    
+    
