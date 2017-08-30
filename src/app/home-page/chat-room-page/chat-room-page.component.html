@@ -1,37 +1,49 @@
-<div style="background-color:#33ccff;height:70px;">
-     <img src="{{chat?.photo}}" class="profile-image">
-       
-</div>
+<div class="columns is-gapless">
+    <div class="column is-11">
+        <nav class="navbar has-shadow">
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <img src="assets/logo.png" alt="profile_picture" width="28" height="28">
+                    <span style="font-weight:bold;"> Room</span>
+                </div>
+            </div>
+        </nav>
 
-<div>
-    <ul>
-        <li>
-            <div class="chatBubble">
-                <div class="chat-bubble left">
-                    <p>Find Luke fast!!!!!!!!!!!</p>
-                    <div class="message-detail">
-                        <span style="font-weight:bold;">Darth Vader </span>,
-                        <span>15:15:20</span>
+        <div class="chatBubble">
+            <div class="chat-bubble left">
+                <p>Find Luke fast!!!!!!!!!!!</p>
+                <div class="message-detail">
+                    <span style="font-weight:bold;">Darth Vader </span>,
+                    <span>15:15:20</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatBubble" style="margin-top:100px;" *ngFor="let chat of chats">
+            <div class="chat-bubble right">
+                {{chat?.message}}
+                <div class="message-detail">
+                    <span style="font-weight:bold;">{{chat?.sender}} </span>,
+                    <span>{{chat?.createdat | date:'medium'}}</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Type a message">
+                        </div>
+                        <div class="control">
+                            <a class="button is-info">
+                                Send
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </li>
-
-        <li>
-            <div class="chatBubble" style="margin-top:100px;" *ngFor="let chat of chats">
-                <div class="chat-bubble right">
-                   <p> Never</p>
-                    <div class="message-detail">
-                        <span style="font-weight:bold;">{{chat?.roomname}} </span>,
-                        <span>15:17:30</span>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div class="footer">
-    <input style="left:10px;width:80%;">
-    <button class="button is-primary">Send</button>
+        </footer>
+    </div>
 </div>
