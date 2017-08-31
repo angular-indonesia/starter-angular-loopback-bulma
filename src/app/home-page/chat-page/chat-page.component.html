@@ -5,11 +5,18 @@
         <div class="navbar-item">
           <img src="assets/logo.png" alt="Application Name" width="28" height="28">
         </div>
+        <div class="navbar-brand">
+          <a class="navbar-item" (click)="modalAdd()">
+            <span class="icon" style="color: #333;">
+              <i class="fa fa-plus-square-o"></i>
+            </span>
+          </a>
+        </div>
       </div>
     </nav>
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-small" type="text" placeholder="search">
+        <input class="input is-small" type="text" placeholder="search" (keyup)="eventHandler($event)">
         <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
         </span>
@@ -25,5 +32,25 @@
     <section>
       <router-outlet></router-outlet>
     </section>
+  </div>
+</div>
+
+<div [ngClass]="displayModalAdd">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Room</p>
+      <button class="delete" aria-label="close" (click)="closeAdd()"></button>
+    </header>
+    <section class="modal-card-body">
+      <label class="label is-small">Room Name</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Room Name" [(ngModel)]="roomName">
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="createData()">Save changes</button>
+      <button class="button" (click)="closeAdd()">Cancel</button>
+    </footer>
   </div>
 </div>
