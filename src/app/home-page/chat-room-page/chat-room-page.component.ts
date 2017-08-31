@@ -7,6 +7,7 @@ import { ChatdetailApi } from '../../../shared/services/custom/Chatdetail';
 import { RealTime } from '../../../shared/services/core/real.time';
 import { FireLoopRef } from '../../../shared/models/FireLoopRef';
 import { Chatdetail } from '../../../shared/models/Chatdetail';
+import { Roomchat } from '../../../shared/models/Roomchat';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -17,9 +18,12 @@ import 'rxjs/add/operator/switchMap';
 export class ChatRoomPageComponent implements OnInit {
 
   public chats: any;
+  public message: any;
   public id: number;
-  public chatDetail: Chatdetail = new Chatdetail();
+  public chatDetail: Chatdetail;
   public todoRef: FireLoopRef<Chatdetail>;
+  public roomChat: Roomchat;
+  public today = new Date();
 
   constructor(
     private route: ActivatedRoute,
@@ -30,39 +34,46 @@ export class ChatRoomPageComponent implements OnInit {
     private rt: RealTime
   ) {
 
-    this.rt.onReady().subscribe((status: string) => {
-      this.todoRef = this.rt.FireLoop.ref<Chatdetail>(Chatdetail);
-      this.todoRef.on('change').subscribe((chats: any) => {
-        console.log(chats, 'isi chats');
-        this.chats = chats;
+    this.route.params.forEach(params => {
+      this.rt.onReady().subscribe((status: string) => {
+        this.todoRef = this.rt.FireLoop.ref<Chatdetail>(Chatdetail);
+        this.todoRef.on('change', {
+          where: {
+            RoomChatId: this.route.snapshot.params['id']
+          }
+        }).subscribe((chats: any) => {
+          console.log(chats, 'isi chats');
+          this.chats = chats;
+        });
       });
-      this.getChatDetail();
     });
-  }
 
+  }
 
   ngOnInit() {
   }
 
   getChatDetail() {
     this.route.params.forEach(params => {
-      // this.roomChatApi.find({
-      //   where: {
-      //     id: this.route.snapshot.params['id']
-      //   }
-      // }).subscribe((result) => {
-      //   this.chats = result;
-      // });
-
       this.chatDetailApi.find({
         where: {
-          id: this.route.snapshot.params['id']
+          RoomChatId: this.route.snapshot.params['id']
         }
       }).subscribe((result) => {
         this.chats = result;
       });
     });
 
+  }
+
+  create(): void {
+    this.chatDetail = new Chatdetail({
+      sender: 'dimas',
+      message: this.message,
+      createdat: this.today,
+      RoomChatId: this.route.snapshot.params['id']
+    });
+    this.todoRef.create(this.chatDetail).subscribe((instance: Chatdetail) => console.log(instance, 'instance'));
   }
 
 }
