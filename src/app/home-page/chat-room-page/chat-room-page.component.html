@@ -9,7 +9,7 @@
             </div>
         </nav>
 
-        <div class="chatBubble">
+        <!-- <div class="chatBubble">
             <div class="chat-bubble left">
                 <p>Find Luke fast!!!!!!!!!!!</p>
                 <div class="message-detail">
@@ -17,7 +17,7 @@
                     <span>15:15:20</span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="chatBubble" style="margin-top:100px;" *ngFor="let chat of chats">
             <div class="chat-bubble right">
@@ -34,9 +34,9 @@
                 <div class="content has-text-centered">
                     <div class="field has-addons">
                         <div class="control">
-                            <input class="input" type="text" placeholder="Type a message">
+                            <input class="input" type="text" placeholder="Type a message" [(ngModel)]="message">
                         </div>
-                        <div class="control">
+                        <div class="control" (click)="create()">
                             <a class="button is-info">
                                 Send
                             </a>
