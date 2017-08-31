@@ -14,12 +14,15 @@ import { Roomchat } from '../../../shared/models/Roomchat';
 })
 export class ChatPageComponent implements OnInit {
 
-  chats: any[];
-  // roomChat: any;
-  userCredential: any;
+  public chats: any[];
+  public roomName: any;
+  public userCredential: any;
   public roomChat: Roomchat = new Roomchat();
   public todoRef: FireLoopRef<Roomchat>;
   public rooms: any;
+  public displayModalAdd: any;
+  public visibleModal: any;
+  public today = new Date();
 
   constructor(
     private chatService: ChatService,
@@ -28,7 +31,8 @@ export class ChatPageComponent implements OnInit {
     private userCredentialApi: UserCredentialApi,
     private rt: RealTime
   ) {
-      // this.getUserCredential();
+      this.displayModalAdd = 'modal';
+      this.visibleModal = false;
 
       this.rt.onReady().subscribe((status: string) => {
         this.todoRef = this.rt.FireLoop.ref<Roomchat>(Roomchat);
@@ -36,8 +40,6 @@ export class ChatPageComponent implements OnInit {
           console.log(rooms, 'isi rooms');
           this.rooms = rooms;
         });
-        this.getRoom();
-        // this.getUserCredential();
       });
   }
 
@@ -58,6 +60,43 @@ export class ChatPageComponent implements OnInit {
   getUserCredential() {
     this.userCredentialApi.findById(2).subscribe((result) => {
       this.userCredential = result;
+    });
+  }
+
+  eventHandler(data) {
+    console.log(data, 'dataSearch');
+    this.roomChatApi.find({
+      where: {
+        roomname: {
+          like: '%' + data.target.value + '%'
+        }
+      }
+    }).subscribe((result) => {
+      this.rooms = result;
+      console.log(this.rooms, 'rooms');
+    });
+  }
+
+  public modalAdd() {
+    this.visibleModal = !this.visibleModal;
+    this.displayModalAdd = this.visibleModal ? 'modal is-active' : 'modal';
+  }
+
+  public closeAdd() {
+    this.visibleModal = !this.visibleModal;
+    this.displayModalAdd = this.visibleModal ? 'modal is-active' : 'modal';
+  }
+
+  public createData() {
+
+    this.roomChatApi.create({
+      roomname: this.roomName,
+      createdat: this.today
+    }).subscribe((results) => {
+      console.log('Sukses');
+      this.closeAdd();
+    }, (error) => {
+      console.log(error);
     });
   }
 
