@@ -1,3 +1,4 @@
+import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
 import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
@@ -56,7 +57,7 @@ const routes: Routes = [
 
 
   { path: '', component: LoginPageComponent },
-  { path: '**', component: LoginPageComponent }
+  { path: '**', component: NotFoundPageComponent }
 ];
 
 @NgModule({

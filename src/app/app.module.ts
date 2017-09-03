@@ -1,3 +1,4 @@
+import { FileUploadMasterPageComponent } from './file-upload-master-page/file-upload-master-page.component';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import * as highcharts from 'highcharts';
@@ -29,10 +30,12 @@ import { Ng2chartPageComponent } from './home-page/chart-page/ng2chart-page/ng2c
 import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-page/google-chart-page.component';
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
 
 export function highchartsFactory() {
   return highcharts;
 }
+
 
 @NgModule({
   declarations: [
@@ -53,6 +56,7 @@ export function highchartsFactory() {
     Ng2chartPageComponent,
     GoogleChartPageComponent,
     HighchartsPageComponent,
+    NotFoundPageComponent,
     FileUploadMasterPageComponent
   ],
   imports: [
