@@ -1,5 +1,5 @@
+import { ProfiledataApi } from './../../../shared/services/custom/Profiledata';
 import { StorageSimpleUploadApi } from './../../../shared/services/custom/StorageSimpleUpload';
-import { ProfileDataApi } from './../../../shared/services/custom/ProfileData';
 import { LoopBackConfig } from './../../../shared/lb.config';
 import { Component, OnInit } from '@angular/core';
 import { UUID } from 'angular2-uuid';
@@ -18,7 +18,7 @@ export class CrudPageComponent implements OnInit {
   public dateBirth: any;
   public noPhone: any;
   public folderName: any;
-
+  public folder: any;
   public idEdit: any;
   public fullNameEdit: any;
   public addressEdit: any;
@@ -26,13 +26,15 @@ export class CrudPageComponent implements OnInit {
   public placeBirthEdit: any;
   public dateBirthEdit: any;
   public noPhoneEdit: any;
-
+  public photoEdit: any;
+  public photoProfile: any;
   public nameFile: any;
   public defaultFileTitle: any;
   public loopbackPathDownload: string;
   public eventPhoto: any;
-  // public loopbackPathUpload: string = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/simpleupload/upload';
-
+  public path: any;
+  public pathLength: any;
+  public pathDynamic: any;
   public Datauser: any;
   public DatauserLength: any;
   public hiddenData: String = 'none';
@@ -44,7 +46,7 @@ export class CrudPageComponent implements OnInit {
   public displayModalAdd: any;
   public visibleModal: any;
   constructor(
-    public profileDataApi: ProfileDataApi,
+    public profileDataApi: ProfiledataApi,
     public storageCustom: StorageSimpleUploadApi
   ) {
     this.displayModalEdit = 'modal';
@@ -76,12 +78,49 @@ export class CrudPageComponent implements OnInit {
     this.eventPhoto = event;
   }
 
-  public uploadFoto() {
+  public prosesPhoto() {
+    this.folderName = this.fullName;
+    const newContainer = {
+      'name': this.folderName
+    };
+
+    this.storageCustom.createContainer(newContainer)
+      .subscribe((result) => {
+        console.log('Sukses Create Container');
+        const filesToUpload = <Array<File>>this.eventPhoto.target.files;
+        const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + this.folderName + '/upload';
+        this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((results) => {
+          console.log(JSON.stringify(results));
+          console.log('Sukses Upload');
+
+
+          this.fullName = '';
+          this.address = '';
+          this.email = '';
+          this.placeBirth = '';
+          this.dateBirth = '';
+          this.noPhone = '';
+          this.nameFile = '';
+
+          this.hiddenSuccess = 'block';
+          this.closedTimming();
+
+          this.closeAdd();
+          this.ngOnInit();
+
+        }, (error) => {
+          console.error(error);
+        });
+      });
+  }
+
+  public uploadFoto(event) {
+    console.log(event, 'EVENT');
     if (this.nameFile === '') {
       console.log('Sorry Files Is Empty');
     } else {
 
-      this.folderName = 'Profil';
+      this.folderName = event;
       const newContainer = {
         'name': this.folderName
       };
@@ -118,8 +157,8 @@ export class CrudPageComponent implements OnInit {
   }
 
   public createData() {
-    this.folderName = 'Profil';
-
+    this.folderName = this.fullName + this.makeid().toString();
+    console.log(this.folderName, 'FOLDER');
     this.profileDataApi.create({
       fullName: this.fullName,
       address: this.address,
@@ -132,7 +171,7 @@ export class CrudPageComponent implements OnInit {
     }).subscribe((results) => {
       console.log('Sukses');
 
-      this.uploadFoto();
+      this.uploadFoto(this.folderName);
 
     }, (error) => {
       console.log(error);
@@ -160,6 +199,7 @@ export class CrudPageComponent implements OnInit {
   }
 
   public loadData() {
+
     console.log('Data');
     this.profileDataApi.find({
       where: {
@@ -167,9 +207,18 @@ export class CrudPageComponent implements OnInit {
       }
     }).subscribe((result) => {
       console.log(result, 'Data');
+      this.path = result;
+      console.log(this.path, 'PATH');
+      this.pathLength = this.path.length;
+
+      for (let i = 0; i > this.pathLength; i++) {
+        this.pathDynamic = this.path.folder;
+        console.log(this.pathDynamic, 'PATH DYNAMIC');
+      }
+
       this.Datauser = result;
       console.log(this.Datauser, 'Datax');
-      this.loopbackPathDownload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + 'Profil' + '/download/';
+      this.loopbackPathDownload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/';
       this.DatauserLength = this.Datauser.length;
       console.log(this.DatauserLength);
 
@@ -189,12 +238,14 @@ export class CrudPageComponent implements OnInit {
 
     console.log(datas, 'Data Klik');
     this.idEdit = datas.id;
-    this.fullNameEdit = datas.fullName;
+    this.fullNameEdit = datas.fullname;
     this.addressEdit = datas.address;
     this.emailEdit = datas.email;
-    this.placeBirthEdit = datas.placeOfBirth;
-    this.dateBirthEdit = datas.birthDate;
-    this.noPhoneEdit = datas.noPhone;
+    this.placeBirthEdit = datas.placeofbirth;
+    this.dateBirthEdit = datas.birthdate;
+    this.folder = datas.folder;
+    this.noPhoneEdit = datas.nophone;
+    this.photoProfile = datas.photoprofile;
   }
 
   public modalAdd() {
@@ -216,31 +267,112 @@ export class CrudPageComponent implements OnInit {
     this.hiddenSuccess = 'none';
   }
 
-  public saveChange(idEdit) {
-    console.log(idEdit, 'ID Edit');
-    const editId = idEdit;
+  public saveChange(datas) {
+    console.log(this.idEdit, 'Data');
+    const editId = datas;
+    console.log(this.folder, 'Folder');
+    console.log(this.nameFile, 'NAMA FOTO EDIT');
 
-    const dataEdit = {
-      fullName: this.fullNameEdit,
-      address: this.addressEdit,
-      email: this.emailEdit,
-      placeOfBirth: this.placeBirthEdit,
-      birthDate: this.dateBirthEdit,
-      noPhone: this.noPhoneEdit
-    };
+    if (this.nameFile !== '') {
+      const dataEdit = {
+        fullname: this.fullNameEdit,
+        address: this.addressEdit,
+        email: this.emailEdit,
+        placeofbirth: this.placeBirthEdit,
+        birthdate: this.dateBirthEdit,
+        nophone: this.noPhoneEdit,
+        folder: this.folder,
+        photoprofile: this.nameFile
+      };
 
-    this.profileDataApi.updateAttributes(
-      { id: editId },
-      { data: dataEdit },
-      function (err, info) {
-        console.log(err);
+      this.profileDataApi.findById(this.idEdit).subscribe((result) => {
+        const results = result;
+        this.profileDataApi.updateAttributes(this.idEdit, dataEdit).subscribe((record) => {
+          console.log(record);
+          this.editPhoto(this.folder);
+        });
       });
+    } else {
+      const dataEdits = {
+        fullname: this.fullNameEdit,
+        address: this.addressEdit,
+        email: this.emailEdit,
+        placeofbirth: this.placeBirthEdit,
+        birthdate: this.dateBirthEdit,
+        nophone: this.noPhoneEdit,
+        folder: this.folder,
+        photoprofile: this.photoProfile
+      };
+
+      this.profileDataApi.findById(this.idEdit).subscribe((result) => {
+        const results = result;
+        this.profileDataApi.updateAttributes(this.idEdit, dataEdits).subscribe((record) => {
+          console.log(record, 'Cuy');
+
+          this.fullNameEdit = '';
+          this.addressEdit = '';
+          this.emailEdit = '';
+          this.placeBirthEdit = '';
+          this.dateBirthEdit = '';
+          this.noPhoneEdit = '';
+          this.nameFile = '';
+
+          this.hiddenSuccess = 'block';
+          this.closedTimming();
+
+          this.closeEdit();
+          this.ngOnInit();
+
+        });
+      });
+    }
   }
 
   public closedTimming() {
     setTimeout(() => {
       this.hiddenSuccess = 'none';
     }, 3000);
+  }
+
+  public editPhoto(event) {
+    console.log(event);
+    if (this.nameFile === '') {
+      console.log('Sorry Files Is Empty');
+    } else {
+
+      const filesToUpload = <Array<File>>this.eventPhoto.target.files;
+      const urlSimpleUpload = LoopBackConfig.getPath() + '/api/StorageSimpleUploads/' + this.folder + '/upload';
+      this.makeFileRequest(urlSimpleUpload, [], filesToUpload, this.nameFile).then((results) => {
+        console.log(JSON.stringify(results));
+        console.log('Sukses Upload');
+
+
+        this.fullNameEdit = '';
+        this.addressEdit = '';
+        this.emailEdit = '';
+        this.placeBirthEdit = '';
+        this.dateBirthEdit = '';
+        this.noPhoneEdit = '';
+        this.nameFile = '';
+
+        this.hiddenSuccess = 'block';
+        this.closedTimming();
+
+        this.closeEdit();
+        this.ngOnInit();
+
+      }, (error) => {
+        console.error(error);
+      });
+    }
+  }
+
+  public makeid() {
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    for (let i = 0; i < 12; i++) {
+      const text = possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+    }
   }
 
 }

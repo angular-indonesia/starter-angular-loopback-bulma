@@ -42,14 +42,14 @@
                 <tr *ngFor="let datas of Datauser" (click)="listSelect(datas)">
                   <th>
                     <figure class="image is-128x128">
-                      <img src="{{loopbackPathDownload + datas.photoProfile}}">
+                      <img src="{{loopbackPathDownload + datas.folder + '/download/' + datas.photoprofile}}">
                     </figure>
 
                   </th>
-                  <td>{{datas.fullName}}</td>
+                  <td>{{datas.fullname}}</td>
                   <td>{{datas.email}}</td>
                   <td>{{datas.address}}</td>
-                  <td>{{datas.placeOfBirth}}</td>
+                  <td>{{datas.placeofbirth}}</td>
                 </tr>
               </tbody>
             </table>
@@ -62,8 +62,7 @@
 
 <div [ngStyle]="{'display': hiddenData}">
   <div class="notification is-primary" style="width: 86% !important;">
-     Sorry no data. <a class="button is-info is-outlined" style="margin-left: 60% !important;"
-      (click)="modalAdd()">Add Data</a>
+    Sorry no data. <a class="button is-info is-outlined" style="margin-left: 60% !important;" (click)="modalAdd()">Add Data</a>
   </div>
 </div>
 
@@ -86,6 +85,11 @@
         <input class="input" type="text" placeholder="Address" [(ngModel)]="addressEdit">
       </div>
 
+      <label class="label is-small">Place Of Birth</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Place Of Birth" [(ngModel)]="placeBirthEdit">
+      </div>
+
       <label class="label is-small">Email</label>
       <div class="field-label is-normal">
         <input class="input" type="text" placeholder="Email" [(ngModel)]="emailEdit">
@@ -94,6 +98,24 @@
       <label class="label is-small">No.Telephone</label>
       <div class="field-label is-normal">
         <input class="input" type="text" placeholder="No.Telephone" [(ngModel)]="noPhoneEdit">
+      </div>
+
+      <label class="label is-small">Photo Profile</label>
+      <div class="file has-name is-fullwidth">
+        <label class="file-label">
+          <input class="file-input" type="file" name="file[]" (change)="uploadProses($event)">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+          <span class="file-name">
+              {{ defaultFileTitle }}
+          </span>
+        </label>
       </div>
     </section>
     <footer class="modal-card-foot">

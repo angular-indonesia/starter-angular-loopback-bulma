@@ -2,16 +2,16 @@
 
 declare var Object: any;
 export interface MapInterface {
-  "userID"?: string;
-  "locationName"?: string;
+  "userid"?: string;
+  "locationname"?: string;
   "longitude"?: string;
   "latitude"?: string;
   "id"?: number;
 }
 
 export class Map implements MapInterface {
-  "userID": string;
-  "locationName": string;
+  "userid": string;
+  "locationname": string;
   "longitude": string;
   "latitude": string;
   "id": number;
@@ -47,12 +47,12 @@ export class Map implements MapInterface {
       plural: 'Maps',
       path: 'Maps',
       properties: {
-        "userID": {
-          name: 'userID',
+        "userid": {
+          name: 'userid',
           type: 'string'
         },
-        "locationName": {
-          name: 'locationName',
+        "locationname": {
+          name: 'locationname',
           type: 'string'
         },
         "longitude": {

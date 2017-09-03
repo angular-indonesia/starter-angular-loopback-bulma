@@ -1,44 +1,46 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface ProfileDataInterface {
-  "fullName": string;
-  "address": string;
-  "email": string;
-  "placeOfBirth": string;
-  "birthDate": Date;
-  "noPhone": string;
-  "photoProfile": string;
+export interface ProfiledataInterface {
   "id"?: number;
+  "photoprofile"?: string;
+  "folder"?: string;
+  "placeofbirth"?: string;
+  "nophone"?: string;
+  "fullname"?: string;
+  "email"?: string;
+  "birthdate"?: Date;
+  "address"?: string;
 }
 
-export class ProfileData implements ProfileDataInterface {
-  "fullName": string;
-  "address": string;
-  "email": string;
-  "placeOfBirth": string;
-  "birthDate": Date;
-  "noPhone": string;
-  "photoProfile": string;
+export class Profiledata implements ProfiledataInterface {
   "id": number;
-  constructor(data?: ProfileDataInterface) {
+  "photoprofile": string;
+  "folder": string;
+  "placeofbirth": string;
+  "nophone": string;
+  "fullname": string;
+  "email": string;
+  "birthdate": Date;
+  "address": string;
+  constructor(data?: ProfiledataInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `ProfileData`.
+   * i.e. `Profiledata`.
    */
   public static getModelName() {
-    return "ProfileData";
+    return "Profiledata";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of ProfileData for dynamic purposes.
+  * This method creates an instance of Profiledata for dynamic purposes.
   **/
-  public static factory(data: ProfileDataInterface): ProfileData{
-    return new ProfileData(data);
+  public static factory(data: ProfiledataInterface): Profiledata{
+    return new Profiledata(data);
   }
   /**
   * @method getModelDefinition
@@ -49,41 +51,45 @@ export class ProfileData implements ProfileDataInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'ProfileData',
-      plural: 'ProfileData',
-      path: 'ProfileData',
+      name: 'Profiledata',
+      plural: 'Profiledata',
+      path: 'Profiledata',
       properties: {
-        "fullName": {
-          name: 'fullName',
+        "id": {
+          name: 'id',
+          type: 'number'
+        },
+        "photoprofile": {
+          name: 'photoprofile',
           type: 'string'
         },
-        "address": {
-          name: 'address',
+        "folder": {
+          name: 'folder',
+          type: 'string'
+        },
+        "placeofbirth": {
+          name: 'placeofbirth',
+          type: 'string'
+        },
+        "nophone": {
+          name: 'nophone',
+          type: 'string'
+        },
+        "fullname": {
+          name: 'fullname',
           type: 'string'
         },
         "email": {
           name: 'email',
           type: 'string'
         },
-        "placeOfBirth": {
-          name: 'placeOfBirth',
-          type: 'string'
-        },
-        "birthDate": {
-          name: 'birthDate',
+        "birthdate": {
+          name: 'birthdate',
           type: 'Date'
         },
-        "noPhone": {
-          name: 'noPhone',
+        "address": {
+          name: 'address',
           type: 'string'
-        },
-        "photoProfile": {
-          name: 'photoProfile',
-          type: 'string'
-        },
-        "id": {
-          name: 'id',
-          type: 'number'
         },
       },
       relations: {

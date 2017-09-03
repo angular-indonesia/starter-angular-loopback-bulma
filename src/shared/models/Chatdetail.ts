@@ -2,7 +2,6 @@
 
 declare var Object: any;
 export interface ChatdetailInterface {
-  "roomchatid"?: number;
   "sender"?: string;
   "message"?: string;
   "createdat"?: Date;
@@ -11,7 +10,6 @@ export interface ChatdetailInterface {
 }
 
 export class Chatdetail implements ChatdetailInterface {
-  "roomchatid": number;
   "sender": string;
   "message": string;
   "createdat": Date;
@@ -49,10 +47,6 @@ export class Chatdetail implements ChatdetailInterface {
       plural: 'Chatdetails',
       path: 'Chatdetails',
       properties: {
-        "roomchatid": {
-          name: 'roomchatid',
-          type: 'number'
-        },
         "sender": {
           name: 'sender',
           type: 'string'
