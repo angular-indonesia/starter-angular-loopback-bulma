@@ -16,6 +16,9 @@ export class FileUploadAdvancedPageComponent implements OnInit {
   public loopbackPath: string = LoopBackConfig.getPath() + "/api/StorageSimpleUploads/";
   public dataUpload: any;
   public dataStatus: any;
+  public itemFolder: any;
+  public eventFolder: any;
+  public displayInputFolder: any = "none";
 
   /// Variabel Upload File Custom
   public name_container_custom: any = "";
@@ -24,18 +27,47 @@ export class FileUploadAdvancedPageComponent implements OnInit {
   public loopbackPathCustom: string = LoopBackConfig.getPath() + "/api/StorageSimpleUploads/";
   public dataUploadCustom: any;
   public dataStatusCustom: any;
+  public itemFolderCustom: any;
+  public eventFolderCustom: any;
+  public displayInputFolderCustom: any = "none";
+
+  public classNotif: any = "notification is-success";
+  public displayNotif: any = "none";
+  public messageNotif: any = "notif";
   constructor(
     public storagesimpleuploadapi: StorageSimpleUploadApi,
 
   ) {
 
-
+    this.showDataFolder();
 
   }
 
   ngOnInit() {
   }
 
+  toggle() {
+    this.displayNotif = "none";
+  }
+  public showDataFolder() {
+    this.storagesimpleuploadapi.getContainers().subscribe(
+      result => {
+        this.itemFolder = result;
+        console.log(JSON.stringify(this.itemFolder));
+      },
+      error => {
+
+      }
+    )
+  }
+  displayInput() {
+    this.displayInputFolder === 'none' ? this.displayInputFolder = 'block' : this.displayInputFolder = 'none';
+    this.name_container = "";
+  }
+  public choosefolder(val: String) {
+    this.eventFolder = val;
+    console.log(this.eventFolder);
+  }
   addFileMultiple(event) {
 
     for (let i = 0; i <= event.target.files.length - 1; i++) {
@@ -50,56 +82,84 @@ export class FileUploadAdvancedPageComponent implements OnInit {
     }
   }
 
-  deleteSingleFile(i){
+  deleteSingleFile(i) {
     this.itemFile.splice(i);
   }
   uploadSingle(i) {
+    let folder = "";
+    if (this.name_container == "") {
+      folder = this.eventFolder;
 
-    console.log(i);
-    let filesToUpload = this.itemFile[i];
-    console.log("test" + filesToUpload);
-    this.urlSimpleUpload = this.loopbackPath + "" + this.name_container + "/upload";
-    console.log(this.urlSimpleUpload);
-    let data = {
-      "name": "" + this.name_container.toLowerCase()
     }
-    this.storagesimpleuploadapi.createContainer(data)
-      .subscribe(() => {
-        console.log(filesToUpload.name);
-        this.sendRequestSingleUpload(this.urlSimpleUpload, filesToUpload, filesToUpload.name).then((result) => {
-          this.dataUpload = {
-            "nameFile": result['result'].files.file[0].name,
-            "nameContainer": result['result'].files.file[0].container,
-            "index": i
-          }
-          this.itemFile[i].buttonname = "done";
-          this.itemFile[i].isdisabled = true;
+    else {
+      folder = this.name_container;
+    }
+    if (folder == null) {
 
-        }, (error) => {
-          console.error(error);
-        });
-      }, (error) => {
-        if (error.statusCode == 500) {
+      this.classNotif = "notification is-danger";
+      this.displayNotif = "block";
+      this.messageNotif = "Please Choose Folder or Add New Folder";
+      console.log("ups");
+    } else {
+      console.log(i);
+      let filesToUpload = this.itemFile[i];
+      console.log("test" + filesToUpload);
+      this.urlSimpleUpload = this.loopbackPath + "" + folder + "/upload";
+      console.log(this.urlSimpleUpload);
+      let data = {
+        "name": "" + folder.toLowerCase()
+      }
+      this.storagesimpleuploadapi.createContainer(data)
+        .subscribe(() => {
+          console.log(filesToUpload.name);
           this.sendRequestSingleUpload(this.urlSimpleUpload, filesToUpload, filesToUpload.name).then((result) => {
             this.dataUpload = {
               "nameFile": result['result'].files.file[0].name,
               "nameContainer": result['result'].files.file[0].container,
               "index": i
-
             }
             this.itemFile[i].buttonname = "done";
             this.itemFile[i].isdisabled = true;
-        
+
           }, (error) => {
+            this.classNotif = "notification is-danger";
+            this.displayNotif = "block";
+            this.messageNotif = "Failed To Upload";
             console.error(error);
           });
-          // this.createRequestFile(this.name_container);
-        } else {
-          console.log(error);
+        }, (error) => {
+          if (error.statusCode == 500) {
+            this.sendRequestSingleUpload(this.urlSimpleUpload, filesToUpload, filesToUpload.name).then((result) => {
+              this.dataUpload = {
+                "nameFile": result['result'].files.file[0].name,
+                "nameContainer": result['result'].files.file[0].container,
+                "index": i
 
-        }
+              }
+              this.itemFile[i].buttonname = "done";
+              this.itemFile[i].isdisabled = true;
+              this.classNotif = "notification is-success";
+              this.displayNotif = "block";
+              this.messageNotif = "success To Upload";
 
-      });
+            }, (error) => {
+              console.error(error);
+              this.classNotif = "notification is-success";
+              this.displayNotif = "block";
+              this.messageNotif = "success To Upload";
+              console.error(error);
+            });
+            // this.createRequestFile(this.name_container);
+          } else {
+            console.log(error);
+            this.classNotif = "notification is-danger";
+            this.displayNotif = "block";
+            this.messageNotif = "Failed To Upload";
+            console.error(error);
+          }
+
+        });
+    }
 
   }
 
@@ -122,44 +182,78 @@ export class FileUploadAdvancedPageComponent implements OnInit {
     });
   }
   uploadMultiple() {
-    if (this.name_container == "") {
-      console.log("ups");
-      alert("Please Insert Folder Name");
-    } 
-    else if(this.itemFile[0] == null){
-      alert("Please Attach File");
+    let folder = "";
+    if (this.itemFile[0] == null) {
+      this.classNotif = "notification is-danger";
+      this.displayNotif = "block";
+      this.messageNotif = "Please Add File From Your Computer";
     }
     else {
-      let filesToUpload = <Array<File>>this.itemFile;
-      console.log("test" + filesToUpload);
-      this.urlSimpleUpload = this.loopbackPath + "" + this.name_container + "/upload";
-      console.log(this.urlSimpleUpload);
-      let data = {
-        "name": "" + this.name_container.toLowerCase()
+
+      if (this.name_container == "") {
+        folder = this.eventFolder;
+
       }
-      this.storagesimpleuploadapi.createContainer(data)
-        .subscribe(() => {
+      else {
+        folder = this.name_container;
+      }
+      if (folder == null) {
 
-          this.sendRequestMultipleUpload(this.urlSimpleUpload, [], filesToUpload).then((result) => {
+        this.classNotif = "notification is-danger";
+        this.displayNotif = "block";
+        this.messageNotif = "Please Choose Folder or Add New Folder";
+        console.log(folder);
+      } else {
+        console.log(folder);
+        let filesToUpload = <Array<File>>this.itemFile;
+        console.log("test" + filesToUpload);
+        this.urlSimpleUpload = this.loopbackPath + "" + folder + "/upload";
+        console.log(this.urlSimpleUpload);
+        let data = {
+          "name": "" + folder.toLowerCase()
+        }
+        this.storagesimpleuploadapi.createContainer(data)
+          .subscribe(() => {
 
-          }, (error) => {
-            console.error(error);
-          });
-        }, (error) => {
-          if (error.statusCode == 500) {
             this.sendRequestMultipleUpload(this.urlSimpleUpload, [], filesToUpload).then((result) => {
-
+              this.classNotif = "notification is-success";
+              this.displayNotif = "block";
+              this.messageNotif = "success To Upload";
+              this.itemFile = [];
 
             }, (error) => {
+              this.classNotif = "notification is-danger";
+              this.displayNotif = "block";
+              this.messageNotif = "Failed To Upload";
               console.error(error);
             });
-            // this.createRequestFile(this.name_container);
-          } else {
-            console.log(error);
+          }, (error) => {
+            if (error.statusCode == 500) {
+              this.sendRequestMultipleUpload(this.urlSimpleUpload, [], filesToUpload).then((result) => {
+                this.classNotif = "notification is-success";
+                this.displayNotif = "block";
+                this.messageNotif = "Succes To Upload";
+                this.itemFile = [];
+                console.error(error);
+               
 
-          }
+              }, (error) => {
+                this.classNotif = "notification is-danger";
+                this.displayNotif = "block";
+                this.messageNotif = "Failed To Upload";
+                console.error(error);
+              });
+              // this.createRequestFile(this.name_container);
+            } else {
+              this.classNotif = "notification is-danger";
+              this.displayNotif = "block";
+              this.messageNotif = "Failed To Upload";
+              console.log(error);
 
-        });
+            }
+
+          });
+      }
     }
   }
 
@@ -169,6 +263,7 @@ export class FileUploadAdvancedPageComponent implements OnInit {
       const xhr = new XMLHttpRequest();
       for (let a = 0; a < files.length; a++) {
         formData.append('file', files[a], files[a].name);
+
       }
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
@@ -184,7 +279,15 @@ export class FileUploadAdvancedPageComponent implements OnInit {
     });
   }
 
-    addFileCustom(event) {
+  displayInputCustom() {
+    this.displayInputFolderCustom === 'none' ? this.displayInputFolderCustom = 'block' : this.displayInputFolderCustom = 'none';
+    this.name_container_custom = "";
+  }
+  public choosefolderCustom(val: String) {
+    this.eventFolderCustom = val;
+    console.log(this.eventFolderCustom);
+  }
+  addFileCustom(event) {
 
     for (let i = 0; i <= event.target.files.length - 1; i++) {
       let evenUploadCustom = <File>event.target.files[i];
@@ -193,49 +296,77 @@ export class FileUploadAdvancedPageComponent implements OnInit {
       evenUploadCustom["download_path"] = "";
 
       this.itemFileCustom.push(evenUploadCustom);
-      console.log(this.itemFileCustom);
+      console.log(this.itemFileCustom[0].name);
 
     }
   }
-   uploadCustom() {
-    if (this.name_container_custom == "" ) {
-      console.log("ups");
-      alert("Please Insert Folder Name");
-    } 
-     else if(this.itemFileCustom[0] == null){
-      alert("Please Attach File");
+  uploadCustom() {
+    let folder = "";
+    if (this.itemFileCustom[0] == null) {
+      this.classNotif = "notification is-danger";
+      this.displayNotif = "block";
+      this.messageNotif = "Please Add File From Your Computer";
     }
     else {
-      let filesToUploadCustom = <Array<File>>this.itemFileCustom;
-      console.log("test" + filesToUploadCustom);
-      this.urlUploadCustom = this.loopbackPathCustom + "" + this.name_container_custom + "/upload";
-      console.log(this.urlUploadCustom);
-      let data = {
-        "name": "" + this.name_container_custom.toLowerCase()
+
+      if (this.name_container_custom == "") {
+        folder = this.eventFolderCustom;
+
       }
-      this.storagesimpleuploadapi.createContainer(data)
-        .subscribe(() => {
+      else {
+        folder = this.name_container_custom;
+      }
+      if (folder == null) {
 
-          this.sendRequestCustomUpload(this.urlUploadCustom, [], filesToUploadCustom).then((result) => {
+        this.classNotif = "notification is-danger";
+        this.displayNotif = "block";
+        this.messageNotif = "Please Choose Folder or Add New Folder";
+        console.log(folder);
+      } else {
+        let filesToUploadCustom = <Array<File>>this.itemFileCustom;
+        console.log("test" + filesToUploadCustom);
+        this.urlUploadCustom = this.loopbackPathCustom + "" + folder + "/upload";
+        console.log(this.urlUploadCustom);
+        let data = {
+          "name": "" + folder.toLowerCase()
+        }
+        this.storagesimpleuploadapi.createContainer(data)
+          .subscribe(() => {
 
-          }, (error) => {
-            console.error(error);
-          });
-        }, (error) => {
-          if (error.statusCode == 500) {
             this.sendRequestCustomUpload(this.urlUploadCustom, [], filesToUploadCustom).then((result) => {
-
-
+              this.classNotif = "notification is-success";
+              this.displayNotif = "block";
+              this.messageNotif = "Success To Upload";
             }, (error) => {
+              this.classNotif = "notification is-danger";
+              this.displayNotif = "block";
+              this.messageNotif = "Failed To Upload";
               console.error(error);
             });
-            // this.createRequestFile(this.name_container);
-          } else {
-            console.log(error);
+          }, (error) => {
+            if (error.statusCode == 500) {
+              this.sendRequestCustomUpload(this.urlUploadCustom, [], filesToUploadCustom).then((result) => {
+                this.classNotif = "notification is-success";
+                this.displayNotif = "block";
+                this.messageNotif = "Success To Upload";
 
-          }
+              }, (error) => {
+                this.classNotif = "notification is-danger";
+                this.displayNotif = "block";
+                this.messageNotif = "Failed To Upload";
+                console.error(error);
+              });
+              // this.createRequestFile(this.name_container);
+            } else {
+              this.classNotif = "notification is-danger";
+              this.displayNotif = "block";
+              this.messageNotif = "Failed To Upload";
+              console.log(error);
 
-        });
+            }
+
+          });
+      }
     }
   }
 

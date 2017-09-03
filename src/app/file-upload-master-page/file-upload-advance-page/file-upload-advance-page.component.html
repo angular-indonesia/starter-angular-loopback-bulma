@@ -1,45 +1,84 @@
+<div [ngStyle]="{'display':displayNotif}" class="notif">
+  <div class="{{ classNotif }}">
+    <button class="delete" (click)="toggle()"></button> {{ messageNotif }}
+  </div>
+</div>
+
+
 <div class="tile is-ancestor">
-  <div class="tile is-vertical is-10">
-    <div class="tile">
-      <!--<div class="tile is-parent is-vertical">
-      </div>-->
-      <div class="tile is-parent is-9">
-        <article class="tile is-child box">
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label is-small">Multiple Upload</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
+  <div class="tile is-parent">
+    <article class="tile is-child">
+    </article>
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+</div>
+<div>
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+        </div>
+        <div class="tile is-parent is-11">
+
+          <article class="tile is-child box">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label is-small">Multiple Upload</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label is-small">Nama Folder</label>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label is-small">Nama Folder</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="select is-fullwidth" style="width: 80% !important">
+                    <select #range (change)="choosefolder(range.value)">
+                       <option >Select dropdown</option>
+                         <option *ngFor="let a of itemFolder; let i = index" value = "{{a.name}}">{{ a.name}}</option>
+                          </select>
+                  </div>
+                  <span class="icon" (click)=" displayInput()">
+                     <i class="fa fa-plus-square icon-add"></i>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" placeholder="Folder Name" [(ngModel)]="name_container">
-                  <span class="icon is-small is-left">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+
+              </div>
+              <div class="field-body" [ngStyle]="{'display': displayInputFolder}">
+                <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="Folder Name" [(ngModel)]="name_container">
+                    <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
-                  <span class="icon is-small is-right">
+                    <span class="icon is-small is-right">
                      <i class="fa fa-check"></i>
                   </span>
-                </p>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <label class="label">File</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="file has-name is-fullwidth">
-                  <label class="file-label">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">File</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="file has-name is-fullwidth">
+                    <label class="file-label">
                   <input class="file-input" type="file" name="file[]" (change)="addFileMultiple($event)" multiple>
                   <span class="file-cta">
                   <span class="file-icon">
@@ -53,93 +92,128 @@
                     <!--{{ titleOriginalFile }}-->
                    </span>
                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
 
-          <div class="field is-horizontal" *ngFor="let p of itemFile; let i=index;let status of dataUpload;let b = index;">
-            <div class="field-label">
-              <label class="label">{{p.name}}</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <button class="button is-primary" (click)="uploadSingle(i)" [disabled]="p.isdisabled"> 
+            <div class="field is-horizontal" *ngFor="let p of itemFile; let i=index;let status of dataUpload;let b = index;">
+              <div class="field-label">
+                <label class="label">{{p.name}}</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" (click)="uploadSingle(i)" [disabled]="p.isdisabled"> 
                     {{p.buttonname}}
                   </button>
-                  <button class="button is-primary" (click)="deleteSingleFile(i)" [disabled]="p.isdisabled"> 
+                    <button class="button is-primary" (click)="deleteSingleFile(i)" [disabled]="p.isdisabled"> 
                    Delete
                   </button>
-                  <button class="button is-primary"> 
-                   Open File
-                  </button>
+          
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label">
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <button class="button is-primary" (click)="uploadMultiple()">
+            <div class="field is-horizontal">
+              <div class="field-label">
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" (click)="uploadMultiple()">
                     Upload All
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
+
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <div class="tile is-ancestor">
-  <div class="tile is-vertical is-10">
-    <div class="tile">
-      <!--<div class="tile is-parent is-vertical">
-      </div>-->
-      <div class="tile is-parent is-9">
-        <article class="tile is-child box">
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label is-small">Upload File Size</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
+  <div class="tile is-parent">
+    <article class="tile is-child">
+    </article>
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+</div>
+<div>
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+        </div>
+        <div class="tile is-parent is-11">
+
+          <article class="tile is-child box">
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label is-small">Upload File Size</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label is-small">Nama Folder</label>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label is-small">Nama Folder</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="select is-fullwidth" style="width: 80% !important">
+                    <select #range (change)="choosefolderCustom(range.value)">
+                       <option >Select dropdown</option>
+                         <option *ngFor="let a of itemFolder; let i = index" value = "{{a.name}}">{{ a.name}}</option>
+                          </select>
+                  </div>
+                  <span class="icon" (click)=" displayInputCustom()">
+                     <i class="fa fa-plus-square icon-add"></i>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" placeholder="Folder Name" [(ngModel)]="name_container_custom">
-                  <span class="icon is-small is-left">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+
+              </div>
+              <div class="field-body">
+                <div class="field" [ngStyle]="{'display': displayInputFolderCustom}">
+                  <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="Folder Name" [(ngModel)]="name_container_custom">
+                    <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
-                  <span class="icon is-small is-right">
+                    <span class="icon is-small is-right">
                      <i class="fa fa-check"></i>
                   </span>
-                </p>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <label class="label">File</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="file is-small has-name">
-                  <label class="file-label">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">File</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="file is-small has-name">
+                    <label class="file-label">
               <input class="file-input" type="file" name="file[]" (change)="addFileCustom($event)">
               <span class="file-cta">
               <span class="file-icon">
@@ -150,21 +224,21 @@
             </span>
             </span>
             <span class="file-name">
-              Screen Shot 2017-07-29 at 15.54.25.png
+              {{ itemFileCustom[0].name }}}
             </span>
              </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <label class="label">File</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="file has-name">
-                  <label class="file-label">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">File</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="file has-name">
+                    <label class="file-label">
                     <input class="file-input" type="file" name="file[]" (change)="addFileCustom($event)">
                  <span class="file-cta">
                  <span class="file-icon">
@@ -175,21 +249,21 @@
                 </span>
                 </span>
                 <span class="file-name">
-                      Screen Shot 2017-07-29 at 15.54.25.png
+                       {{ itemFileCustom[1].name }}}
                 </span>
                   </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="field is-horizontal">
-            <div class="field-label">
-              <label class="label">File</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="file is-medium has-name">
-                  <label class="file-label">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">File</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="file is-medium has-name">
+                    <label class="file-label">
                     <input class="file-input" type="file" name="file[]" (change)="addFileCustom($event)">
                   <span class="file-cta">
                     <span class="file-icon">
@@ -200,28 +274,31 @@
                     </span>
                   </span>
                   <span class="file-name">
-                      Screen Shot 2017-07-29 at 15.54.25.png
+                         {{ itemFileCustom[2].name }}}
                   </span>
                 </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="field is-horizontal">
-            <div class="field-label">
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <button class="button is-primary" (click)="uploadCustom()">
+            <div class="field is-horizontal">
+              <div class="field-label">
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" (click)="uploadCustom()">
                     Upload All
                   </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </article>
+
+          </article>
+
+        </div>
       </div>
     </div>
   </div>
