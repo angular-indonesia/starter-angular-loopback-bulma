@@ -133,57 +133,132 @@
       <button class="delete" aria-label="close" (click)="closeAdd()"></button>
     </header>
     <section class="modal-card-body">
-      <label class="label is-small">Full Name</label>
-      <div class="field-label is-normal">
-        <input class="input" type="text" placeholder="Full Name" [(ngModel)]="fullName">
-      </div>
+      <form #heroForm="ngForm">
+        <div class="form-group">
+          <label class="label is-small">Full Name</label>
+          <input id="name" name="name" class="form-control" required minlength="4" [(ngModel)]="fullName" #name="ngModel" class="input"
+            type="text" placeholder="Full Name">
 
-      <label class="label is-small">Address</label>
-      <div class="field-label is-normal">
-        <input class="input" type="text" placeholder="Address" [(ngModel)]="address">
-      </div>
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
 
-      <label class="label is-small">Email</label>
-      <div class="field-label is-normal">
-        <input class="input" type="text" placeholder="Email" [(ngModel)]="email">
-      </div>
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
 
-      <label class="label is-small">Place Of Birthday</label>
-      <div class="field-label is-normal">
-        <input class="input" type="text" placeholder="Place Of Birthday" [(ngModel)]="placeBirth">
-      </div>
+          </div>
 
-      <label class="label is-small">Date Of Birthday</label>
-      <div class="field-label is-normal">
-        <input class="input" type="date" placeholder="Date Of Birthday" [(ngModel)]="dateBirth">
-      </div>
+          <label class="label is-small">Email</label>
+          <input id="mail" name="mail" class="form-control" required [(ngModel)]="email" #mail="ngModel" class="input" type="text"
+            placeholder="Your Email">
 
-      <label class="label is-small">No.Telephone</label>
-      <div class="field-label is-normal">
-        <input class="input" type="number" placeholder="No.Telephone" [(ngModel)]="noPhone">
-      </div>
+          <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="alert alert-danger">
 
-      <label class="label is-small">Photo Profile</label>
-      <div class="file has-name is-fullwidth">
-        <label class="file-label">
-          <input class="file-input" type="file" name="file[]" (change)="uploadProses($event)">
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fa fa-upload"></i>
-            </span>
-            <span class="file-label">
-              Choose a file…
-            </span>
-          </span>
-          <span class="file-name">
-              {{ defaultFileTitle }}
-          </span>
-        </label>
-      </div>
+            <div *ngIf="mail.errors.required">
+              Email is required.
+            </div>
+
+          </div>
+
+          <label class="label is-small">Address</label>
+          <input id="addr" name="addr" class="form-control" required minlength="5" [(ngModel)]="address" #addr="ngModel" class="input"
+            type="text" placeholder="Your Address">
+
+          <div *ngIf="addr.invalid && (addr.dirty || addr.touched)" class="alert alert-danger">
+
+            <div *ngIf="addr.errors.required">
+              Address is required.
+            </div>
+            <div *ngIf="addr.errors.minlength">
+              Address must be at least 5 characters long.
+            </div>
+
+          </div>
+
+          <label class="label is-small">Place Of Birthday</label>
+          <input id="place" name="place" class="form-control" required minlength="3" [(ngModel)]="placeBirth" #place="ngModel" class="input"
+            type="text" placeholder="Place Of Birthday">
+
+          <div *ngIf="place.invalid && (place.dirty || place.touched)" class="alert alert-danger">
+
+            <div *ngIf="place.errors.required">
+              Place Of Birthday is required.
+            </div>
+            <div *ngIf="place.errors.minlength">
+              Place Of Birthday must be at least 3 characters long.
+            </div>
+
+          </div>
+
+          <label class="label is-small">Date Of Birthday</label>
+          <input id="date" name="date" class="form-control" required [(ngModel)]="dateBirth" #date="ngModel" class="input" type="date"
+            placeholder="placeBirth">
+
+          <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+
+            <div *ngIf="date.errors.required">
+              Date Of Birthday Of Birthday is required.
+            </div>
+
+          </div>
+
+          <label class="label is-small">No.Telephone</label>
+          <input id="phone" name="phone" class="form-control" required [(ngModel)]="noPhone" #phone="ngModel" class="input" type="text"
+            placeholder="No.Telephone" pattern="^[0-9]+$">
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+
+            <div *ngIf="phone.errors.required">
+              No. Telephone is required.
+            </div>
+
+          </div>
+
+          <label class="label is-small">Photo Profile</label>
+          <div class="file has-name is-fullwidth">
+            <label class="file-label">
+                <input id="photo" name="file[]" class="file-input" required 
+                (change)="uploadProses($event)" type="file">
+    
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fa fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+                <span class="file-name">
+                    {{ defaultFileTitle }}
+                </span>
+              </label>
+          </div>
+
+          <div *ngIf="place.invalid && (place.dirty || place.touched)" class="alert alert-danger">
+
+            <div *ngIf="place.errors.required">
+              Place Of Birthday is required.
+            </div>
+            <div *ngIf="place.errors.minlength">
+              Place Of Birthday must be at least 3 characters long.
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-card-foot">
+          <button type="submit" class="button is-success" [disabled]="heroForm.invalid" (click)="createData()">Submit</button>
+          <button type="button" class="button is-danger" (click)="heroForm.resetForm({})">Reset</button>
+
+          <div [ngStyle]="{'display': hiddenValid}">
+            <div class="notification is-danger" style="width: 60% !important;">
+              <button class="delete" (click)="closeValid()"></button>Foto must be attachment.
+            </div>
+          </div>
+
+        </div>
+      </form>
+
     </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success" (click)="createData()">Save changes</button>
-      <button class="button" (click)="closeAdd()">Cancel</button>
-    </footer>
   </div>
 </div>
