@@ -157,25 +157,6 @@ export class CrudPageComponent implements OnInit {
   }
 
   public createData() {
-    this.folderName = this.fullName + this.makeid().toString();
-    console.log(this.folderName, 'FOLDER');
-    this.profileDataApi.create({
-      fullName: this.fullName,
-      address: this.address,
-      email: this.email,
-      placeOfBirth: this.placeBirth,
-      birthDate: this.dateBirth,
-      noPhone: this.noPhone,
-      folder: this.folderName,
-      photoProfile: this.nameFile
-    }).subscribe((results) => {
-      console.log('Sukses');
-
-      this.uploadFoto(this.folderName);
-
-    }, (error) => {
-      console.log(error);
-    });
   }
 
 
@@ -203,7 +184,6 @@ export class CrudPageComponent implements OnInit {
     console.log('Data');
     this.profileDataApi.find({
       where: {
-        fullName: { 'neq': '' }
       }
     }).subscribe((result) => {
       console.log(result, 'Data');
