@@ -40,17 +40,20 @@ export class CrudPageComponent implements OnInit {
   public hiddenData: String = 'none';
   public hiddenTable: String = 'none';
   public hiddenSuccess: String = 'none';
+  public hiddenValid: String = 'none';
   public alertVisible: any;
   public alertNotif: any;
   public displayModalEdit: any;
   public displayModalAdd: any;
   public visibleModal: any;
+
   constructor(
     public profileDataApi: ProfiledataApi,
     public storageCustom: StorageSimpleUploadApi
   ) {
     this.displayModalEdit = 'modal';
     this.displayModalAdd = 'modal';
+
     this.visibleModal = false;
 
     this.alertNotif = 'none';
@@ -157,6 +160,31 @@ export class CrudPageComponent implements OnInit {
   }
 
   public createData() {
+    if (this.nameFile === '') {
+      console.log('Sorry Files Is Empty');
+      this.hiddenValid = 'block';
+      this.closedValid();
+    } else {
+      this.folderName = this.fullName + '_' + this.makeid().toString();
+      console.log(this.folderName, 'FOLDER');
+      this.profileDataApi.create({
+        fullname: this.fullName,
+        address: this.address,
+        email: this.email,
+        placeofbirth: this.placeBirth,
+        birthdate: this.dateBirth,
+        nophone: this.noPhone,
+        folder: this.folderName,
+        photoprofile: this.nameFile
+      }).subscribe((results) => {
+        console.log('Sukses');
+
+        this.uploadFoto(this.folderName);
+
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 
 
@@ -184,6 +212,7 @@ export class CrudPageComponent implements OnInit {
     console.log('Data');
     this.profileDataApi.find({
       where: {
+        fullname: { 'neq': '' }
       }
     }).subscribe((result) => {
       console.log(result, 'Data');
@@ -245,6 +274,9 @@ export class CrudPageComponent implements OnInit {
 
   public closeAlert() {
     this.hiddenSuccess = 'none';
+  }
+  public closeValid() {
+    this.hiddenValid = 'none';
   }
 
   public saveChange(datas) {
@@ -311,6 +343,12 @@ export class CrudPageComponent implements OnInit {
   public closedTimming() {
     setTimeout(() => {
       this.hiddenSuccess = 'none';
+    }, 3000);
+  }
+
+  public closedValid() {
+    setTimeout(() => {
+      this.hiddenValid = 'none';
     }, 3000);
   }
 
