@@ -1,31 +1,56 @@
-<div class="columns">
-
-  <aside class="column aside hero is-fullheight is-hidden-mobile">
-    <div class="sidenav">
-      <nav class="side-navbar">
-        <img src="../../../assets/darthvader.jpg" class="profile-image">
-        <div class="field has-addons">
-          <p class="control search-bar">
-            <input class="input" type="text" placeholder="Search" style="height:20px;">
-          </p>
+<div class="columns is-gapless">
+  <div class="column is-one-quarter">
+    <nav class="navbar has-shadow">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <img src="assets/logo.png" alt="Application Name" width="28" height="28">
         </div>
-      </nav>
-      <div id="friendslist" style="margin-top:70px">
-        <div id="friends" *ngFor="let rc of roomChat"  (click)="onSelect(rc.id)">
-          <div class="friend">
-            <img src="{{rc?.photo}}" />
-            <p>
-              <strong>{{rc?.roomname}}</strong><br>
-              <span>Never</span>
-            </p>
-          </div>
+        <div class="navbar-brand">
+          <a class="navbar-item" (click)="modalAdd()">
+            <span class="icon" style="color: #333;">
+              <i class="fa fa-plus-square-o"></i>
+            </span>
+          </a>
         </div>
       </div>
+    </nav>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+        <input class="input is-small" type="text" placeholder="search" (keyup)="eventHandler($event)">
+        <span class="icon is-small is-left">
+          <i class="fa fa-search"></i>
+        </span>
+      </p>
     </div>
-  </aside>
-  <div class="column is-10 mainside">
-    <div style="margin:auto;">
+    <div *ngFor="let rc of rooms" (click)="onSelect(rc.id)">
+      <a class="panel-block">
+        {{rc?.roomname}}
+      </a>
+    </div>
+  </div>
+  <div class="column is-11">
+    <section>
       <router-outlet></router-outlet>
-    </div>
+    </section>
+  </div>
+</div>
+
+<div [ngClass]="displayModalAdd">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Room</p>
+      <button class="delete" aria-label="close" (click)="closeAdd()"></button>
+    </header>
+    <section class="modal-card-body">
+      <label class="label is-small">Room Name</label>
+      <div class="field-label is-normal">
+        <input class="input" type="text" placeholder="Room Name" [(ngModel)]="roomName">
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="createData()">Save changes</button>
+      <button class="button" (click)="closeAdd()">Cancel</button>
+    </footer>
   </div>
 </div>
