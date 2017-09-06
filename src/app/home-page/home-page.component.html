@@ -9,6 +9,9 @@
         <a [routerLink]="['/home/maps']" routerLinkActive="active" class="item">
           <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
         </a>
+        <a [routerLink]="['/home/blog']" routerLinkActive="active" class="item">
+          <span class="icon"><i class="fa fa-rss"></i></span><span class="name">Blog</span>
+        </a>
         <a [routerLink]="['/home/chat']" routerLinkActive="active" class="item">
           <span class="icon"><i class="fa fa-users"></i></span><span class="name">Chat</span>
         </a>
@@ -69,6 +72,11 @@
           <li>
             <a [routerLink]="['/home/maps']" routerLinkActive="active" class="item" (click)="toggleMenu()">
               <span class="icon"><i class="fa fa-map-marker"></i></span><span class="name">Maps</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/home/blog']" routerLinkActive="active" class="item" (click)="toggleMenu()">
+              <span class="icon"><i class="fa fa-rss"></i></span><span class="name">Maps</span>
             </a>
           </li>
           <li>
