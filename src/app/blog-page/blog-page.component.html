@@ -1,0 +1,81 @@
+<div [ngStyle]="{'display':displaySuccess}" class="notif" >
+  <div class="notification is-success">
+    <button class="delete" (click)="toggle()"></button>
+    Login Success
+  </div>
+</div>
+
+<div [ngStyle]="{'display':displayFailed}" class="notif">
+  <div class="notification is-danger">
+    <button class="delete" (click)="toggle()"></button>
+    Wrong username or password
+  </div>
+</div>
+
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child">
+    </article>
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+  <div class="tile is-parent">
+  </div>
+</div>
+
+<a class="button is-success" (click)="newPost()" >Post</a>
+<br/>
+
+<!-- <div style=" margin: auto; padding: 10%;">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent is-vertical"> 
+
+        </div>
+        <div class="tile is-parent is-8 "> 
+          <article class="tile is-child box">-->
+  
+              <div class="card" *ngFor="let m of BlogpostResult | async">
+                  test
+              </div>
+            <div class="card" *ngFor="let m of BlogpostR">
+              <header class="card-header">
+                <p class="card-header-title">
+                    {{m.posttitle}}
+                </p>
+              </header>
+              <div class="card-content">
+                <div [froalaView]="m.postcontent"></div>
+                  <a>Read More</a>
+                  <!-- <br>
+                    <small>11:09 PM - 1 Jan 2016</small>
+                  <br> -->
+              </div>
+            </div>
+            <!--<br>
+             <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                      Lorem Ipsum has been the industry
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                      when an unknown printer took a galley of type and scrambled it to make a 
+                      type specimen book. It has survived not only five centuries, 
+                      but also the leap into electronic type....
+                  </div>
+                    <a>Read More</a>
+                </div>
+              </div> -->
+           <!--</article>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
