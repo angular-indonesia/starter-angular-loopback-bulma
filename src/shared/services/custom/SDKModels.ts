@@ -1,7 +1,5 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
-import { RoleMapping } from '../../models/RoleMapping';
-import { Role } from '../../models/Role';
 import { UserPhoto } from '../../models/UserPhoto';
 import { UserCredential } from '../../models/UserCredential';
 import { StorageSimpleUpload } from '../../models/StorageSimpleUpload';
@@ -11,6 +9,7 @@ import { Chatdetail } from '../../models/Chatdetail';
 import { StorageUpload } from '../../models/StorageUpload';
 import { Map } from '../../models/Map';
 import { Profiledata } from '../../models/Profiledata';
+import { Blogpost } from '../../models/Blogpost';
 
 export interface Models { [name: string]: any }
 
@@ -18,8 +17,6 @@ export interface Models { [name: string]: any }
 export class SDKModels {
 
   private models: Models = {
-    RoleMapping: RoleMapping,
-    Role: Role,
     UserPhoto: UserPhoto,
     UserCredential: UserCredential,
     StorageSimpleUpload: StorageSimpleUpload,
@@ -29,6 +26,7 @@ export class SDKModels {
     StorageUpload: StorageUpload,
     Map: Map,
     Profiledata: Profiledata,
+    Blogpost: Blogpost,
     
   };
 
