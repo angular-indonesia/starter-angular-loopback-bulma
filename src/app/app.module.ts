@@ -31,6 +31,9 @@ import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-pa
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
+import { PostPageComponent } from './blog-page/post-page/post-page.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 export function highchartsFactory() {
   return highcharts;
@@ -57,12 +60,16 @@ export function highchartsFactory() {
     GoogleChartPageComponent,
     HighchartsPageComponent,
     NotFoundPageComponent,
-    FileUploadMasterPageComponent
+    FileUploadMasterPageComponent,
+    BlogPageComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SDKBrowserModule.forRoot(),
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot(),
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBOMQvUP42I2WI_70m32U_L1n10dblGezM'

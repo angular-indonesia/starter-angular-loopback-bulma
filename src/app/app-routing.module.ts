@@ -1,3 +1,5 @@
+import { PostPageComponent } from './blog-page/post-page/post-page.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
 import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
 import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
@@ -31,6 +33,8 @@ const routes: Routes = [
       { path: 'chart', component: ChartPageComponent },
       { path: 'dashboard', component: DashboardPageComponent },
       { path: 'maps', component: MapsPageComponent},
+      { path: 'blog', component: BlogPageComponent},
+      { path: 'blogPost', component: PostPageComponent},
       { path: 'chart', component: ChartPageComponent, children: [
           { path: '', redirectTo: 'ng2chart', pathMatch: 'full' },
           { path: 'ng2chart', component: Ng2chartPageComponent },
