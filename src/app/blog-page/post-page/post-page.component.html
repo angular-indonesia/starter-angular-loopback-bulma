@@ -1,0 +1,23 @@
+<!-- <div style=" margin: auto; padding: 10%;">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-9">
+        <div class="tile">
+          <div class="tile is-parent is-vertical"> 
+  
+          </div>
+          <div class="tile is-parent is-8 ">  -->
+            <article class="tile is-child box">
+                <div class="field">
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Blog Title" [(ngModel)]="postTitle">
+                    </div>
+                  </div>
+              <div [froalaEditor] [(froalaModel)]="editorContent"></div>
+              <br>
+              <a class="button is-success" (click)="submitPost()">Post</a>
+            </article>
+          <!-- </div>
+        </div>
+      </div>
+    </div>
+  </div>               -->
