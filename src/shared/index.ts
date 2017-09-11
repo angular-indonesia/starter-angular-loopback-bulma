@@ -74,7 +74,8 @@ import { ProfiledataApi } from './services/custom/Profiledata';
   exports:      [ ],
   providers:    [
     ErrorHandler,
-    SocketConnection
+    SocketConnection,
+    HttpModule
   ]
 })
 export class SDKBrowserModule {

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Http, HttpModule } from '@angular/http';
 import { ChatRoomPageComponent } from './chat-room-page.component';
 
 describe('ChatRoomPageComponent', () => {
@@ -8,6 +8,7 @@ describe('ChatRoomPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [Http, HttpModule],
       declarations: [ ChatRoomPageComponent ]
     })
     .compileComponents();

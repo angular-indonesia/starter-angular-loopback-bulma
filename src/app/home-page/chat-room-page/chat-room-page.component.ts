@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ChatService } from '../../chat.service';
 import { RoomchatApi } from '../../../shared/services/custom/Roomchat';
-import { Http, Response } from '@angular/http';
+import { Http, HttpModule, Response } from '@angular/http';
 import { ChatdetailApi } from '../../../shared/services/custom/Chatdetail';
 import { RealTime } from '../../../shared/services/core/real.time';
 import { FireLoopRef } from '../../../shared/models/FireLoopRef';
@@ -13,7 +13,8 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-chat-room-page',
   templateUrl: './chat-room-page.component.html',
-  styleUrls: ['./chat-room-page.component.scss']
+  styleUrls: ['./chat-room-page.component.scss'],
+  providers: [Http, HttpModule],
 })
 export class ChatRoomPageComponent implements OnInit {
 

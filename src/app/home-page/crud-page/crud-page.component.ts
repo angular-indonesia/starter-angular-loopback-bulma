@@ -1,13 +1,15 @@
 import { ProfiledataApi } from './../../../shared/services/custom/Profiledata';
 import { StorageSimpleUploadApi } from './../../../shared/services/custom/StorageSimpleUpload';
+
 import { LoopBackConfig } from './../../../shared/lb.config';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-crud-page',
   templateUrl: './crud-page.component.html',
-  styleUrls: ['./crud-page.component.scss']
+  styleUrls: ['./crud-page.component.scss'],
+  providers: [StorageSimpleUploadApi],
 })
 export class CrudPageComponent implements OnInit {
 

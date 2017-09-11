@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { HttpModule, Http } from '@angular/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomePageComponent } from './home-page.component';
@@ -8,6 +10,7 @@ describe('HomePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [Http, HttpModule, Router],
       declarations: [ HomePageComponent ]
     })
     .compileComponents();
