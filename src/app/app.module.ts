@@ -1,3 +1,6 @@
+
+import { HttpModule } from '@angular/http';
+
 import { FileUploadMasterPageComponent } from './file-upload-master-page/file-upload-master-page.component';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
@@ -61,6 +64,7 @@ export function highchartsFactory() {
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     AppRoutingModule,
     SDKBrowserModule.forRoot(),
     FormsModule,
@@ -71,7 +75,7 @@ export function highchartsFactory() {
     Ng2GoogleChartsModule,
     ChartModule
   ],
-  providers: [AuthGuard, AuthService, ChatService, {
+  providers: [AuthGuard, AuthService, ChatService, HttpModule, {
     provide: HighchartsStatic,
     useFactory: highchartsFactory
   }],

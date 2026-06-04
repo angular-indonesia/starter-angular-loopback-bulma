@@ -6,7 +6,8 @@ import { NgModel, FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home-page',
   templateUrl: './file-upload-page.component.html',
-  styleUrls: ['./file-upload-page.component.scss']
+  styleUrls: ['./file-upload-page.component.scss'],
+  providers: [StorageSimpleUploadApi],
 })
 
 export class FileUploadPageComponent implements OnInit {
