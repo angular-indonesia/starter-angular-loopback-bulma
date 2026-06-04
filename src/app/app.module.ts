@@ -31,6 +31,8 @@ import { GoogleChartPageComponent } from './home-page/chart-page/google-chart-pa
 import { HighchartsPageComponent } from './home-page/chart-page/highcharts-page/highcharts-page.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
+import { OrgChartModule } from 'ng-org-chart';
+import { OrganizationPageComponent } from './home-page/organization-page/organization-page.component';
 
 export function highchartsFactory() {
   return highcharts;
@@ -57,7 +59,8 @@ export function highchartsFactory() {
     GoogleChartPageComponent,
     HighchartsPageComponent,
     NotFoundPageComponent,
-    FileUploadMasterPageComponent
+    FileUploadMasterPageComponent,
+    OrganizationPageComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ export function highchartsFactory() {
     }),
     ChartsModule,
     Ng2GoogleChartsModule,
-    ChartModule
+    ChartModule,
+    OrgChartModule
   ],
   providers: [AuthGuard, AuthService, ChatService, {
     provide: HighchartsStatic,

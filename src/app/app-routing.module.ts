@@ -1,3 +1,4 @@
+import { OrganizationPageComponent } from './home-page/organization-page/organization-page.component';
 import { NotFoundPageComponent } from './home-page/not-found-page/not-found-page.component';
 import { CrudPageComponent } from './home-page/crud-page/crud-page.component';
 import { MapsPageComponent } from './maps-page/maps-page.component';
@@ -52,6 +53,7 @@ const routes: Routes = [
         path: 'fileupload', component: FileUploadPageComponent
       },
       { path: 'crud', component: CrudPageComponent },
+      { path: 'organization', component: OrganizationPageComponent},
     ]
   },
 

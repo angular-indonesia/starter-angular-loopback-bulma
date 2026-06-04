@@ -39,6 +39,9 @@
         <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
           <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
         </a>
+        <a [routerLink]="['/home/organization']" routerLinkActive="active" class="item">
+          <span class="icon"><i class="fa fa-sitemap "></i></span><span class="name">Organization</span>
+        </a>
         <a (click)="signOut()" routerLinkActive="active" class="item">
           <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
         </a>
@@ -106,6 +109,11 @@
           <a [routerLink]="['/home/crud']" routerLinkActive="active" class="item">
             <span class="icon"><i class="fa fa-pencil-square-o"></i></span><span class="name">Crud Master</span>
           </a>
+          <li>
+            <a [routerLink]="['/home/organization']" routerLinkActive="active" class="item" (click)="toggleMenu()">
+              <span class="icon"><i class="fa fa-sitemap"></i></span><span class="name">Organization</span>
+            </a>
+          </li>
           <li [routerLink]="['/login']" routerLinkActive="active" class="item" (click)="signOut()">
             <span class="icon"><i class="fa fa-sign-out"></i></span><span class="name">Sign Out</span>
           </li>

@@ -2,3 +2,22 @@
 html{
   overflow: auto;
 }
+
+.oc-border {
+  border: 1px solid black;
+}
+
+.oc-background {
+  background-color: cornflowerblue;
+}
+
+.oc-name {
+  font-family: Times New Roman;
+  white-space: nowrap;
+}
+
+.oc-designation {
+  font-family: Trebuchet;
+  font-style: italic;
+  white-space: nowrap;
+}

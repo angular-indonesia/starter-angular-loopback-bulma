@@ -11,6 +11,8 @@ import { Chatdetail } from '../../models/Chatdetail';
 import { StorageUpload } from '../../models/StorageUpload';
 import { Map } from '../../models/Map';
 import { Profiledata } from '../../models/Profiledata';
+import { Employeeposition } from '../../models/Employeeposition';
+import { Employee } from '../../models/Employee';
 
 export interface Models { [name: string]: any }
 
@@ -29,6 +31,8 @@ export class SDKModels {
     StorageUpload: StorageUpload,
     Map: Map,
     Profiledata: Profiledata,
+    Employeeposition: Employeeposition,
+    Employee: Employee,
     
   };
 

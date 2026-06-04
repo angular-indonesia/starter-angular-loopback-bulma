@@ -59,6 +59,8 @@ import { ChatdetailApi } from './services/custom/Chatdetail';
 import { StorageUploadApi } from './services/custom/StorageUpload';
 import { MapApi } from './services/custom/Map';
 import { ProfiledataApi } from './services/custom/Profiledata';
+import { EmployeepositionApi } from './services/custom/Employeeposition';
+import { EmployeeApi } from './services/custom/Employee';
 /**
 * @module SDKBrowserModule
 * @description
@@ -101,6 +103,8 @@ export class SDKBrowserModule {
         StorageUploadApi,
         MapApi,
         ProfiledataApi,
+        EmployeepositionApi,
+        EmployeeApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
